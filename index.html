@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.5em;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .subtitle {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 5px;
+            letter-spacing: 0.2em;
+        }
+
+        .date-display {
+            font-size: 0.7rem;
+            color: #555;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .difficulty-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .diff-btn {
+            font-family: 'Courier New', monospace;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: #888;
+            padding: 10px 18px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+        }
+
+        .diff-btn:hover {
+            background: #3a3a3a;
+            border-color: #666;
+            color: #aaa;
+        }
+
+        .diff-btn.active {
+            background: #3a3a3a;
+            border-color: #888;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+
+        button {
+            font-family: 'Courier New', monospace;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: #e0e0e0;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        button:hover {
+            background: #3a3a3a;
+            border-color: #666;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
+        }
+
+        button:active {
+            background: #4a4a4a;
+        }
+
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 40px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .stat-value.glow {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            color: #666;
+        }
+
+        .grid-wrapper {
+            position: relative;
+        }
+
+        .grid {
+            display: grid;
+            gap: 3px;
+            background: #333;
+            padding: 3px;
+            position: relative;
+            border-radius: 2px;
+        }
+
+        .cell {
+            width: 54px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 500;
+            background: #252525;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            z-index: 1;
+            border-radius: 2px;
+        }
+
+        .cell:hover:not(.visited):not(.locked) {
+            background: #353535;
+            color: #888;
+        }
+
+        .cell.valid-move:not(.visited) {
+            background: #2d2d2d;
+            color: #aaa;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.15), inset 0 0 0 1px #555;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 8px rgba(255, 255, 255, 0.1), inset 0 0 0 1px #555; }
+            50% { box-shadow: 0 0 16px rgba(255, 255, 255, 0.2), inset 0 0 0 1px #666; }
+        }
+
+        .cell.visited {
+            background: #3a3a3a;
+            color: #ccc;
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .cell.current {
+            background: #4a4a4a;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.25), inset 0 0 0 2px #999;
+        }
+
+        .cell.start {
+            background: #3a3a3a;
+        }
+
+        .cell.start.current {
+            background: #4a4a4a;
+        }
+
+        .cell.locked {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .cell.locked.visited {
+            opacity: 0.8;
+        }
+
+        .canvas-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .message {
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .message-text {
+            font-size: 1rem;
+            color: #888;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .message-text.success {
+            color: #9a9;
+            text-shadow: 0 0 15px rgba(150, 170, 150, 0.5);
+        }
+
+        .message-text.info {
+            color: #888;
+        }
+
+        .optimal-path {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .instructions {
+            max-width: 500px;
+            text-align: center;
+            color: #555;
+            font-size: 0.75rem;
+            line-height: 1.8;
+            margin-top: 30px;
+            letter-spacing: 0.05em;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+        }
+
+        .action-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .action-btn:disabled:hover {
+            background: #2a2a2a;
+            border-color: #444;
+            box-shadow: none;
+        }
+
+        .finish-btn {
+            background: #333;
+            border-color: #555;
+        }
+
+        .finish-btn:hover:not(:disabled) {
+            background: #444;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.12);
+        }
+
+        .reset-btn {
+            background: #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+    <h1>PATH</h1>
+    <p class="subtitle">FIND THE LONGEST WAY</p>
+    <p class="date-display" id="dateDisplay"></p>
+
+    <div class="controls">
+        <div class="difficulty-buttons">
+            <button class="diff-btn active" data-n="2">NORMAL 5×5</button>
+            <button class="diff-btn" data-n="3">HARD 7×7</button>
+        </div>
+        <button id="resetBtn">RESET</button>
+    </div>
+
+    <div class="game-container">
+        <div class="stats">
+            <div class="stat">
+                <span class="stat-value" id="pathLength">0</span>
+                <span class="stat-label">PATH LENGTH</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="optimalLength">?</span>
+                <span class="stat-label">OPTIMAL</span>
+            </div>
+        </div>
+
+        <div class="grid-wrapper">
+            <canvas class="canvas-overlay" id="lineCanvas"></canvas>
+            <div class="grid" id="grid"></div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="action-btn" id="undoBtn" disabled>UNDO</button>
+            <button class="action-btn finish-btn" id="finishBtn">FINISH</button>
+        </div>
+
+        <div class="message">
+            <p class="message-text" id="message">Click an adjacent tile to begin your path</p>
+            <p class="optimal-path" id="optimalInfo"></p>
+        </div>
+    </div>
+
+    <div class="instructions">
+        START FROM THE CENTER · MOVE TO ADJACENT TILES (DIAGONALS ALLOWED)<br>
+        YOU MAY ONLY MOVE TO VALUES WITHIN ±1 OF YOUR CURRENT TILE<br>
+        FIND THE LONGEST POSSIBLE PATH · DAILY PUZZLE BASED ON DATE
+    </div>
+
+    <script>
+        class SeededRandom {
+            constructor(seed) {
+                this.seed = seed;
+            }
+            
+            next() {
+                this.seed = (this.seed * 1103515245 + 12345) & 0x7fffffff;
+                return this.seed / 0x7fffffff;
+            }
+            
+            nextInt(min, max) {
+                return Math.floor(this.next() * (max - min + 1)) + min;
+            }
+        }
+
+        class PathGame {
+            constructor() {
+                this.grid = [];
+                this.size = 5;
+                this.n = 2;
+                this.path = [];
+                this.currentPos = null;
+                this.gameOver = false;
+                this.optimalLength = 0;
+                this.optimalPath = [];
+                this.hasAttempted = {};
+                
+                this.gridElement = document.getElementById('grid');
+                this.canvas = document.getElementById('lineCanvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.pathLengthElement = document.getElementById('pathLength');
+                this.optimalLengthElement = document.getElementById('optimalLength');
+                this.messageElement = document.getElementById('message');
+                this.optimalInfoElement = document.getElementById('optimalInfo');
+                this.undoBtn = document.getElementById('undoBtn');
+                this.finishBtn = document.getElementById('finishBtn');
+                this.dateDisplay = document.getElementById('dateDisplay');
+                
+                // Set up difficulty buttons
+                document.querySelectorAll('.diff-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => this.setDifficulty(e.target));
+                });
+                
+                document.getElementById('resetBtn').addEventListener('click', () => this.resetPuzzle());
+                this.undoBtn.addEventListener('click', () => this.undo());
+                this.finishBtn.addEventListener('click', () => this.finish());
+                
+                this.updateDateDisplay();
+                this.newGame();
+            }
+
+            getDateSeed() {
+                const now = new Date();
+                const dateStr = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+                let hash = 0;
+                for (let i = 0; i < dateStr.length; i++) {
+                    const char = dateStr.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + char;
+                    hash = hash & hash;
+                }
+                return Math.abs(hash);
+            }
+
+            updateDateDisplay() {
+                const now = new Date();
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                this.dateDisplay.textContent = now.toLocaleDateString('en-US', options).toUpperCase();
+            }
+
+            setDifficulty(btn) {
+                document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.n = parseInt(btn.dataset.n);
+                this.newGame();
+            }
+
+            getStorageKey() {
+                const now = new Date();
+                const dateStr = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+                return `path-game-${dateStr}-${this.n}`;
+            }
+
+            loadSavedState() {
+                const key = this.getStorageKey();
+                const saved = localStorage.getItem(key);
+                if (saved) {
+                    try {
+                        return JSON.parse(saved);
+                    } catch (e) {
+                        return null;
+                    }
+                }
+                return null;
+            }
+
+            saveState() {
+                const key = this.getStorageKey();
+                const state = {
+                    path: this.path,
+                    gameOver: this.gameOver,
+                    grid: this.grid
+                };
+                localStorage.setItem(key, JSON.stringify(state));
+            }
+
+            newGame() {
+                this.size = 2 * this.n + 1;
+                this.grid = [];
+                this.path = [];
+                this.gameOver = false;
+                this.optimalInfoElement.textContent = '';
+                this.messageElement.textContent = 'Click an adjacent tile to begin your path';
+                this.messageElement.className = 'message-text info';
+                this.optimalLengthElement.textContent = '?';
+                this.undoBtn.disabled = true;
+                this.finishBtn.disabled = false;
+                
+                // Generate grid based on date seed
+                const baseSeed = this.getDateSeed();
+                const seed = baseSeed + this.n * 1000;
+                const rng = new SeededRandom(seed);
+                
+                for (let i = 0; i < this.size; i++) {
+                    this.grid[i] = [];
+                    for (let j = 0; j < this.size; j++) {
+                        this.grid[i][j] = rng.nextInt(1, 5);
+                    }
+                }
+                
+                // Start from center
+                const center = this.n;
+                this.currentPos = { row: center, col: center };
+                this.path = [{ ...this.currentPos }];
+                
+                // Calculate optimal path
+                this.calculateOptimal();
+                
+                // Check for saved state
+                const saved = this.loadSavedState();
+                if (saved && saved.gameOver) {
+                    this.grid = saved.grid;
+                    this.path = saved.path;
+                    this.currentPos = this.path[this.path.length - 1];
+                    this.gameOver = true;
+                    this.showResults();
+                }
+                
+                this.render();
+            }
+
+            resetPuzzle() {
+                const key = this.getStorageKey();
+                localStorage.removeItem(key);
+                
+                this.path = [];
+                this.gameOver = false;
+                this.optimalInfoElement.textContent = '';
+                this.messageElement.textContent = 'Click an adjacent tile to begin your path';
+                this.messageElement.className = 'message-text info';
+                this.optimalLengthElement.textContent = '?';
+                this.undoBtn.disabled = true;
+                this.finishBtn.disabled = false;
+                
+                const center = this.n;
+                this.currentPos = { row: center, col: center };
+                this.path = [{ ...this.currentPos }];
+                
+                this.render();
+            }
+
+            calculateOptimal() {
+                const center = this.n;
+                let maxLength = 1;
+                let bestPath = [{ row: center, col: center }];
+                
+                const visited = Array(this.size).fill(null).map(() => Array(this.size).fill(false));
+                visited[center][center] = true;
+                
+                const dfs = (row, col, currentPath) => {
+                    if (currentPath.length > maxLength) {
+                        maxLength = currentPath.length;
+                        bestPath = [...currentPath];
+                    }
+                    
+                    const currentVal = this.grid[row][col];
+                    const directions = [
+                        [-1, -1], [-1, 0], [-1, 1],
+                        [0, -1],          [0, 1],
+                        [1, -1],  [1, 0],  [1, 1]
+                    ];
+                    
+                    for (const [dr, dc] of directions) {
+                        const newRow = row + dr;
+                        const newCol = col + dc;
+                        
+                        if (newRow >= 0 && newRow < this.size && 
+                            newCol >= 0 && newCol < this.size &&
+                            !visited[newRow][newCol]) {
+                            
+                            const newVal = this.grid[newRow][newCol];
+                            if (Math.abs(newVal - currentVal) <= 1) {
+                                visited[newRow][newCol] = true;
+                                currentPath.push({ row: newRow, col: newCol });
+                                dfs(newRow, newCol, currentPath);
+                                currentPath.pop();
+                                visited[newRow][newCol] = false;
+                            }
+                        }
+                    }
+                };
+                
+                dfs(center, center, [{ row: center, col: center }]);
+                
+                this.optimalLength = maxLength;
+                this.optimalPath = bestPath;
+            }
+
+            isValidMove(row, col) {
+                if (this.gameOver) return false;
+                if (row < 0 || row >= this.size || col < 0 || col >= this.size) return false;
+                
+                // Check if already visited
+                if (this.path.some(p => p.row === row && p.col === col)) return false;
+                
+                // Check if adjacent to current position
+                const dr = Math.abs(row - this.currentPos.row);
+                const dc = Math.abs(col - this.currentPos.col);
+                if (dr > 1 || dc > 1 || (dr === 0 && dc === 0)) return false;
+                
+                // Check value constraint
+                const currentVal = this.grid[this.currentPos.row][this.currentPos.col];
+                const targetVal = this.grid[row][col];
+                if (Math.abs(targetVal - currentVal) > 1) return false;
+                
+                return true;
+            }
+
+            getValidMoves() {
+                const moves = [];
+                const directions = [
+                    [-1, -1], [-1, 0], [-1, 1],
+                    [0, -1],          [0, 1],
+                    [1, -1],  [1, 0],  [1, 1]
+                ];
+                
+                for (const [dr, dc] of directions) {
+                    const newRow = this.currentPos.row + dr;
+                    const newCol = this.currentPos.col + dc;
+                    if (this.isValidMove(newRow, newCol)) {
+                        moves.push({ row: newRow, col: newCol });
+                    }
+                }
+                
+                return moves;
+            }
+
+            makeMove(row, col) {
+                if (!this.isValidMove(row, col)) return;
+                
+                this.currentPos = { row, col };
+                this.path.push({ ...this.currentPos });
+                this.undoBtn.disabled = this.path.length <= 1;
+                
+                // Add glow effect to path length
+                this.pathLengthElement.classList.add('glow');
+                setTimeout(() => this.pathLengthElement.classList.remove('glow'), 300);
+                
+                this.render();
+                
+                // Check if no more valid moves
+                if (this.getValidMoves().length === 0) {
+                    this.finish();
+                }
+            }
+
+            undo() {
+                if (this.path.length <= 1 || this.gameOver) return;
+                
+                this.path.pop();
+                this.currentPos = { ...this.path[this.path.length - 1] };
+                this.undoBtn.disabled = this.path.length <= 1;
+                
+                this.render();
+            }
+
+            showResults() {
+                this.optimalLengthElement.textContent = this.optimalLength;
+                this.optimalLengthElement.classList.add('glow');
+                
+                const playerLength = this.path.length;
+                const percentage = Math.round((playerLength / this.optimalLength) * 100);
+                
+                if (playerLength === this.optimalLength) {
+                    this.messageElement.textContent = 'PERFECT! You found the optimal path!';
+                    this.messageElement.className = 'message-text success';
+                } else if (percentage >= 90) {
+                    this.messageElement.textContent = `Excellent! ${playerLength}/${this.optimalLength} · ${percentage}%`;
+                    this.messageElement.className = 'message-text success';
+                } else if (percentage >= 70) {
+                    this.messageElement.textContent = `Good! ${playerLength}/${this.optimalLength} · ${percentage}%`;
+                    this.messageElement.className = 'message-text info';
+                } else {
+                    this.messageElement.textContent = `${playerLength}/${this.optimalLength} · ${percentage}% of optimal`;
+                    this.messageElement.className = 'message-text info';
+                }
+            }
+
+            finish() {
+                this.gameOver = true;
+                this.undoBtn.disabled = true;
+                this.finishBtn.disabled = true;
+                
+                this.saveState();
+                this.showResults();
+                this.render();
+            }
+
+            render() {
+                this.gridElement.innerHTML = '';
+                this.gridElement.style.gridTemplateColumns = `repeat(${this.size}, 54px)`;
+                
+                const validMoves = this.getValidMoves();
+                const center = this.n;
+                
+                for (let i = 0; i < this.size; i++) {
+                    for (let j = 0; j < this.size; j++) {
+                        const cell = document.createElement('div');
+                        cell.className = 'cell';
+                        cell.textContent = this.grid[i][j];
+                        
+                        const isVisited = this.path.some(p => p.row === i && p.col === j);
+                        const isCurrent = this.currentPos.row === i && this.currentPos.col === j;
+                        const isStart = i === center && j === center;
+                        const isValidMove = validMoves.some(m => m.row === i && m.col === j);
+                        
+                        if (isCurrent) cell.classList.add('current');
+                        if (isVisited) cell.classList.add('visited');
+                        if (isStart) cell.classList.add('start');
+                        if (isValidMove && !this.gameOver) cell.classList.add('valid-move');
+                        if (this.gameOver) cell.classList.add('locked');
+                        
+                        cell.addEventListener('click', () => this.makeMove(i, j));
+                        
+                        this.gridElement.appendChild(cell);
+                    }
+                }
+                
+                this.pathLengthElement.textContent = this.path.length;
+                this.drawLines();
+            }
+
+            drawLines() {
+                const cellSize = 54;
+                const gap = 3;
+                const padding = 3;
+                
+                this.canvas.width = this.size * cellSize + (this.size - 1) * gap + padding * 2;
+                this.canvas.height = this.size * cellSize + (this.size - 1) * gap + padding * 2;
+                
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                if (this.path.length < 2) return;
+                
+                // Draw glow
+                this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+                this.ctx.lineWidth = 8;
+                this.ctx.lineCap = 'round';
+                this.ctx.lineJoin = 'round';
+                
+                this.ctx.beginPath();
+                for (let i = 0; i < this.path.length; i++) {
+                    const pos = this.path[i];
+                    const x = padding + pos.col * (cellSize + gap) + cellSize / 2;
+                    const y = padding + pos.row * (cellSize + gap) + cellSize / 2;
+                    
+                    if (i === 0) {
+                        this.ctx.moveTo(x, y);
+                    } else {
+                        this.ctx.lineTo(x, y);
+                    }
+                }
+                this.ctx.stroke();
+                
+                // Draw main line
+                this.ctx.strokeStyle = '#999';
+                this.ctx.lineWidth = 2;
+                
+                this.ctx.beginPath();
+                for (let i = 0; i < this.path.length; i++) {
+                    const pos = this.path[i];
+                    const x = padding + pos.col * (cellSize + gap) + cellSize / 2;
+                    const y = padding + pos.row * (cellSize + gap) + cellSize / 2;
+                    
+                    if (i === 0) {
+                        this.ctx.moveTo(x, y);
+                    } else {
+                        this.ctx.lineTo(x, y);
+                    }
+                }
+                this.ctx.stroke();
+                
+                // Draw dots at each point
+                for (let i = 0; i < this.path.length; i++) {
+                    const pos = this.path[i];
+                    const x = padding + pos.col * (cellSize + gap) + cellSize / 2;
+                    const y = padding + pos.row * (cellSize + gap) + cellSize / 2;
+                    
+                    // Glow
+                    this.ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+                    this.ctx.beginPath();
+                    this.ctx.arc(x, y, 8, 0, Math.PI * 2);
+                    this.ctx.fill();
+                    
+                    // Dot
+                    this.ctx.fillStyle = '#bbb';
+                    this.ctx.beginPath();
+                    this.ctx.arc(x, y, 4, 0, Math.PI * 2);
+                    this.ctx.fill();
+                }
+            }
+        }
+
+        // Initialize game
+        const game = new PathGame();
+    </script>
+</body>
+</html>
