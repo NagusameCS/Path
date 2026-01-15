@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Path</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -16,18 +17,61 @@
             background-color: #1a1a1a;
             color: #e0e0e0;
             min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
+            padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
         }
 
         h1 {
             font-size: 2.5rem;
             font-weight: 300;
             letter-spacing: 0.5em;
-            margin-bottom: 10px;
             color: #ffffff;
+        }
+
+        .icon-btn {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            border-radius: 50%;
+            background: #2a2a2a;
+            border: 2px solid #555;
+            color: #888;
+            font-size: 1rem;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .icon-btn:hover {
+            background: #3a3a3a;
+            border-color: #777;
+            color: #bbb;
+        }
+
+        .icon-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .icon-btn:disabled:hover {
+            background: #2a2a2a;
+            border-color: #555;
+            color: #888;
         }
 
         .subtitle {
@@ -35,6 +79,7 @@
             color: #666;
             margin-bottom: 5px;
             letter-spacing: 0.2em;
+            text-align: center;
         }
 
         .date-display {
@@ -42,46 +87,10 @@
             color: #555;
             margin-bottom: 25px;
             letter-spacing: 0.15em;
+            text-align: center;
         }
 
-        .controls {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
 
-        .difficulty-buttons {
-            display: flex;
-            gap: 8px;
-        }
-
-        .diff-btn {
-            font-family: 'Courier New', monospace;
-            background: #2a2a2a;
-            border: 1px solid #444;
-            color: #888;
-            padding: 10px 18px;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-        }
-
-        .diff-btn:hover {
-            background: #3a3a3a;
-            border-color: #666;
-            color: #aaa;
-        }
-
-        .diff-btn.active {
-            background: #3a3a3a;
-            border-color: #888;
-            color: #fff;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-        }
 
         button {
             font-family: 'Courier New', monospace;
@@ -91,6 +100,8 @@
             padding: 10px 20px;
             cursor: pointer;
             transition: all 0.25s ease;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
         }
 
         button:hover {
@@ -108,6 +119,8 @@
             flex-direction: column;
             align-items: center;
             gap: 20px;
+            width: 100%;
+            max-width: 400px;
         }
 
         .stats {
@@ -168,6 +181,8 @@
             position: relative;
             z-index: 1;
             border-radius: 2px;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .cell:hover:not(.visited):not(.locked) {
@@ -225,16 +240,18 @@
         }
 
         .message {
-            min-height: 60px;
+            min-height: 50px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
+            text-align: center;
+            padding: 0 10px;
         }
 
         .message-text {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #888;
             letter-spacing: 0.1em;
             transition: all 0.3s ease;
@@ -242,78 +259,209 @@
 
         .message-text.success {
             color: #9a9;
-            text-shadow: 0 0 15px rgba(150, 170, 150, 0.5);
         }
 
         .message-text.info {
             color: #888;
         }
 
-        .optimal-path {
-            font-size: 0.8rem;
-            color: #666;
-        }
-
-        .instructions {
-            max-width: 500px;
-            text-align: center;
-            color: #555;
-            font-size: 0.75rem;
-            line-height: 1.8;
-            margin-top: 30px;
-            letter-spacing: 0.05em;
-        }
-
         .action-buttons {
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .action-btn {
-            padding: 10px 20px;
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 20px;
         }
 
-        .action-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-            box-shadow: none;
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
-        .action-btn:disabled:hover {
-            background: #2a2a2a;
-            border-color: #444;
-            box-shadow: none;
+        .modal {
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 4px;
+            max-width: 360px;
+            width: 100%;
+            padding: 25px;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
         }
 
-        .finish-btn {
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            margin-bottom: 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .modal-rules {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .modal-rules li {
+            color: #aaa;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .modal-rules li:last-child {
+            border-bottom: none;
+        }
+
+        .rule-num {
+            color: #666;
+            font-size: 0.75rem;
+            min-width: 20px;
+        }
+
+        .modal-close {
+            width: 100%;
+            padding: 12px;
             background: #333;
-            border-color: #555;
+            border: 1px solid #555;
+            margin-top: 10px;
         }
 
-        .finish-btn:hover:not(:disabled) {
+        .modal-close:hover {
             background: #444;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.12);
         }
 
-        .reset-btn {
-            background: #2a2a2a;
+        /* Mobile Responsive */
+        @media (max-width: 400px) {
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 0.4em;
+            }
+
+            .icon-btn {
+                width: 32px;
+                height: 32px;
+                min-width: 32px;
+                font-size: 0.9rem;
+            }
+
+            .subtitle {
+                font-size: 0.7rem;
+            }
+
+            .date-display {
+                font-size: 0.65rem;
+            }
+
+            .cell {
+                width: 48px;
+                height: 48px;
+                font-size: 1.2rem;
+            }
+
+            .stats {
+                gap: 30px;
+            }
+
+            .stat-value {
+                font-size: 1.3rem;
+            }
+
+            .stat-label {
+                font-size: 0.65rem;
+            }
+
+            button {
+                padding: 10px 16px;
+                font-size: 0.75rem;
+            }
+
+            .message-text {
+                font-size: 0.85rem;
+            }
+
+            .modal {
+                padding: 20px;
+            }
+
+            .modal h2 {
+                font-size: 1.1rem;
+            }
+
+            .modal-rules li {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 340px) {
+            .cell {
+                width: 42px;
+                height: 42px;
+                font-size: 1.1rem;
+            }
+
+            button {
+                padding: 8px 12px;
+                font-size: 0.7rem;
+            }
+        }
+
+        /* Larger screens */
+        @media (min-width: 600px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .cell {
+                width: 60px;
+                height: 60px;
+                font-size: 1.4rem;
+            }
+
+            .modal {
+                max-width: 400px;
+                padding: 30px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>PATH</h1>
+    <header>
+        <h1>PATH</h1>
+    </header>
     <p class="subtitle">FIND THE LONGEST WAY</p>
     <p class="date-display" id="dateDisplay"></p>
 
-    <div class="controls">
-        <div class="difficulty-buttons">
-            <button class="diff-btn active" data-n="2">NORMAL 5×5</button>
-            <button class="diff-btn" data-n="3">HARD 7×7</button>
-        </div>
-        <button id="resetBtn">RESET</button>
-    </div>
+
 
     <div class="game-container">
         <div class="stats">
@@ -323,7 +471,7 @@
             </div>
             <div class="stat">
                 <span class="stat-value" id="optimalLength">?</span>
-                <span class="stat-label">OPTIMAL</span>
+                <span class="stat-label">PERFECT</span>
             </div>
         </div>
 
@@ -333,20 +481,48 @@
         </div>
 
         <div class="action-buttons">
-            <button class="action-btn" id="undoBtn" disabled>UNDO</button>
-            <button class="action-btn finish-btn" id="finishBtn">FINISH</button>
+            <button class="icon-btn" id="undoBtn" disabled aria-label="Undo">↶</button>
+            <button class="icon-btn" id="resetBtn" aria-label="Reset">↻</button>
+            <button class="icon-btn" id="helpBtn" aria-label="Help">?</button>
         </div>
 
         <div class="message">
             <p class="message-text" id="message">Click an adjacent tile to begin your path</p>
-            <p class="optimal-path" id="optimalInfo"></p>
         </div>
     </div>
 
-    <div class="instructions">
-        START FROM THE CENTER · MOVE TO ADJACENT TILES (DIAGONALS ALLOWED)<br>
-        YOU MAY ONLY MOVE TO VALUES WITHIN ±1 OF YOUR CURRENT TILE<br>
-        FIND THE LONGEST POSSIBLE PATH · DAILY PUZZLE BASED ON DATE
+    <!-- Help Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <h2>HOW TO PLAY</h2>
+            <ul class="modal-rules">
+                <li>
+                    <span class="rule-num">1</span>
+                    <span>You start from the <strong>center tile</strong> of the grid.</span>
+                </li>
+                <li>
+                    <span class="rule-num">2</span>
+                    <span>Move to any <strong>adjacent tile</strong> — horizontal, vertical, or diagonal.</span>
+                </li>
+                <li>
+                    <span class="rule-num">3</span>
+                    <span>You can only move to tiles with a value <strong>within ±1</strong> of your current tile. (e.g., from 3 → 2, 3, or 4)</span>
+                </li>
+                <li>
+                    <span class="rule-num">4</span>
+                    <span>Each tile can only be visited <strong>once</strong>.</span>
+                </li>
+                <li>
+                    <span class="rule-num">5</span>
+                    <span>Your goal is to find the <strong>longest possible path</strong>.</span>
+                </li>
+                <li>
+                    <span class="rule-num">6</span>
+                    <span>A new puzzle appears <strong>every day</strong>. Good luck!</span>
+                </li>
+            </ul>
+            <button class="modal-close" id="modalClose">GOT IT</button>
+        </div>
     </div>
 
     <script>
@@ -375,7 +551,7 @@
                 this.gameOver = false;
                 this.optimalLength = 0;
                 this.optimalPath = [];
-                this.hasAttempted = {};
+                this.cellSize = 54;
                 
                 this.gridElement = document.getElementById('grid');
                 this.canvas = document.getElementById('lineCanvas');
@@ -383,22 +559,56 @@
                 this.pathLengthElement = document.getElementById('pathLength');
                 this.optimalLengthElement = document.getElementById('optimalLength');
                 this.messageElement = document.getElementById('message');
-                this.optimalInfoElement = document.getElementById('optimalInfo');
                 this.undoBtn = document.getElementById('undoBtn');
-                this.finishBtn = document.getElementById('finishBtn');
                 this.dateDisplay = document.getElementById('dateDisplay');
-                
-                // Set up difficulty buttons
-                document.querySelectorAll('.diff-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => this.setDifficulty(e.target));
-                });
+                this.modalOverlay = document.getElementById('modalOverlay');
                 
                 document.getElementById('resetBtn').addEventListener('click', () => this.resetPuzzle());
                 this.undoBtn.addEventListener('click', () => this.undo());
-                this.finishBtn.addEventListener('click', () => this.finish());
+                
+                // Help modal
+                document.getElementById('helpBtn').addEventListener('click', () => this.showModal());
+                document.getElementById('modalClose').addEventListener('click', () => this.hideModal());
+                this.modalOverlay.addEventListener('click', (e) => {
+                    if (e.target === this.modalOverlay) this.hideModal();
+                });
+                
+                // Responsive cell size
+                this.updateCellSize();
+                window.addEventListener('resize', () => {
+                    this.updateCellSize();
+                    this.render();
+                });
                 
                 this.updateDateDisplay();
                 this.newGame();
+                
+                // Show help on first visit
+                if (!localStorage.getItem('path-game-seen-help')) {
+                    setTimeout(() => this.showModal(), 500);
+                    localStorage.setItem('path-game-seen-help', 'true');
+                }
+            }
+
+            updateCellSize() {
+                const screenWidth = window.innerWidth;
+                if (screenWidth < 340) {
+                    this.cellSize = 42;
+                } else if (screenWidth < 400) {
+                    this.cellSize = 48;
+                } else if (screenWidth >= 600) {
+                    this.cellSize = 60;
+                } else {
+                    this.cellSize = 54;
+                }
+            }
+
+            showModal() {
+                this.modalOverlay.classList.add('active');
+            }
+
+            hideModal() {
+                this.modalOverlay.classList.remove('active');
             }
 
             getDateSeed() {
@@ -417,13 +627,6 @@
                 const now = new Date();
                 const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
                 this.dateDisplay.textContent = now.toLocaleDateString('en-US', options).toUpperCase();
-            }
-
-            setDifficulty(btn) {
-                document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                this.n = parseInt(btn.dataset.n);
-                this.newGame();
             }
 
             getStorageKey() {
@@ -460,12 +663,10 @@
                 this.grid = [];
                 this.path = [];
                 this.gameOver = false;
-                this.optimalInfoElement.textContent = '';
                 this.messageElement.textContent = 'Click an adjacent tile to begin your path';
                 this.messageElement.className = 'message-text info';
                 this.optimalLengthElement.textContent = '?';
                 this.undoBtn.disabled = true;
-                this.finishBtn.disabled = false;
                 
                 // Generate grid based on date seed
                 const baseSeed = this.getDateSeed();
@@ -501,23 +702,41 @@
             }
 
             resetPuzzle() {
+                // Increment attempts counter
+                this.incrementAttempts();
+                
                 const key = this.getStorageKey();
                 localStorage.removeItem(key);
                 
                 this.path = [];
                 this.gameOver = false;
-                this.optimalInfoElement.textContent = '';
                 this.messageElement.textContent = 'Click an adjacent tile to begin your path';
                 this.messageElement.className = 'message-text info';
                 this.optimalLengthElement.textContent = '?';
                 this.undoBtn.disabled = true;
-                this.finishBtn.disabled = false;
                 
                 const center = this.n;
                 this.currentPos = { row: center, col: center };
                 this.path = [{ ...this.currentPos }];
                 
                 this.render();
+            }
+
+            getAttemptsKey() {
+                const now = new Date();
+                const dateStr = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+                return `path-game-attempts-${dateStr}`;
+            }
+
+            getAttempts() {
+                const key = this.getAttemptsKey();
+                return parseInt(localStorage.getItem(key) || '1', 10);
+            }
+
+            incrementAttempts() {
+                const key = this.getAttemptsKey();
+                const current = this.getAttempts();
+                localStorage.setItem(key, (current + 1).toString());
             }
 
             calculateOptimal() {
@@ -641,18 +860,20 @@
                 
                 const playerLength = this.path.length;
                 const percentage = Math.round((playerLength / this.optimalLength) * 100);
+                const attempts = this.getAttempts();
+                const attemptText = attempts === 1 ? '' : ` · Attempt ${attempts}`;
                 
                 if (playerLength === this.optimalLength) {
-                    this.messageElement.textContent = 'PERFECT! You found the optimal path!';
+                    this.messageElement.textContent = `PERFECT! ${playerLength}/${this.optimalLength}${attemptText}`;
                     this.messageElement.className = 'message-text success';
                 } else if (percentage >= 90) {
-                    this.messageElement.textContent = `Excellent! ${playerLength}/${this.optimalLength} · ${percentage}%`;
+                    this.messageElement.textContent = `Excellent! ${playerLength}/${this.optimalLength} · ${percentage}%${attemptText}`;
                     this.messageElement.className = 'message-text success';
                 } else if (percentage >= 70) {
-                    this.messageElement.textContent = `Good! ${playerLength}/${this.optimalLength} · ${percentage}%`;
+                    this.messageElement.textContent = `Good! ${playerLength}/${this.optimalLength} · ${percentage}%${attemptText}`;
                     this.messageElement.className = 'message-text info';
                 } else {
-                    this.messageElement.textContent = `${playerLength}/${this.optimalLength} · ${percentage}% of optimal`;
+                    this.messageElement.textContent = `${playerLength}/${this.optimalLength} · ${percentage}%${attemptText}`;
                     this.messageElement.className = 'message-text info';
                 }
             }
@@ -660,7 +881,6 @@
             finish() {
                 this.gameOver = true;
                 this.undoBtn.disabled = true;
-                this.finishBtn.disabled = true;
                 
                 this.saveState();
                 this.showResults();
@@ -668,8 +888,11 @@
             }
 
             render() {
+                const cellSize = this.cellSize;
+                const gap = 3;
+                
                 this.gridElement.innerHTML = '';
-                this.gridElement.style.gridTemplateColumns = `repeat(${this.size}, 54px)`;
+                this.gridElement.style.gridTemplateColumns = `repeat(${this.size}, ${cellSize}px)`;
                 
                 const validMoves = this.getValidMoves();
                 const center = this.n;
@@ -678,6 +901,8 @@
                     for (let j = 0; j < this.size; j++) {
                         const cell = document.createElement('div');
                         cell.className = 'cell';
+                        cell.style.width = `${cellSize}px`;
+                        cell.style.height = `${cellSize}px`;
                         cell.textContent = this.grid[i][j];
                         
                         const isVisited = this.path.some(p => p.row === i && p.col === j);
@@ -702,7 +927,7 @@
             }
 
             drawLines() {
-                const cellSize = 54;
+                const cellSize = this.cellSize;
                 const gap = 3;
                 const padding = 3;
                 
