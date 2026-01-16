@@ -632,7 +632,7 @@
 </head>
 <body>
     <header>
-        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" style="position: absolute; left: 20px; top: 20px;">☀</button>
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" style="position: absolute; right: 20px; top: 20px;">☀</button>
         <h1>PATH</h1>
     </header>
     <p class="subtitle">FIND THE LONGEST WAY</p>
@@ -660,8 +660,8 @@
         <div class="action-buttons">
             <button class="icon-btn" id="undoBtn" disabled aria-label="Undo">↶</button>
             <button class="icon-btn" id="resetBtn" aria-label="Reset">↻</button>
-            <button class="give-up-btn" id="giveUpBtn" aria-label="Give Up" style="padding: 10px 20px; border-radius: 4px;">I GIVE UP</button>
             <button class="icon-btn" id="helpBtn" aria-label="Help">?</button>
+            <button class="give-up-btn" id="giveUpBtn" aria-label="Give Up" style="padding: 10px 20px; border-radius: 4px;">I GIVE UP</button>
         </div>
 
         <div class="message">
@@ -676,27 +676,27 @@
             <ul class="modal-rules">
                 <li>
                     <span class="rule-num">1</span>
-                    <span>You start from the <strong>center tile</strong> of the grid.</span>
+                    <span>Start from the <strong>center tile</strong> and build your path outward.</span>
                 </li>
                 <li>
                     <span class="rule-num">2</span>
-                    <span>Move to any <strong>adjacent tile</strong> — horizontal, vertical, or diagonal.</span>
+                    <span>Click any <strong>neighboring tile</strong> to move — including diagonals.</span>
                 </li>
                 <li>
                     <span class="rule-num">3</span>
-                    <span>You can only move to tiles with a value <strong>within ±1</strong> of your current tile. (e.g., from 3 → 2, 3, or 4)</span>
+                    <span>You can only step on tiles <strong>±1</strong> of your current number. (3 → 2, 3, or 4)</span>
                 </li>
                 <li>
                     <span class="rule-num">4</span>
-                    <span>Each tile can only be visited <strong>once</strong>.</span>
+                    <span><strong>No backtracking</strong> — each tile can only be visited once.</span>
                 </li>
                 <li>
                     <span class="rule-num">5</span>
-                    <span>Your goal is to find the <strong>longest possible path</strong>.</span>
+                    <span>Find the <strong>longest path</strong> possible. Can you reach the perfect score?</span>
                 </li>
                 <li>
                     <span class="rule-num">6</span>
-                    <span>A new puzzle appears <strong>every day</strong>. Good luck!</span>
+                    <span>A <strong>new puzzle daily</strong> — beat 5×5 to unlock 7×7!</span>
                 </li>
             </ul>
             <button class="modal-close" id="modalClose">GOT IT</button>
@@ -720,12 +720,29 @@
         </div>
     </div>
 
+    <!-- 7x7 Unlock Modal -->
+    <div class="modal-overlay" id="unlockModal">
+        <div class="modal">
+            <h2>🎉 CONGRATULATIONS!</h2>
+            <ul class="modal-rules">
+                <li style="border-bottom: none;">
+                    <span style="font-size: 2rem; margin-right: 10px;">🏆</span>
+                    <span>You've mastered the 5×5 grid! Would you like to try the challenging <strong>7×7 grid</strong>?</span>
+                </li>
+            </ul>
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button class="modal-close" id="declineUnlock" style="flex: 1;">NOT NOW</button>
+                <button class="modal-close" id="acceptUnlock" style="flex: 1; background: #3a5a3a; border-color: #4a7a4a;">LET'S GO!</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Confetti Canvas -->
     <canvas id="confettiCanvas"></canvas>
 
     <!-- Footer -->
     <div class="footer">
-        <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+        William Ohara 2026 · <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
     </div>
 
     <script>
@@ -768,6 +785,7 @@
                 this.modalOverlay = document.getElementById('modalOverlay');
                 this.giveUpModal = document.getElementById('giveUpModal');
                 this.giveUpBtn = document.getElementById('giveUpBtn');
+                this.unlockModal = document.getElementById('unlockModal');
                 this.confettiCanvas = document.getElementById('confettiCanvas');
                 this.confettiCtx = this.confettiCanvas.getContext('2d');
                 
@@ -789,6 +807,13 @@
                     if (e.target === this.giveUpModal) this.hideGiveUpModal();
                 });
                 
+                // Unlock modal
+                document.getElementById('declineUnlock').addEventListener('click', () => this.hideUnlockModal());
+                document.getElementById('acceptUnlock').addEventListener('click', () => this.acceptUnlock());
+                this.unlockModal.addEventListener('click', (e) => {
+                    if (e.target === this.unlockModal) this.hideUnlockModal();
+                });
+                
                 // Theme toggle
                 document.getElementById('themeToggle').addEventListener('click', () => this.toggleTheme());
                 
@@ -798,6 +823,9 @@
                     document.body.classList.add('light-mode');
                     document.getElementById('themeToggle').textContent = '🌙';
                 }
+                
+                // Load saved grid size for today
+                this.loadGridSize();
                 
                 // Responsive cell size
                 this.updateCellSize();
@@ -844,6 +872,40 @@
 
             hideGiveUpModal() {
                 this.giveUpModal.classList.remove('active');
+            }
+
+            showUnlockModal() {
+                this.unlockModal.classList.add('active');
+            }
+
+            hideUnlockModal() {
+                this.unlockModal.classList.remove('active');
+            }
+
+            acceptUnlock() {
+                this.hideUnlockModal();
+                this.n = 3;
+                this.saveGridSize();
+                this.newGame();
+            }
+
+            getGridSizeKey() {
+                const now = new Date();
+                const dateStr = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+                return `path-game-gridsize-${dateStr}`;
+            }
+
+            saveGridSize() {
+                const key = this.getGridSizeKey();
+                localStorage.setItem(key, this.n.toString());
+            }
+
+            loadGridSize() {
+                const key = this.getGridSizeKey();
+                const saved = localStorage.getItem(key);
+                if (saved) {
+                    this.n = parseInt(saved, 10);
+                }
             }
 
             toggleTheme() {
@@ -893,40 +955,48 @@
                 const particles = [];
                 const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f7b731', '#5f27cd', '#00d2d3', '#ff9ff3'];
                 
-                for (let i = 0; i < 150; i++) {
+                // Reduced particle count for performance
+                for (let i = 0; i < 60; i++) {
                     particles.push({
                         x: Math.random() * canvas.width,
                         y: Math.random() * canvas.height - canvas.height,
-                        r: Math.random() * 6 + 4,
-                        d: Math.random() * 8 + 4,
+                        r: Math.random() * 4 + 3,
+                        d: Math.random() * 4 + 2,
                         color: colors[Math.floor(Math.random() * colors.length)],
                         tilt: Math.floor(Math.random() * 10) - 10,
-                        tiltAngleIncremental: Math.random() * 0.07 + 0.05,
-                        tiltAngle: 0
+                        tiltAngle: 0,
+                        speed: Math.random() * 3 + 2
                     });
                 }
                 
                 let animationFrame;
-                const animate = () => {
+                let lastTime = 0;
+                const animate = (currentTime) => {
+                    // Throttle to ~30fps for performance
+                    if (currentTime - lastTime < 33) {
+                        animationFrame = requestAnimationFrame(animate);
+                        return;
+                    }
+                    lastTime = currentTime;
+                    
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     
-                    particles.forEach((p, i) => {
-                        p.tiltAngle += p.tiltAngleIncremental;
-                        p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
-                        p.x += Math.sin(p.d);
-                        p.tilt = Math.sin(p.tiltAngle - i / 3) * 15;
+                    for (let i = particles.length - 1; i >= 0; i--) {
+                        const p = particles[i];
+                        p.tiltAngle += 0.05;
+                        p.y += p.speed;
+                        p.x += Math.sin(p.tiltAngle) * 2;
+                        p.tilt = Math.sin(p.tiltAngle) * 10;
                         
+                        ctx.fillStyle = p.color;
                         ctx.beginPath();
-                        ctx.lineWidth = p.r / 2;
-                        ctx.strokeStyle = p.color;
-                        ctx.moveTo(p.x + p.tilt + p.r / 4, p.y);
-                        ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 4);
-                        ctx.stroke();
+                        ctx.ellipse(p.x, p.y, p.r, p.r * 0.6, p.tilt, 0, Math.PI * 2);
+                        ctx.fill();
                         
-                        if (p.y > canvas.height) {
+                        if (p.y > canvas.height + 20) {
                             particles.splice(i, 1);
                         }
-                    });
+                    }
                     
                     if (particles.length > 0) {
                         animationFrame = requestAnimationFrame(animate);
@@ -935,7 +1005,7 @@
                     }
                 };
                 
-                animate();
+                requestAnimationFrame(animate);
             }
 
             getDateSeed() {
@@ -1086,19 +1156,50 @@
                 const visited = Array(this.size).fill(null).map(() => Array(this.size).fill(false));
                 visited[center][center] = true;
                 
+                const directions = [
+                    [-1, -1], [-1, 0], [-1, 1],
+                    [0, -1],          [0, 1],
+                    [1, -1],  [1, 0],  [1, 1]
+                ];
+                
+                // For 7x7, use iterative DFS with time limit
+                const startTime = Date.now();
+                const timeLimit = this.size > 5 ? 2000 : 10000; // 2 second limit for 7x7
+                
+                // Count reachable cells for pruning
+                const countReachable = (row, col, vis) => {
+                    let count = 0;
+                    const currentVal = this.grid[row][col];
+                    for (const [dr, dc] of directions) {
+                        const nr = row + dr;
+                        const nc = col + dc;
+                        if (nr >= 0 && nr < this.size && nc >= 0 && nc < this.size && !vis[nr][nc]) {
+                            const nv = this.grid[nr][nc];
+                            if (Math.abs(nv - currentVal) <= 1) count++;
+                        }
+                    }
+                    return count;
+                };
+                
                 const dfs = (row, col, currentPath) => {
+                    // Time limit check for large grids
+                    if (this.size > 5 && Date.now() - startTime > timeLimit) {
+                        return;
+                    }
+                    
                     if (currentPath.length > maxLength) {
                         maxLength = currentPath.length;
                         bestPath = [...currentPath];
                     }
                     
-                    const currentVal = this.grid[row][col];
-                    const directions = [
-                        [-1, -1], [-1, 0], [-1, 1],
-                        [0, -1],          [0, 1],
-                        [1, -1],  [1, 0],  [1, 1]
-                    ];
+                    // Pruning: if we can't beat the best, stop
+                    const remaining = this.size * this.size - currentPath.length;
+                    if (currentPath.length + remaining <= maxLength) return;
                     
+                    const currentVal = this.grid[row][col];
+                    
+                    // Get valid moves and sort by fewer future options (fail-fast)
+                    const moves = [];
                     for (const [dr, dc] of directions) {
                         const newRow = row + dr;
                         const newCol = col + dc;
@@ -1109,13 +1210,21 @@
                             
                             const newVal = this.grid[newRow][newCol];
                             if (Math.abs(newVal - currentVal) <= 1) {
-                                visited[newRow][newCol] = true;
-                                currentPath.push({ row: newRow, col: newCol });
-                                dfs(newRow, newCol, currentPath);
-                                currentPath.pop();
-                                visited[newRow][newCol] = false;
+                                const reach = countReachable(newRow, newCol, visited);
+                                moves.push({ row: newRow, col: newCol, reach });
                             }
                         }
+                    }
+                    
+                    // Sort by reachability (explore less connected cells first)
+                    moves.sort((a, b) => a.reach - b.reach);
+                    
+                    for (const move of moves) {
+                        visited[move.row][move.col] = true;
+                        currentPath.push({ row: move.row, col: move.col });
+                        dfs(move.row, move.col, currentPath);
+                        currentPath.pop();
+                        visited[move.row][move.col] = false;
                     }
                 };
                 
@@ -1263,11 +1372,8 @@
                         const key = `path-game-5x5-completed-${this.getDateString()}`;
                         localStorage.setItem(key, 'true');
                         setTimeout(() => {
-                            if (confirm('🎉 Congratulations! You\'ve mastered the 5×5 grid!\n\nWould you like to try the challenging 7×7 grid?')) {
-                                this.n = 3;
-                                this.newGame();
-                            }
-                        }, 2000);
+                            this.showUnlockModal();
+                        }, 1500);
                     }
                 } else if (percentage >= 90 && !this.gaveUp) {
                     const tieredMsg = this.getTieredResponse(playerLength);
