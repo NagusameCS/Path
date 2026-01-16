@@ -8,6 +8,9 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
+    <!-- Google Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content="Path">
     <meta property="og:type" content="website">
@@ -164,6 +167,10 @@
             align-items: center;
             justify-content: center;
             padding: 0;
+        }
+
+        .icon-btn .material-symbols-outlined {
+            font-size: 20px;
         }
 
         .icon-btn:hover {
@@ -632,7 +639,7 @@
 </head>
 <body>
     <header>
-        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" style="position: absolute; right: 20px; top: 20px;">☀</button>
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" style="position: absolute; right: 20px; top: 20px;"><span class="material-symbols-outlined">light_mode</span></button>
         <h1>PATH</h1>
     </header>
     <p class="subtitle">FIND THE LONGEST WAY</p>
@@ -737,6 +744,21 @@
         </div>
     </div>
 
+    <!-- Archive Modal -->
+    <div class="modal-overlay" id="archiveModal">
+        <div class="modal">
+            <h2>📅 PUZZLE ARCHIVE</h2>
+            <ul class="modal-rules">
+                <li style="border-bottom: none;">
+                    <span style="font-size: 2rem; margin-right: 10px;">⭐</span>
+                    <span>You've completed today's 7×7! Try a <strong>previous day's puzzle</strong>:</span>
+                </li>
+            </ul>
+            <div id="archiveList" style="margin: 15px 0; max-height: 200px; overflow-y: auto;"></div>
+            <button class="modal-close" id="closeArchive" style="width: 100%;">CLOSE</button>
+        </div>
+    </div>
+
     <!-- Confetti Canvas -->
     <canvas id="confettiCanvas"></canvas>
 
@@ -773,6 +795,7 @@
                 this.optimalPath = [];
                 this.cellSize = 54;
                 this.gaveUp = false;
+                this.archiveDate = null;
                 
                 this.gridElement = document.getElementById('grid');
                 this.canvas = document.getElementById('lineCanvas');
@@ -814,6 +837,13 @@
                     if (e.target === this.unlockModal) this.hideUnlockModal();
                 });
                 
+                // Archive modal
+                this.archiveModal = document.getElementById('archiveModal');
+                document.getElementById('closeArchive').addEventListener('click', () => this.hideArchiveModal());
+                this.archiveModal.addEventListener('click', (e) => {
+                    if (e.target === this.archiveModal) this.hideArchiveModal();
+                });
+                
                 // Theme toggle
                 document.getElementById('themeToggle').addEventListener('click', () => this.toggleTheme());
                 
@@ -821,7 +851,7 @@
                 const savedTheme = localStorage.getItem('path-game-theme');
                 if (savedTheme === 'light') {
                     document.body.classList.add('light-mode');
-                    document.getElementById('themeToggle').textContent = '🌙';
+                    document.getElementById('themeToggle').innerHTML = '<span class="material-symbols-outlined">dark_mode</span>';
                 }
                 
                 // Load saved grid size for today
@@ -882,6 +912,62 @@
                 this.unlockModal.classList.remove('active');
             }
 
+            showArchiveModal() {
+                this.populateArchiveList();
+                this.archiveModal.classList.add('active');
+            }
+
+            hideArchiveModal() {
+                this.archiveModal.classList.remove('active');
+            }
+
+            populateArchiveList() {
+                const archiveList = document.getElementById('archiveList');
+                archiveList.innerHTML = '';
+                
+                const today = new Date();
+                
+                // Show last 7 days
+                for (let i = 1; i <= 7; i++) {
+                    const pastDate = new Date(today);
+                    pastDate.setDate(today.getDate() - i);
+                    
+                    const dateStr = pastDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                    const dateKey = `${pastDate.getFullYear()}-${pastDate.getMonth() + 1}-${pastDate.getDate()}`;
+                    
+                    const btn = document.createElement('button');
+                    btn.style.cssText = 'width: 100%; padding: 12px; margin: 5px 0; text-align: left; display: flex; justify-content: space-between; align-items: center;';
+                    btn.className = 'modal-close';
+                    
+                    // Check if completed
+                    const completed5x5 = localStorage.getItem(`path-game-${dateKey}-2`);
+                    const completed7x7 = localStorage.getItem(`path-game-${dateKey}-3`);
+                    
+                    let status = '';
+                    if (completed7x7) {
+                        const state = JSON.parse(completed7x7);
+                        status = state.gameOver ? '✅ 7×7' : '🟡 7×7';
+                    } else if (completed5x5) {
+                        const state = JSON.parse(completed5x5);
+                        status = state.gameOver ? '✅ 5×5' : '🟡 5×5';
+                    } else {
+                        status = '⚪ New';
+                    }
+                    
+                    btn.innerHTML = `<span>${dateStr}</span><span style="font-size: 0.8em;">${status}</span>`;
+                    btn.addEventListener('click', () => this.loadArchivePuzzle(pastDate));
+                    
+                    archiveList.appendChild(btn);
+                }
+            }
+
+            loadArchivePuzzle(date) {
+                this.hideArchiveModal();
+                this.archiveDate = date;
+                this.n = 2; // Start with 5x5 for archive puzzles
+                this.newGame();
+            }
+
             acceptUnlock() {
                 this.hideUnlockModal();
                 this.n = 3;
@@ -911,7 +997,7 @@
             toggleTheme() {
                 document.body.classList.toggle('light-mode');
                 const isLight = document.body.classList.contains('light-mode');
-                document.getElementById('themeToggle').textContent = isLight ? '🌙' : '☀';
+                document.getElementById('themeToggle').innerHTML = isLight ? '<span class="material-symbols-outlined">dark_mode</span>' : '<span class="material-symbols-outlined">light_mode</span>';
                 localStorage.setItem('path-game-theme', isLight ? 'light' : 'dark');
             }
 
@@ -1009,7 +1095,7 @@
             }
 
             getDateSeed() {
-                const now = new Date();
+                const now = this.archiveDate || new Date();
                 const dateStr = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
                 let hash = 0;
                 for (let i = 0; i < dateStr.length; i++) {
@@ -1021,13 +1107,17 @@
             }
 
             updateDateDisplay() {
-                const now = new Date();
+                const now = this.archiveDate || new Date();
                 const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                this.dateDisplay.textContent = now.toLocaleDateString('en-US', options).toUpperCase();
+                let displayText = now.toLocaleDateString('en-US', options).toUpperCase();
+                if (this.archiveDate) {
+                    displayText = '📅 ' + displayText;
+                }
+                this.dateDisplay.textContent = displayText;
             }
 
             getStorageKey() {
-                const now = new Date();
+                const now = this.archiveDate || new Date();
                 const dateStr = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
                 return `path-game-${dateStr}-${this.n}`;
             }
@@ -1072,6 +1162,9 @@
                 this.optimalLengthElement.textContent = '?';
                 this.undoBtn.disabled = true;
                 this.giveUpBtn.disabled = false;
+                
+                // Update date display for archive puzzles
+                this.updateDateDisplay();
                 
                 // Generate grid based on date seed
                 const baseSeed = this.getDateSeed();
@@ -1390,6 +1483,11 @@
                         localStorage.setItem(key, 'true');
                         setTimeout(() => {
                             this.showUnlockModal();
+                        }, 1500);
+                    } else if (this.n === 3 && !this.archiveDate) {
+                        // 7x7 completed - show archive
+                        setTimeout(() => {
+                            this.showArchiveModal();
                         }, 1500);
                     }
                 } else if (percentage >= 90 && !this.gaveUp) {
