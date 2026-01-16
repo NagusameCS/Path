@@ -125,6 +125,15 @@
             border-bottom-color: #ddd;
         }
 
+        body.light-mode .modal-rules li strong {
+            color: #1a1a1a;
+        }
+
+        body.light-mode .modal-rules .example {
+            background: #f0f0f0;
+            color: #666;
+        }
+
         body.light-mode .message-text {
             color: #666;
         }
@@ -603,24 +612,29 @@
         }
 
         .modal-rules li {
-            color: #aaa;
+            color: #bbb;
             font-size: 0.85rem;
-            line-height: 1.8;
-            padding: 8px 0;
+            line-height: 1.6;
+            padding: 12px 0;
             border-bottom: 1px solid #333;
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
         }
 
         .modal-rules li:last-child {
             border-bottom: none;
         }
 
-        .rule-num {
-            font-size: 1.2rem;
-            min-width: 28px;
-            text-align: center;
+        .modal-rules li strong {
+            color: #fff;
+        }
+
+        .modal-rules .example {
+            display: block;
+            margin-top: 6px;
+            padding: 8px 12px;
+            background: #252525;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #999;
         }
 
         .modal-close {
@@ -910,28 +924,20 @@
             <h2>HOW TO PLAY</h2>
             <ul class="modal-rules">
                 <li>
-                    <span class="rule-num">🎯</span>
-                    <span><strong>Goal:</strong> Visit as many tiles as possible in one continuous path.</span>
+                    Build the <strong>longest possible path</strong> through the grid, starting from the center.
                 </li>
                 <li>
-                    <span class="rule-num">📍</span>
-                    <span><strong>Start:</strong> You begin at the center tile (highlighted).</span>
+                    Move to any <strong>adjacent tile</strong> — horizontally, vertically, or diagonally.
                 </li>
                 <li>
-                    <span class="rule-num">🔢</span>
-                    <span><strong>Movement:</strong> You can only move to a tile if its number is within 1 of your current tile.<br><em style="opacity: 0.7; font-size: 0.9em;">Example: From a 3, you can move to 2, 3, or 4</em></span>
+                    You may only step on tiles <strong>within ±1</strong> of your current number.
+                    <span class="example">From a <strong>3</strong>, you can move to a 2, 3, or 4.</span>
                 </li>
                 <li>
-                    <span class="rule-num">↗️</span>
-                    <span><strong>Directions:</strong> Move to any of the 8 surrounding tiles (including diagonals).</span>
+                    Each tile can only be visited <strong>once</strong> — plan carefully.
                 </li>
                 <li>
-                    <span class="rule-num">🚫</span>
-                    <span><strong>No repeats:</strong> You cannot revisit a tile you've already stepped on.</span>
-                </li>
-                <li>
-                    <span class="rule-num">🏆</span>
-                    <span><strong>Perfect:</strong> There's always a path that visits every single tile. Can you find it?</span>
+                    A <strong>perfect path</strong> visits every tile. New puzzle daily.
                 </li>
             </ul>
             <button class="modal-close" id="modalClose">GOT IT</button>
@@ -943,9 +949,8 @@
         <div class="modal">
             <h2>GIVE UP?</h2>
             <ul class="modal-rules">
-                <li style="border-bottom: none;">
-                    <span style="font-size: 2rem; margin-right: 10px;">⚠️</span>
-                    <span>If you give up, the perfect path will be revealed and you won't be able to play this puzzle again today.</span>
+                <li>
+                    The perfect path will be revealed and you won't be able to retry this puzzle today.
                 </li>
             </ul>
             <div style="display: flex; gap: 10px; margin-top: 20px;">
