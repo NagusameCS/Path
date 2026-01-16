@@ -384,6 +384,96 @@
         .action-buttons {
             display: flex;
             gap: 12px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .action-buttons.hidden {
+            opacity: 0;
+            transform: scale(0.9);
+            pointer-events: none;
+        }
+
+        /* Cell animations */
+        .cell {
+            transition: all 0.2s ease, transform 0.15s ease;
+        }
+
+        .cell:active:not(.locked) {
+            transform: scale(0.95);
+        }
+
+        .cell.visited {
+            animation: cellVisited 0.3s ease;
+        }
+
+        @keyframes cellVisited {
+            0% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .cell.current {
+            animation: cellCurrent 0.3s ease;
+        }
+
+        @keyframes cellCurrent {
+            0% { transform: scale(1.15); box-shadow: 0 0 30px rgba(255, 255, 255, 0.4); }
+            100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 255, 255, 0.25), inset 0 0 0 2px #999; }
+        }
+
+        /* Success animation for message */
+        .message-text.success {
+            color: #9a9;
+            animation: successPulse 0.5s ease;
+        }
+
+        @keyframes successPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Stat value animations */
+        .stat-value {
+            font-size: 1.5rem;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .stat-value.glow {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            animation: statGlow 0.3s ease;
+        }
+
+        @keyframes statGlow {
+            0% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Button hover animations */
+        .icon-btn {
+            transition: all 0.25s ease, transform 0.15s ease;
+        }
+
+        .icon-btn:active:not(:disabled) {
+            transform: scale(0.9);
+        }
+
+        .give-up-btn {
+            transition: all 0.25s ease, transform 0.15s ease;
+        }
+
+        .give-up-btn:active:not(:disabled) {
+            transform: scale(0.95);
+        }
+
+        /* Grid entrance animation */
+        .grid {
+            animation: gridEntrance 0.5s ease;
+        }
+
+        @keyframes gridEntrance {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         /* Modal */
@@ -1008,6 +1098,9 @@
             }
 
             revealOptimalPath() {
+                // Hide action buttons
+                document.querySelector('.action-buttons').classList.add('hidden');
+                
                 // Show the optimal path
                 this.path = [...this.optimalPath];
                 this.currentPos = this.path[this.path.length - 1];
@@ -1132,6 +1225,7 @@
                         if (state.gaveUp) {
                             this.gaveUp = true;
                             this.giveUpBtn.disabled = true;
+                            document.querySelector('.action-buttons').classList.add('hidden');
                         }
                         return state;
                     } catch (e) {
