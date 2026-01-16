@@ -125,10 +125,6 @@
             border-bottom-color: #ddd;
         }
 
-        body.light-mode .rule-num {
-            color: #999;
-        }
-
         body.light-mode .message-text {
             color: #666;
         }
@@ -622,9 +618,9 @@
         }
 
         .rule-num {
-            color: #666;
-            font-size: 0.75rem;
-            min-width: 20px;
+            font-size: 1.2rem;
+            min-width: 28px;
+            text-align: center;
         }
 
         .modal-close {
@@ -914,28 +910,28 @@
             <h2>HOW TO PLAY</h2>
             <ul class="modal-rules">
                 <li>
-                    <span class="rule-num">1</span>
-                    <span>Start from the <strong>center tile</strong> and build your path outward.</span>
+                    <span class="rule-num">🎯</span>
+                    <span><strong>Goal:</strong> Visit as many tiles as possible in one continuous path.</span>
                 </li>
                 <li>
-                    <span class="rule-num">2</span>
-                    <span>Click any <strong>neighboring tile</strong> to move — including diagonals.</span>
+                    <span class="rule-num">📍</span>
+                    <span><strong>Start:</strong> You begin at the center tile (highlighted).</span>
                 </li>
                 <li>
-                    <span class="rule-num">3</span>
-                    <span>You can only step on tiles <strong>±1</strong> of your current number. (3 → 2, 3, or 4)</span>
+                    <span class="rule-num">🔢</span>
+                    <span><strong>Movement:</strong> You can only move to a tile if its number is within 1 of your current tile.<br><em style="opacity: 0.7; font-size: 0.9em;">Example: From a 3, you can move to 2, 3, or 4</em></span>
                 </li>
                 <li>
-                    <span class="rule-num">4</span>
-                    <span><strong>No backtracking</strong> — each tile can only be visited once.</span>
+                    <span class="rule-num">↗️</span>
+                    <span><strong>Directions:</strong> Move to any of the 8 surrounding tiles (including diagonals).</span>
                 </li>
                 <li>
-                    <span class="rule-num">5</span>
-                    <span>Find the <strong>longest path</strong> possible. Can you reach the perfect score?</span>
+                    <span class="rule-num">🚫</span>
+                    <span><strong>No repeats:</strong> You cannot revisit a tile you've already stepped on.</span>
                 </li>
                 <li>
-                    <span class="rule-num">6</span>
-                    <span>A <strong>new puzzle daily</strong> — beat 5×5 to unlock 7×7!</span>
+                    <span class="rule-num">🏆</span>
+                    <span><strong>Perfect:</strong> There's always a path that visits every single tile. Can you find it?</span>
                 </li>
             </ul>
             <button class="modal-close" id="modalClose">GOT IT</button>
