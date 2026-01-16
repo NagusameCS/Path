@@ -1142,35 +1142,33 @@
                 const attempts = this.getAttempts();
                 const pathLength = this.path.length;
                 const optimal = this.optimalLength;
+                const totalCells = gridSize * gridSize;
                 
-                // Generate emoji grid showing path
-                let emojiGrid = '';
-                const pathSet = new Set(this.path.map(p => `${p.row},${p.col}`));
-                for (let r = 0; r < gridSize; r++) {
-                    for (let c = 0; c < gridSize; c++) {
-                        if (pathSet.has(`${r},${c}`)) {
-                            emojiGrid += '🟩';
-                        } else {
-                            emojiGrid += '⬛';
-                        }
-                    }
-                    emojiGrid += '\n';
-                }
-                
-                // Calculate performance emoji
+                // Calculate performance emoji and message
                 let perfEmoji = '';
+                let perfWord = '';
                 if (pathLength === optimal) {
                     perfEmoji = '🏆';
+                    perfWord = 'Perfect!';
                 } else if (pathLength >= optimal * 0.9) {
                     perfEmoji = '⭐';
+                    perfWord = 'Great!';
                 } else if (pathLength >= optimal * 0.75) {
                     perfEmoji = '✅';
+                    perfWord = 'Good';
                 } else {
                     perfEmoji = '🎯';
+                    perfWord = '';
                 }
                 
-                const attemptStr = attempts === 1 ? '' : `\nAttempt #${attempts}`;
-                const shareText = `Path ${gridType} ${perfEmoji}\n${dateStr}${attemptStr}\nScore: ${pathLength}/${optimal}\n\n${emojiGrid}\nhttps://nagusamecs.github.io/Path/`;
+                // Create a progress bar showing score
+                const barLength = 10;
+                const filledBars = Math.round((pathLength / totalCells) * barLength);
+                const progressBar = '🟩'.repeat(filledBars) + '⬜'.repeat(barLength - filledBars);
+                
+                const attemptStr = attempts === 1 ? '' : ` (Attempt #${attempts})`;
+                const perfStr = perfWord ? ` ${perfWord}` : '';
+                const shareText = `Path ${gridType} ${perfEmoji}${perfStr}\n${dateStr}${attemptStr}\n\n${progressBar}\n${pathLength}/${totalCells} cells visited\n\nhttps://nagusamecs.github.io/Path/`;
                 
                 navigator.clipboard.writeText(shareText).then(() => {
                     const toast = document.getElementById('shareToast');
