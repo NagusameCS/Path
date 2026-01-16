@@ -1472,6 +1472,9 @@
                 this.undoBtn.disabled = true;
                 this.giveUpBtn.disabled = false;
                 
+                // Reset action buttons visibility (may have been hidden if user gave up on another grid)
+                document.querySelector('.action-buttons').classList.remove('hidden');
+                
                 // Update date display for archive puzzles
                 this.updateDateDisplay();
                 
@@ -1752,6 +1755,12 @@
             }
 
             makeMove(row, col) {
+                // If clicking on current cell, undo the move
+                if (row === this.currentPos.row && col === this.currentPos.col) {
+                    this.undo();
+                    return;
+                }
+                
                 if (!this.isValidMove(row, col)) return;
                 
                 this.currentPos = { row, col };
