@@ -710,7 +710,7 @@
             <ul class="modal-rules">
                 <li style="border-bottom: none;">
                     <span style="font-size: 2rem; margin-right: 10px;">⚠️</span>
-                    <span>If you give up, the optimal path will be revealed and you won't be able to play this puzzle again today.</span>
+                    <span>If you give up, the perfect path will be revealed and you won't be able to play this puzzle again today.</span>
                 </li>
             </ul>
             <div style="display: flex; gap: 10px; margin-top: 20px;">
@@ -939,7 +939,7 @@
                 };
                 localStorage.setItem(key, JSON.stringify(state));
                 
-                this.messageElement.textContent = `Optimal path revealed: ${this.optimalLength} tiles`;
+                this.messageElement.textContent = `Perfect path revealed: ${this.optimalLength} tiles`;
                 this.messageElement.className = 'message-text info';
                 this.optimalLengthElement.textContent = this.optimalLength;
                 
@@ -1162,73 +1162,90 @@
                     [1, -1],  [1, 0],  [1, 1]
                 ];
                 
-                // For 7x7, use iterative DFS with time limit
-                const startTime = Date.now();
-                const timeLimit = this.size > 5 ? 2000 : 10000; // 2 second limit for 7x7
+                const grid = this.grid;
+                const size = this.size;
                 
-                // Count reachable cells for pruning
-                const countReachable = (row, col, vis) => {
-                    let count = 0;
-                    const currentVal = this.grid[row][col];
+                // Iterative DFS with explicit stack for better performance
+                const stack = [{
+                    row: center,
+                    col: center,
+                    path: [{ row: center, col: center }],
+                    moveIndex: 0,
+                    moves: null
+                }];
+                
+                const getMoves = (row, col, vis) => {
+                    const moves = [];
+                    const currentVal = grid[row][col];
                     for (const [dr, dc] of directions) {
                         const nr = row + dr;
                         const nc = col + dc;
-                        if (nr >= 0 && nr < this.size && nc >= 0 && nc < this.size && !vis[nr][nc]) {
-                            const nv = this.grid[nr][nc];
-                            if (Math.abs(nv - currentVal) <= 1) count++;
-                        }
-                    }
-                    return count;
-                };
-                
-                const dfs = (row, col, currentPath) => {
-                    // Time limit check for large grids
-                    if (this.size > 5 && Date.now() - startTime > timeLimit) {
-                        return;
-                    }
-                    
-                    if (currentPath.length > maxLength) {
-                        maxLength = currentPath.length;
-                        bestPath = [...currentPath];
-                    }
-                    
-                    // Pruning: if we can't beat the best, stop
-                    const remaining = this.size * this.size - currentPath.length;
-                    if (currentPath.length + remaining <= maxLength) return;
-                    
-                    const currentVal = this.grid[row][col];
-                    
-                    // Get valid moves and sort by fewer future options (fail-fast)
-                    const moves = [];
-                    for (const [dr, dc] of directions) {
-                        const newRow = row + dr;
-                        const newCol = col + dc;
-                        
-                        if (newRow >= 0 && newRow < this.size && 
-                            newCol >= 0 && newCol < this.size &&
-                            !visited[newRow][newCol]) {
-                            
-                            const newVal = this.grid[newRow][newCol];
-                            if (Math.abs(newVal - currentVal) <= 1) {
-                                const reach = countReachable(newRow, newCol, visited);
-                                moves.push({ row: newRow, col: newCol, reach });
+                        if (nr >= 0 && nr < size && nc >= 0 && nc < size && !vis[nr][nc]) {
+                            const nv = grid[nr][nc];
+                            if (Math.abs(nv - currentVal) <= 1) {
+                                // Count reachable for sorting
+                                let reach = 0;
+                                for (const [dr2, dc2] of directions) {
+                                    const nr2 = nr + dr2;
+                                    const nc2 = nc + dc2;
+                                    if (nr2 >= 0 && nr2 < size && nc2 >= 0 && nc2 < size && !vis[nr2][nc2]) {
+                                        if (Math.abs(grid[nr2][nc2] - nv) <= 1) reach++;
+                                    }
+                                }
+                                moves.push({ row: nr, col: nc, reach });
                             }
                         }
                     }
-                    
-                    // Sort by reachability (explore less connected cells first)
+                    // Sort by fewest options first (Warnsdorff's rule)
                     moves.sort((a, b) => a.reach - b.reach);
-                    
-                    for (const move of moves) {
-                        visited[move.row][move.col] = true;
-                        currentPath.push({ row: move.row, col: move.col });
-                        dfs(move.row, move.col, currentPath);
-                        currentPath.pop();
-                        visited[move.row][move.col] = false;
-                    }
+                    return moves;
                 };
                 
-                dfs(center, center, [{ row: center, col: center }]);
+                let iterations = 0;
+                const maxIterations = size > 5 ? 500000 : 5000000;
+                
+                while (stack.length > 0 && iterations < maxIterations) {
+                    iterations++;
+                    const current = stack[stack.length - 1];
+                    
+                    // Initialize moves for this node
+                    if (current.moves === null) {
+                        current.moves = getMoves(current.row, current.col, visited);
+                    }
+                    
+                    // Update best if needed
+                    if (current.path.length > maxLength) {
+                        maxLength = current.path.length;
+                        bestPath = [...current.path];
+                    }
+                    
+                    // Try next move
+                    if (current.moveIndex < current.moves.length) {
+                        const move = current.moves[current.moveIndex];
+                        current.moveIndex++;
+                        
+                        // Pruning check
+                        const remaining = size * size - current.path.length;
+                        if (current.path.length + remaining > maxLength) {
+                            visited[move.row][move.col] = true;
+                            const newPath = [...current.path, { row: move.row, col: move.col }];
+                            stack.push({
+                                row: move.row,
+                                col: move.col,
+                                path: newPath,
+                                moveIndex: 0,
+                                moves: null
+                            });
+                        }
+                    } else {
+                        // Backtrack
+                        stack.pop();
+                        if (current.path.length > 1) {
+                            const lastPos = current.path[current.path.length - 1];
+                            visited[lastPos.row][lastPos.col] = false;
+                        }
+                    }
+                }
                 
                 this.optimalLength = maxLength;
                 this.optimalPath = bestPath;
