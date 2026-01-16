@@ -1056,12 +1056,14 @@
                 this.hideArchiveModal();
                 this.archiveDate = date;
                 this.n = 2; // Start with 5x5 for archive puzzles
+                this.perfectRevealed = false;
                 this.newGame();
             }
 
             acceptUnlock() {
                 this.hideUnlockModal();
                 this.n = 3;
+                this.perfectRevealed = false;
                 this.saveGridSize();
                 this.newGame();
             }
