@@ -273,101 +273,81 @@
             position: relative;
         }
 
-        .grid-size-selector {
+        .grid-size-toggle {
             position: absolute;
-            right: -45px;
-            top: 50%;
-            transform: translateY(-50%);
+            right: -35px;
+            top: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 3px;
+            justify-content: center;
+            gap: 0;
             z-index: 10;
-        }
-
-        .grid-size-btn {
             font-family: 'Courier New', monospace;
-            font-size: 0.75rem;
-            width: 28px;
-            height: 28px;
+            font-size: 0.7rem;
+            padding: 6px 8px;
             background: #2a2a2a;
             border: 1px solid #444;
             color: #888;
             cursor: pointer;
             border-radius: 3px;
             transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
+            line-height: 1.1;
         }
 
-        .grid-size-btn:hover {
+        .grid-size-toggle:hover {
             background: #3a3a3a;
             border-color: #666;
             color: #ccc;
         }
 
-        .grid-size-btn.active {
-            background: #3a3a3a;
-            border-color: #777;
+        .grid-size-toggle:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .grid-size-toggle:disabled:hover {
+            background: #2a2a2a;
+            border-color: #444;
+            color: #888;
+        }
+
+        .grid-size-toggle .size-num {
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        .grid-size-toggle .size-x {
+            font-size: 0.6rem;
+            color: #666;
+        }
+
+        .grid-size-toggle:hover .size-num {
             color: #fff;
         }
 
-        .grid-size-x {
-            font-family: 'Courier New', monospace;
-            font-size: 0.6rem;
-            color: #666;
-            line-height: 1;
-        }
-
-        body.light-mode .grid-size-btn {
+        body.light-mode .grid-size-toggle {
             background: #ffffff;
             border-color: #ccc;
             color: #888;
         }
 
-        body.light-mode .grid-size-btn:hover {
+        body.light-mode .grid-size-toggle:hover {
             background: #f5f5f5;
             border-color: #999;
             color: #555;
         }
 
-        body.light-mode .grid-size-btn.active {
-            background: #e8e8e8;
-            border-color: #999;
-            color: #333;
-        }
-
-        body.light-mode .grid-size-x {
-            color: #999;
-        }
-
-        .grid-size-select {
-            display: none;
-        }
-
-        .grid-size-select:hover {
-            background: #3a3a3a;
-            border-color: #666;
-            color: #ccc;
-        }
-
-        .grid-size-select:focus {
-            outline: none;
-            border-color: #666;
-        }
-
-        body.light-mode .grid-size-select {
-            background: #ffffff;
-            border-color: #ccc;
+        body.light-mode .grid-size-toggle .size-num {
             color: #666;
         }
 
-        body.light-mode .grid-size-select:hover {
-            background: #f5f5f5;
-            border-color: #999;
-            color: #444;
+        body.light-mode .grid-size-toggle:hover .size-num {
+            color: #333;
+        }
+
+        body.light-mode .grid-size-toggle .size-x {
+            color: #999;
         }
 
         .grid {
@@ -907,15 +887,11 @@
         </div>
 
         <div class="grid-wrapper">
-            <div class="grid-size-selector" id="gridSizeSelector">
-                <button class="grid-size-btn active" id="gridSize5" data-size="5">5</button>
-                <span class="grid-size-x">x</span>
-                <button class="grid-size-btn" id="gridSize5b" data-size="5">5</button>
-                <div style="height: 8px;"></div>
-                <button class="grid-size-btn" id="gridSize7" data-size="7">7</button>
-                <span class="grid-size-x">x</span>
-                <button class="grid-size-btn" id="gridSize7b" data-size="7">7</button>
-            </div>
+            <button class="grid-size-toggle" id="gridSizeToggle" aria-label="Switch grid size">
+                <span class="size-num" id="sizeNum1">5</span>
+                <span class="size-x">x</span>
+                <span class="size-num" id="sizeNum2">5</span>
+            </button>
             <canvas class="canvas-overlay" id="lineCanvas"></canvas>
             <div class="grid" id="grid"></div>
         </div>
@@ -1105,12 +1081,9 @@
                 document.getElementById('closeArchive').addEventListener('click', () => this.hideArchiveModal());
                 document.getElementById('shareBtn7x7').addEventListener('click', () => this.shareResults('7x7'));
                 
-                // Grid size selector buttons
-                this.gridSizeSelector = document.getElementById('gridSizeSelector');
-                document.getElementById('gridSize5').addEventListener('click', () => this.handleGridSizeChange('5'));
-                document.getElementById('gridSize5b').addEventListener('click', () => this.handleGridSizeChange('5'));
-                document.getElementById('gridSize7').addEventListener('click', () => this.handleGridSizeChange('7'));
-                document.getElementById('gridSize7b').addEventListener('click', () => this.handleGridSizeChange('7'));
+                // Grid size toggle button
+                this.gridSizeToggle = document.getElementById('gridSizeToggle');
+                this.gridSizeToggle.addEventListener('click', () => this.toggleGridSize());
                 this.archiveModal.addEventListener('click', (e) => {
                     if (e.target === this.archiveModal) this.hideArchiveModal();
                 });
@@ -1641,17 +1614,19 @@
                 return maxFound;
             }
 
-            handleGridSizeChange(value) {
-                const newN = value === '7' ? 3 : 2;
-                
-                // Check if 7x7 is unlocked
-                if (newN === 3 && !this.is7x7Unlocked()) {
-                    this.gridSizeSelect.value = '5';
-                    return;
-                }
-                
-                if (newN !== this.n) {
-                    this.n = newN;
+            toggleGridSize() {
+                // Toggle between 5x5 and 7x7
+                if (this.n === 2) {
+                    // Currently 5x5, try to switch to 7x7
+                    if (this.is7x7Unlocked()) {
+                        this.n = 3;
+                        this.perfectRevealed = false;
+                        this.archiveDate = null;
+                        this.newGame();
+                    }
+                } else {
+                    // Currently 7x7, switch to 5x5
+                    this.n = 2;
                     this.perfectRevealed = false;
                     this.archiveDate = null;
                     this.newGame();
@@ -1659,32 +1634,18 @@
             }
 
             updateGridSizeSelector() {
-                // Update buttons to match current grid
-                const is5x5 = this.size === 5;
-                const is7x7Unlocked = this.is7x7Unlocked();
+                // Update toggle button to show current grid size
+                const size = this.size;
+                document.getElementById('sizeNum1').textContent = size;
+                document.getElementById('sizeNum2').textContent = size;
                 
-                document.getElementById('gridSize5').classList.toggle('active', is5x5);
-                document.getElementById('gridSize5b').classList.toggle('active', is5x5);
-                document.getElementById('gridSize7').classList.toggle('active', !is5x5);
-                document.getElementById('gridSize7b').classList.toggle('active', !is5x5);
-                
-                // Disable 7x7 buttons if not unlocked
-                const btn7 = document.getElementById('gridSize7');
-                const btn7b = document.getElementById('gridSize7b');
-                if (!is7x7Unlocked) {
-                    btn7.disabled = true;
-                    btn7b.disabled = true;
-                    btn7.style.opacity = '0.4';
-                    btn7b.style.opacity = '0.4';
-                    btn7.style.cursor = 'not-allowed';
-                    btn7b.style.cursor = 'not-allowed';
+                // Disable toggle if 7x7 not unlocked and currently on 5x5
+                if (!this.is7x7Unlocked() && this.n === 2) {
+                    this.gridSizeToggle.disabled = true;
+                    this.gridSizeToggle.title = 'Complete 5×5 to unlock 7×7';
                 } else {
-                    btn7.disabled = false;
-                    btn7b.disabled = false;
-                    btn7.style.opacity = '1';
-                    btn7b.style.opacity = '1';
-                    btn7.style.cursor = 'pointer';
-                    btn7b.style.cursor = 'pointer';
+                    this.gridSizeToggle.disabled = false;
+                    this.gridSizeToggle.title = 'Click to switch grid size';
                 }
             }
 
