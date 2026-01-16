@@ -1034,6 +1034,7 @@
                 this.gaveUp = false;
                 this.archiveDate = null;
                 this.perfectRevealed = false;
+                this.isCalculating = false;
                 
                 this.gridElement = document.getElementById('grid');
                 this.canvas = document.getElementById('lineCanvas');
@@ -1596,44 +1597,42 @@
                 const grid = this.grid;
                 const totalCells = size * size;
                 
-                const visited = Array(size).fill(null).map(() => Array(size).fill(false));
+                // Set initial values - will be updated async
+                this.optimalLength = 1;
+                this.optimalPath = [{ row: center, col: center }];
+                this.isCalculating = true;
+                
                 const directions = [
                     [-1, -1], [-1, 0], [-1, 1],
                     [0, -1],          [0, 1],
                     [1, -1],  [1, 0],  [1, 1]
                 ];
                 
-                let maxLength = 1;
-                let bestPath = [{ row: center, col: center }];
-                const currentPath = [{ row: center, col: center }];
+                // Use iterative approach with setTimeout chunks to avoid blocking
+                const visited = Array(size).fill(null).map(() => Array(size).fill(false));
                 visited[center][center] = true;
                 
-                // Recursive DFS - finds true optimal
-                const dfs = (row, col, depth) => {
-                    // Early exit if we found a perfect path
-                    if (depth === totalCells) {
-                        maxLength = depth;
-                        bestPath = [...currentPath];
-                        return true; // Found perfect, stop searching
-                    }
-                    
-                    // Update best
-                    if (depth > maxLength) {
-                        maxLength = depth;
-                        bestPath = [...currentPath];
-                    }
-                    
-                    const currentVal = grid[row][col];
-                    
-                    // Get valid moves with Warnsdorff ordering
+                let maxLength = 1;
+                let bestPath = [{ row: center, col: center }];
+                
+                // Stack-based iterative DFS
+                const stack = [{
+                    row: center,
+                    col: center,
+                    path: [{ row: center, col: center }],
+                    moveIdx: 0,
+                    moves: null
+                }];
+                
+                const getMoves = (row, col) => {
                     const moves = [];
+                    const currentVal = grid[row][col];
                     for (const [dr, dc] of directions) {
                         const nr = row + dr;
                         const nc = col + dc;
                         if (nr >= 0 && nr < size && nc >= 0 && nc < size && !visited[nr][nc]) {
                             const nv = grid[nr][nc];
                             if (Math.abs(nv - currentVal) <= 1) {
-                                // Count future moves for ordering
                                 let futureCount = 0;
                                 for (const [dr2, dc2] of directions) {
                                     const nr2 = nr + dr2;
@@ -1646,35 +1645,70 @@
                             }
                         }
                     }
-                    
-                    // Sort by fewest future options first (Warnsdorff's rule)
                     moves.sort((a, b) => a.futureCount - b.futureCount);
-                    
-                    for (const move of moves) {
-                        // Pruning: if remaining cells can't beat current best, skip
-                        const remaining = totalCells - depth;
-                        if (depth + remaining <= maxLength) {
-                            continue;
-                        }
-                        
-                        visited[move.nr][move.nc] = true;
-                        currentPath.push({ row: move.nr, col: move.nc });
-                        
-                        if (dfs(move.nr, move.nc, depth + 1)) {
-                            return true; // Found perfect path
-                        }
-                        
-                        currentPath.pop();
-                        visited[move.nr][move.nc] = false;
-                    }
-                    
-                    return false;
+                    return moves;
                 };
                 
-                dfs(center, center, 1);
+                const processChunk = () => {
+                    const chunkSize = 5000; // Process 5000 iterations per frame
+                    let iterations = 0;
+                    
+                    while (stack.length > 0 && iterations < chunkSize) {
+                        iterations++;
+                        const current = stack[stack.length - 1];
+                        
+                        if (current.moves === null) {
+                            current.moves = getMoves(current.row, current.col);
+                        }
+                        
+                        if (current.path.length > maxLength) {
+                            maxLength = current.path.length;
+                            bestPath = [...current.path];
+                            this.optimalLength = maxLength;
+                            this.optimalPath = bestPath;
+                            
+                            // Found perfect path - done!
+                            if (maxLength === totalCells) {
+                                this.isCalculating = false;
+                                return;
+                            }
+                        }
+                        
+                        if (current.moveIdx < current.moves.length) {
+                            const move = current.moves[current.moveIdx];
+                            current.moveIdx++;
+                            
+                            // Pruning
+                            const remaining = totalCells - current.path.length;
+                            if (current.path.length + remaining > maxLength) {
+                                visited[move.nr][move.nc] = true;
+                                stack.push({
+                                    row: move.nr,
+                                    col: move.nc,
+                                    path: [...current.path, { row: move.nr, col: move.nc }],
+                                    moveIdx: 0,
+                                    moves: null
+                                });
+                            }
+                        } else {
+                            stack.pop();
+                            if (current.path.length > 1) {
+                                const last = current.path[current.path.length - 1];
+                                visited[last.row][last.col] = false;
+                            }
+                        }
+                    }
+                    
+                    if (stack.length > 0) {
+                        // Continue processing in next frame
+                        setTimeout(processChunk, 0);
+                    } else {
+                        this.isCalculating = false;
+                    }
+                };
                 
-                this.optimalLength = maxLength;
-                this.optimalPath = bestPath;
+                // Start async processing
+                setTimeout(processChunk, 0);
             }
 
             isValidMove(row, col) {
