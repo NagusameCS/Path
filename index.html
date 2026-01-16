@@ -1141,34 +1141,42 @@
                 const gridSize = gridType === '5x5' ? 5 : 7;
                 const attempts = this.getAttempts();
                 const pathLength = this.path.length;
-                const optimal = this.optimalLength;
                 const totalCells = gridSize * gridSize;
+                const isPerfect = pathLength === totalCells;
                 
-                // Calculate performance emoji and message
-                let perfEmoji = '';
-                let perfWord = '';
-                if (pathLength === optimal) {
-                    perfEmoji = '🏆';
-                    perfWord = 'Perfect!';
-                } else if (pathLength >= optimal * 0.9) {
-                    perfEmoji = '⭐';
-                    perfWord = 'Great!';
-                } else if (pathLength >= optimal * 0.75) {
-                    perfEmoji = '✅';
-                    perfWord = 'Good';
+                // Build clean share text
+                let lines = [];
+                
+                // Title with trophy if perfect
+                if (isPerfect) {
+                    lines.push(`🧩 Path ${gridType} 🏆`);
                 } else {
-                    perfEmoji = '🎯';
-                    perfWord = '';
+                    lines.push(`🧩 Path ${gridType}`);
                 }
                 
-                // Create a progress bar showing score
-                const barLength = 10;
-                const filledBars = Math.round((pathLength / totalCells) * barLength);
-                const progressBar = '🟩'.repeat(filledBars) + '⬜'.repeat(barLength - filledBars);
+                // Date
+                lines.push(`📅 ${dateStr}`);
+                lines.push('');
                 
-                const attemptStr = attempts === 1 ? '' : ` (Attempt #${attempts})`;
-                const perfStr = perfWord ? ` ${perfWord}` : '';
-                const shareText = `Path ${gridType} ${perfEmoji}${perfStr}\n${dateStr}${attemptStr}\n\n${progressBar}\n${pathLength}/${totalCells} cells visited\n\nhttps://nagusamecs.github.io/Path/`;
+                // Score line - the main brag
+                if (isPerfect) {
+                    lines.push(`✨ Perfect: ${pathLength}/${totalCells}`);
+                } else {
+                    const percent = Math.round((pathLength / totalCells) * 100);
+                    lines.push(`📊 Score: ${pathLength}/${totalCells} (${percent}%)`);
+                }
+                
+                // Attempts - fewer is better, like Wordle
+                if (attempts === 1) {
+                    lines.push(`🎯 First try!`);
+                } else {
+                    lines.push(`🎯 Attempts: ${attempts}`);
+                }
+                
+                lines.push('');
+                lines.push('https://nagusamecs.github.io/Path/');
+                
+                const shareText = lines.join('\n');
                 
                 navigator.clipboard.writeText(shareText).then(() => {
                     const toast = document.getElementById('shareToast');
