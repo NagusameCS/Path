@@ -886,6 +886,7 @@
                 this.cellSize = 54;
                 this.gaveUp = false;
                 this.archiveDate = null;
+                this.perfectRevealed = false;
                 
                 this.gridElement = document.getElementById('grid');
                 this.canvas = document.getElementById('lineCanvas');
@@ -1253,7 +1254,10 @@
                 this.gaveUp = false;
                 this.messageElement.textContent = 'Click an adjacent tile to begin your path';
                 this.messageElement.className = 'message-text info';
-                this.optimalLengthElement.textContent = '?';
+                // Only hide perfect score if it hasn't been revealed yet
+                if (!this.perfectRevealed) {
+                    this.optimalLengthElement.textContent = '?';
+                }
                 this.undoBtn.disabled = true;
                 this.giveUpBtn.disabled = false;
                 
@@ -1307,7 +1311,10 @@
                 this.gameOver = false;
                 this.messageElement.textContent = 'Click an adjacent tile to begin your path';
                 this.messageElement.className = 'message-text info';
-                this.optimalLengthElement.textContent = '?';
+                // Keep perfect score visible if already revealed
+                if (!this.perfectRevealed) {
+                    this.optimalLengthElement.textContent = '?';
+                }
                 this.undoBtn.disabled = true;
                 this.giveUpBtn.disabled = false;
                 
@@ -1557,6 +1564,7 @@
             showResults() {
                 this.optimalLengthElement.textContent = this.optimalLength;
                 this.optimalLengthElement.classList.add('glow');
+                this.perfectRevealed = true;
                 
                 const playerLength = this.path.length;
                 const percentage = Math.round((playerLength / this.optimalLength) * 100);
