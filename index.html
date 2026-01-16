@@ -1036,6 +1036,8 @@
                 this.archiveDate = null;
                 this.perfectRevealed = false;
                 this.isCalculating = false;
+                this.consecutiveUndos = 0;
+                this.usedBonusUndo = false;
                 
                 this.gridElement = document.getElementById('grid');
                 this.canvas = document.getElementById('lineCanvas');
@@ -1463,6 +1465,8 @@
                 this.path = [];
                 this.gameOver = false;
                 this.gaveUp = false;
+                this.consecutiveUndos = 0;
+                this.usedBonusUndo = false;
                 this.messageElement.textContent = 'Click an adjacent tile to begin your path';
                 this.messageElement.className = 'message-text info';
                 // Only hide perfect score if it hasn't been revealed yet
@@ -1562,6 +1566,8 @@
                 
                 this.path = [];
                 this.gameOver = false;
+                this.consecutiveUndos = 0;
+                this.usedBonusUndo = false;
                 this.messageElement.textContent = 'Click an adjacent tile to begin your path';
                 this.messageElement.className = 'message-text info';
                 // Keep perfect score visible if already revealed
@@ -1763,9 +1769,12 @@
                 
                 if (!this.isValidMove(row, col)) return;
                 
+                // Reset consecutive undo counter on move
+                this.consecutiveUndos = 0;
+                
                 this.currentPos = { row, col };
                 this.path.push({ ...this.currentPos });
-                this.undoBtn.disabled = this.path.length <= 1;
+                this.updateUndoButtonState();
                 
                 // Add glow effect to path length
                 this.pathLengthElement.classList.add('glow');
@@ -1782,11 +1791,48 @@
             undo() {
                 if (this.path.length <= 1 || this.gameOver) return;
                 
+                // Check consecutive undo limits
+                // 5x5: No consecutive undos allowed
+                // 7x7: Max 2 consecutive, but only 1 after using bonus
+                if (this.n === 2) {
+                    // 5x5: no consecutive undos
+                    if (this.consecutiveUndos >= 1) return;
+                } else {
+                    // 7x7: max 2 consecutive, but after using bonus only 1
+                    const maxUndos = this.usedBonusUndo ? 1 : 2;
+                    if (this.consecutiveUndos >= maxUndos) return;
+                    // Mark bonus as used if they do a second consecutive undo
+                    if (this.consecutiveUndos === 1) {
+                        this.usedBonusUndo = true;
+                    }
+                }
+                
+                this.consecutiveUndos++;
+                
                 this.path.pop();
                 this.currentPos = { ...this.path[this.path.length - 1] };
-                this.undoBtn.disabled = this.path.length <= 1;
+                
+                // Update undo button state based on remaining undos allowed
+                this.updateUndoButtonState();
                 
                 this.render();
+            }
+            
+            updateUndoButtonState() {
+                if (this.path.length <= 1) {
+                    this.undoBtn.disabled = true;
+                    return;
+                }
+                
+                // Check if more undos are allowed
+                if (this.n === 2) {
+                    // 5x5: disabled after 1 consecutive undo
+                    this.undoBtn.disabled = this.consecutiveUndos >= 1;
+                } else {
+                    // 7x7: disabled after max consecutive undos
+                    const maxUndos = this.usedBonusUndo ? 1 : 2;
+                    this.undoBtn.disabled = this.consecutiveUndos >= maxUndos;
+                }
             }
 
             getTieredResponse(playerLength) {
