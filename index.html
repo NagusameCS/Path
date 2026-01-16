@@ -562,6 +562,66 @@
             background: #444;
         }
 
+        /* Share button */
+        .share-btn {
+            background: #2a4a5a;
+            border: 1px solid #3a6a7a;
+            color: #adf;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+        }
+
+        .share-btn:hover {
+            background: #3a5a6a;
+            border-color: #4a7a8a;
+            box-shadow: 0 0 12px rgba(100, 180, 220, 0.2);
+        }
+
+        .share-btn:active {
+            transform: scale(0.98);
+        }
+
+        body.light-mode .share-btn {
+            background: #e8f4f8;
+            border-color: #b8d4e8;
+            color: #2a6a8a;
+        }
+
+        body.light-mode .share-btn:hover {
+            background: #d8e8f0;
+            border-color: #98c4d8;
+        }
+
+        /* Share toast notification */
+        .share-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #333;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            z-index: 1001;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .share-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        body.light-mode .share-toast {
+            background: #222;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 400px) {
             body {
@@ -827,7 +887,8 @@
                     <span>You've mastered the 5×5 grid! Would you like to try the challenging <strong>7×7 grid</strong>?</span>
                 </li>
             </ul>
-            <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button class="share-btn" id="shareBtn5x5" style="width: 100%; margin-top: 15px; padding: 12px; background: #2a4a5a; border-color: #3a6a7a;"><span class="material-symbols-outlined" style="vertical-align: middle; margin-right: 8px;">share</span>SHARE RESULTS</button>
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
                 <button class="modal-close" id="declineUnlock" style="flex: 1;">NOT NOW</button>
                 <button class="modal-close" id="acceptUnlock" style="flex: 1; background: #3a5a3a; border-color: #4a7a4a;">LET'S GO!</button>
             </div>
@@ -844,6 +905,7 @@
                     <span>You've completed today's 7×7! Try a <strong>previous day's puzzle</strong>:</span>
                 </li>
             </ul>
+            <button class="share-btn" id="shareBtn7x7" style="width: 100%; margin-top: 15px; padding: 12px; background: #2a4a5a; border-color: #3a6a7a;"><span class="material-symbols-outlined" style="vertical-align: middle; margin-right: 8px;">share</span>SHARE RESULTS</button>
             <div id="archiveList" style="margin: 15px 0; max-height: 200px; overflow-y: auto;"></div>
             <button class="modal-close" id="closeArchive" style="width: 100%;">CLOSE</button>
         </div>
@@ -851,6 +913,9 @@
 
     <!-- Confetti Canvas -->
     <canvas id="confettiCanvas"></canvas>
+
+    <!-- Share Toast -->
+    <div class="share-toast" id="shareToast">Copied to clipboard!</div>
 
     <!-- Footer -->
     <div class="footer">
@@ -924,6 +989,7 @@
                 // Unlock modal
                 document.getElementById('declineUnlock').addEventListener('click', () => this.hideUnlockModal());
                 document.getElementById('acceptUnlock').addEventListener('click', () => this.acceptUnlock());
+                document.getElementById('shareBtn5x5').addEventListener('click', () => this.shareResults('5x5'));
                 this.unlockModal.addEventListener('click', (e) => {
                     if (e.target === this.unlockModal) this.hideUnlockModal();
                 });
@@ -931,6 +997,7 @@
                 // Archive modal
                 this.archiveModal = document.getElementById('archiveModal');
                 document.getElementById('closeArchive').addEventListener('click', () => this.hideArchiveModal());
+                document.getElementById('shareBtn7x7').addEventListener('click', () => this.shareResults('7x7'));
                 this.archiveModal.addEventListener('click', (e) => {
                     if (e.target === this.archiveModal) this.hideArchiveModal();
                 });
@@ -1066,6 +1133,54 @@
                 this.perfectRevealed = false;
                 this.saveGridSize();
                 this.newGame();
+            }
+
+            shareResults(gridType) {
+                const now = this.archiveDate || new Date();
+                const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                const gridSize = gridType === '5x5' ? 5 : 7;
+                const attempts = this.getAttempts();
+                const pathLength = this.path.length;
+                const optimal = this.optimalLength;
+                
+                // Generate emoji grid showing path
+                let emojiGrid = '';
+                const pathSet = new Set(this.path.map(p => `${p.row},${p.col}`));
+                for (let r = 0; r < gridSize; r++) {
+                    for (let c = 0; c < gridSize; c++) {
+                        if (pathSet.has(`${r},${c}`)) {
+                            emojiGrid += '🟩';
+                        } else {
+                            emojiGrid += '⬛';
+                        }
+                    }
+                    emojiGrid += '\n';
+                }
+                
+                // Calculate performance emoji
+                let perfEmoji = '';
+                if (pathLength === optimal) {
+                    perfEmoji = '🏆';
+                } else if (pathLength >= optimal * 0.9) {
+                    perfEmoji = '⭐';
+                } else if (pathLength >= optimal * 0.75) {
+                    perfEmoji = '✅';
+                } else {
+                    perfEmoji = '🎯';
+                }
+                
+                const attemptStr = attempts === 1 ? '' : `\nAttempt #${attempts}`;
+                const shareText = `Path ${gridType} ${perfEmoji}\n${dateStr}${attemptStr}\nScore: ${pathLength}/${optimal}\n\n${emojiGrid}\nhttps://nagusamecs.github.io/Path/`;
+                
+                navigator.clipboard.writeText(shareText).then(() => {
+                    const toast = document.getElementById('shareToast');
+                    toast.classList.add('show');
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy:', err);
+                });
             }
 
             getGridSizeKey() {
