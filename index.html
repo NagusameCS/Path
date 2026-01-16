@@ -273,6 +273,52 @@
             position: relative;
         }
 
+        .grid-size-selector {
+            position: absolute;
+            top: -30px;
+            right: 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 10;
+        }
+
+        .grid-size-select {
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+            padding: 4px 8px;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: #aaa;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: all 0.2s ease;
+            letter-spacing: 0.05em;
+        }
+
+        .grid-size-select:hover {
+            background: #3a3a3a;
+            border-color: #666;
+            color: #ccc;
+        }
+
+        .grid-size-select:focus {
+            outline: none;
+            border-color: #666;
+        }
+
+        body.light-mode .grid-size-select {
+            background: #ffffff;
+            border-color: #ccc;
+            color: #666;
+        }
+
+        body.light-mode .grid-size-select:hover {
+            background: #f5f5f5;
+            border-color: #999;
+            color: #444;
+        }
+
         .grid {
             display: grid;
             gap: 3px;
@@ -810,6 +856,12 @@
         </div>
 
         <div class="grid-wrapper">
+            <div class="grid-size-selector">
+                <select class="grid-size-select" id="gridSizeSelect">
+                    <option value="5">5×5</option>
+                    <option value="7">7×7</option>
+                </select>
+            </div>
             <canvas class="canvas-overlay" id="lineCanvas"></canvas>
             <div class="grid" id="grid"></div>
         </div>
@@ -998,6 +1050,10 @@
                 this.archiveModal = document.getElementById('archiveModal');
                 document.getElementById('closeArchive').addEventListener('click', () => this.hideArchiveModal());
                 document.getElementById('shareBtn7x7').addEventListener('click', () => this.shareResults('7x7'));
+                
+                // Grid size selector
+                this.gridSizeSelect = document.getElementById('gridSizeSelect');
+                this.gridSizeSelect.addEventListener('change', (e) => this.handleGridSizeChange(e.target.value));
                 this.archiveModal.addEventListener('click', (e) => {
                     if (e.target === this.archiveModal) this.hideArchiveModal();
                 });
@@ -1387,17 +1443,9 @@
                 // Update date display for archive puzzles
                 this.updateDateDisplay();
                 
-                // Generate grid based on date seed
+                // Generate grid based on date seed with validation
                 const baseSeed = this.getDateSeed();
-                const seed = baseSeed + this.n * 1000;
-                const rng = new SeededRandom(seed);
-                
-                for (let i = 0; i < this.size; i++) {
-                    this.grid[i] = [];
-                    for (let j = 0; j < this.size; j++) {
-                        this.grid[i][j] = rng.nextInt(1, 5);
-                    }
-                }
+                this.generateValidPuzzle(baseSeed);
                 
                 // Start from center
                 const center = this.n;
@@ -1406,6 +1454,9 @@
                 
                 // Calculate optimal path
                 this.calculateOptimal();
+                
+                // Update grid size selector state
+                this.updateGridSizeSelector();
                 
                 // Check for saved state
                 const saved = this.loadSavedState();
@@ -1418,6 +1469,151 @@
                 }
                 
                 this.render();
+            }
+
+            generateValidPuzzle(baseSeed) {
+                const minPathLengths = { 5: 10, 7: 14 };
+                const minLength = minPathLengths[this.size] || 10;
+                
+                let attempts = 0;
+                const maxAttempts = 100;
+                
+                while (attempts < maxAttempts) {
+                    const seed = baseSeed + this.n * 1000 + attempts * 7919;
+                    const rng = new SeededRandom(seed);
+                    
+                    // Generate grid
+                    this.grid = [];
+                    for (let i = 0; i < this.size; i++) {
+                        this.grid[i] = [];
+                        for (let j = 0; j < this.size; j++) {
+                            this.grid[i][j] = rng.nextInt(1, 5);
+                        }
+                    }
+                    
+                    // Ensure center has valid neighbors
+                    const center = this.n;
+                    const centerVal = this.grid[center][center];
+                    let validNeighbors = 0;
+                    
+                    for (let dr = -1; dr <= 1; dr++) {
+                        for (let dc = -1; dc <= 1; dc++) {
+                            if (dr === 0 && dc === 0) continue;
+                            const nr = center + dr;
+                            const nc = center + dc;
+                            if (Math.abs(this.grid[nr][nc] - centerVal) <= 1) {
+                                validNeighbors++;
+                            }
+                        }
+                    }
+                    
+                    // Need at least 3 valid neighbors from center for multiple paths
+                    if (validNeighbors < 3) {
+                        attempts++;
+                        continue;
+                    }
+                    
+                    // Quick check for minimum path length
+                    const quickOptimal = this.quickOptimalCheck(minLength);
+                    if (quickOptimal >= minLength) {
+                        return; // Valid puzzle found
+                    }
+                    
+                    attempts++;
+                }
+                
+                // Fallback: just use the last generated grid
+                const seed = baseSeed + this.n * 1000;
+                const rng = new SeededRandom(seed);
+                this.grid = [];
+                for (let i = 0; i < this.size; i++) {
+                    this.grid[i] = [];
+                    for (let j = 0; j < this.size; j++) {
+                        this.grid[i][j] = rng.nextInt(1, 5);
+                    }
+                }
+            }
+
+            quickOptimalCheck(targetLength) {
+                // Fast greedy check to see if puzzle can reach target length
+                const center = this.n;
+                const visited = Array(this.size).fill(null).map(() => Array(this.size).fill(false));
+                visited[center][center] = true;
+                
+                const directions = [
+                    [-1, -1], [-1, 0], [-1, 1],
+                    [0, -1],          [0, 1],
+                    [1, -1],  [1, 0],  [1, 1]
+                ];
+                
+                let maxFound = 1;
+                const stack = [{ row: center, col: center, length: 1 }];
+                let iterations = 0;
+                const maxIterations = 10000;
+                
+                while (stack.length > 0 && iterations < maxIterations) {
+                    iterations++;
+                    const current = stack.pop();
+                    
+                    if (current.length > maxFound) {
+                        maxFound = current.length;
+                        if (maxFound >= targetLength) return maxFound;
+                    }
+                    
+                    const currentVal = this.grid[current.row][current.col];
+                    const moves = [];
+                    
+                    for (const [dr, dc] of directions) {
+                        const nr = current.row + dr;
+                        const nc = current.col + dc;
+                        if (nr >= 0 && nr < this.size && nc >= 0 && nc < this.size && !visited[nr][nc]) {
+                            if (Math.abs(this.grid[nr][nc] - currentVal) <= 1) {
+                                moves.push({ row: nr, col: nc });
+                            }
+                        }
+                    }
+                    
+                    // Pick random move (greedy exploration)
+                    if (moves.length > 0) {
+                        const move = moves[Math.floor(Math.random() * moves.length)];
+                        visited[move.row][move.col] = true;
+                        stack.push({ row: move.row, col: move.col, length: current.length + 1 });
+                    }
+                }
+                
+                return maxFound;
+            }
+
+            handleGridSizeChange(value) {
+                const newN = value === '7' ? 3 : 2;
+                
+                // Check if 7x7 is unlocked
+                if (newN === 3 && !this.is7x7Unlocked()) {
+                    this.gridSizeSelect.value = '5';
+                    return;
+                }
+                
+                if (newN !== this.n) {
+                    this.n = newN;
+                    this.perfectRevealed = false;
+                    this.archiveDate = null;
+                    this.newGame();
+                }
+            }
+
+            updateGridSizeSelector() {
+                // Update dropdown to match current grid
+                this.gridSizeSelect.value = this.size === 7 ? '7' : '5';
+                
+                // Disable 7x7 option if not unlocked
+                const option7x7 = this.gridSizeSelect.querySelector('option[value="7"]');
+                if (!this.is7x7Unlocked()) {
+                    option7x7.disabled = true;
+                    option7x7.textContent = '7×7 🔒';
+                } else {
+                    option7x7.disabled = false;
+                    option7x7.textContent = '7×7';
+                }
             }
 
             resetPuzzle() {
