@@ -1929,6 +1929,28 @@
                 return `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
             }
 
+            is7x7Unlocked() {
+                // Check if player has ever completed 5x5 with perfect score
+                const today = this.getDateString();
+                const todayKey = `path-game-5x5-completed-${today}`;
+                if (localStorage.getItem(todayKey)) return true;
+                
+                // Also check if currently playing 7x7 (already unlocked before)
+                const gridSizeKey = this.getGridSizeKey();
+                const savedN = localStorage.getItem(gridSizeKey);
+                if (savedN === '3') return true;
+                
+                // Check if any 7x7 game state exists (means they've played it before)
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key && key.includes('-3') && key.startsWith('path-game-')) {
+                        return true;
+                    }
+                }
+                
+                return false;
+            }
+
             finish() {
                 this.gameOver = true;
                 this.undoBtn.disabled = true;
