@@ -1475,7 +1475,16 @@
                 
                 // Generate grid based on date seed with validation
                 const baseSeed = this.getDateSeed();
-                this.generateValidPuzzle(baseSeed);
+                const seed = baseSeed + this.n * 1000;
+                const rng = new SeededRandom(seed);
+                
+                this.grid = [];
+                for (let i = 0; i < this.size; i++) {
+                    this.grid[i] = [];
+                    for (let j = 0; j < this.size; j++) {
+                        this.grid[i][j] = rng.nextInt(1, 5);
+                    }
+                }
                 
                 // Start from center
                 const center = this.n;
@@ -1499,119 +1508,6 @@
                 }
                 
                 this.render();
-            }
-
-            generateValidPuzzle(baseSeed) {
-                const minPathLengths = { 5: 10, 7: 14 };
-                const minLength = minPathLengths[this.size] || 10;
-                
-                let attempts = 0;
-                const maxAttempts = 100;
-                
-                while (attempts < maxAttempts) {
-                    const seed = baseSeed + this.n * 1000 + attempts * 7919;
-                    const rng = new SeededRandom(seed);
-                    
-                    // Generate grid
-                    this.grid = [];
-                    for (let i = 0; i < this.size; i++) {
-                        this.grid[i] = [];
-                        for (let j = 0; j < this.size; j++) {
-                            this.grid[i][j] = rng.nextInt(1, 5);
-                        }
-                    }
-                    
-                    // Ensure center has valid neighbors
-                    const center = this.n;
-                    const centerVal = this.grid[center][center];
-                    let validNeighbors = 0;
-                    
-                    for (let dr = -1; dr <= 1; dr++) {
-                        for (let dc = -1; dc <= 1; dc++) {
-                            if (dr === 0 && dc === 0) continue;
-                            const nr = center + dr;
-                            const nc = center + dc;
-                            if (Math.abs(this.grid[nr][nc] - centerVal) <= 1) {
-                                validNeighbors++;
-                            }
-                        }
-                    }
-                    
-                    // Need at least 3 valid neighbors from center for multiple paths
-                    if (validNeighbors < 3) {
-                        attempts++;
-                        continue;
-                    }
-                    
-                    // Quick check for minimum path length
-                    const quickOptimal = this.quickOptimalCheck(minLength);
-                    if (quickOptimal >= minLength) {
-                        return; // Valid puzzle found
-                    }
-                    
-                    attempts++;
-                }
-                
-                // Fallback: just use the last generated grid
-                const seed = baseSeed + this.n * 1000;
-                const rng = new SeededRandom(seed);
-                this.grid = [];
-                for (let i = 0; i < this.size; i++) {
-                    this.grid[i] = [];
-                    for (let j = 0; j < this.size; j++) {
-                        this.grid[i][j] = rng.nextInt(1, 5);
-                    }
-                }
-            }
-
-            quickOptimalCheck(targetLength) {
-                // Fast greedy check to see if puzzle can reach target length
-                const center = this.n;
-                const visited = Array(this.size).fill(null).map(() => Array(this.size).fill(false));
-                visited[center][center] = true;
-                
-                const directions = [
-                    [-1, -1], [-1, 0], [-1, 1],
-                    [0, -1],          [0, 1],
-                    [1, -1],  [1, 0],  [1, 1]
-                ];
-                
-                let maxFound = 1;
-                const stack = [{ row: center, col: center, length: 1 }];
-                let iterations = 0;
-                const maxIterations = 10000;
-                
-                while (stack.length > 0 && iterations < maxIterations) {
-                    iterations++;
-                    const current = stack.pop();
-                    
-                    if (current.length > maxFound) {
-                        maxFound = current.length;
-                        if (maxFound >= targetLength) return maxFound;
-                    }
-                    
-                    const currentVal = this.grid[current.row][current.col];
-                    const moves = [];
-                    
-                    for (const [dr, dc] of directions) {
-                        const nr = current.row + dr;
-                        const nc = current.col + dc;
-                        if (nr >= 0 && nr < this.size && nc >= 0 && nc < this.size && !visited[nr][nc]) {
-                            if (Math.abs(this.grid[nr][nc] - currentVal) <= 1) {
-                                moves.push({ row: nr, col: nc });
-                            }
-                        }
-                    }
-                    
-                    // Pick random move (greedy exploration)
-                    if (moves.length > 0) {
-                        const move = moves[Math.floor(Math.random() * moves.length)];
-                        visited[move.row][move.col] = true;
-                        stack.push({ row: move.row, col: move.col, length: current.length + 1 });
-                    }
-                }
-                
-                return maxFound;
             }
 
             toggleGridSize() {
