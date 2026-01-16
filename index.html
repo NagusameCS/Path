@@ -275,25 +275,76 @@
 
         .grid-size-selector {
             position: absolute;
-            top: -30px;
-            right: 0;
+            right: -45px;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 5px;
+            gap: 3px;
             z-index: 10;
         }
 
-        .grid-size-select {
+        .grid-size-btn {
             font-family: 'Courier New', monospace;
-            font-size: 0.7rem;
-            padding: 4px 8px;
+            font-size: 0.75rem;
+            width: 28px;
+            height: 28px;
             background: #2a2a2a;
             border: 1px solid #444;
-            color: #aaa;
+            color: #888;
             cursor: pointer;
             border-radius: 3px;
             transition: all 0.2s ease;
-            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .grid-size-btn:hover {
+            background: #3a3a3a;
+            border-color: #666;
+            color: #ccc;
+        }
+
+        .grid-size-btn.active {
+            background: #3a3a3a;
+            border-color: #777;
+            color: #fff;
+        }
+
+        .grid-size-x {
+            font-family: 'Courier New', monospace;
+            font-size: 0.6rem;
+            color: #666;
+            line-height: 1;
+        }
+
+        body.light-mode .grid-size-btn {
+            background: #ffffff;
+            border-color: #ccc;
+            color: #888;
+        }
+
+        body.light-mode .grid-size-btn:hover {
+            background: #f5f5f5;
+            border-color: #999;
+            color: #555;
+        }
+
+        body.light-mode .grid-size-btn.active {
+            background: #e8e8e8;
+            border-color: #999;
+            color: #333;
+        }
+
+        body.light-mode .grid-size-x {
+            color: #999;
+        }
+
+        .grid-size-select {
+            display: none;
         }
 
         .grid-size-select:hover {
@@ -851,16 +902,19 @@
             </div>
             <div class="stat">
                 <span class="stat-value" id="optimalLength">?</span>
-                <span class="stat-label">PERFECT</span>
+                <span class="stat-label">GOAL</span>
             </div>
         </div>
 
         <div class="grid-wrapper">
-            <div class="grid-size-selector">
-                <select class="grid-size-select" id="gridSizeSelect">
-                    <option value="5">5×5</option>
-                    <option value="7">7×7</option>
-                </select>
+            <div class="grid-size-selector" id="gridSizeSelector">
+                <button class="grid-size-btn active" id="gridSize5" data-size="5">5</button>
+                <span class="grid-size-x">x</span>
+                <button class="grid-size-btn" id="gridSize5b" data-size="5">5</button>
+                <div style="height: 8px;"></div>
+                <button class="grid-size-btn" id="gridSize7" data-size="7">7</button>
+                <span class="grid-size-x">x</span>
+                <button class="grid-size-btn" id="gridSize7b" data-size="7">7</button>
             </div>
             <canvas class="canvas-overlay" id="lineCanvas"></canvas>
             <div class="grid" id="grid"></div>
@@ -1051,9 +1105,12 @@
                 document.getElementById('closeArchive').addEventListener('click', () => this.hideArchiveModal());
                 document.getElementById('shareBtn7x7').addEventListener('click', () => this.shareResults('7x7'));
                 
-                // Grid size selector
-                this.gridSizeSelect = document.getElementById('gridSizeSelect');
-                this.gridSizeSelect.addEventListener('change', (e) => this.handleGridSizeChange(e.target.value));
+                // Grid size selector buttons
+                this.gridSizeSelector = document.getElementById('gridSizeSelector');
+                document.getElementById('gridSize5').addEventListener('click', () => this.handleGridSizeChange('5'));
+                document.getElementById('gridSize5b').addEventListener('click', () => this.handleGridSizeChange('5'));
+                document.getElementById('gridSize7').addEventListener('click', () => this.handleGridSizeChange('7'));
+                document.getElementById('gridSize7b').addEventListener('click', () => this.handleGridSizeChange('7'));
                 this.archiveModal.addEventListener('click', (e) => {
                     if (e.target === this.archiveModal) this.hideArchiveModal();
                 });
@@ -1602,17 +1659,32 @@
             }
 
             updateGridSizeSelector() {
-                // Update dropdown to match current grid
-                this.gridSizeSelect.value = this.size === 7 ? '7' : '5';
+                // Update buttons to match current grid
+                const is5x5 = this.size === 5;
+                const is7x7Unlocked = this.is7x7Unlocked();
                 
-                // Disable 7x7 option if not unlocked
-                const option7x7 = this.gridSizeSelect.querySelector('option[value="7"]');
-                if (!this.is7x7Unlocked()) {
-                    option7x7.disabled = true;
-                    option7x7.textContent = '7×7 🔒';
+                document.getElementById('gridSize5').classList.toggle('active', is5x5);
+                document.getElementById('gridSize5b').classList.toggle('active', is5x5);
+                document.getElementById('gridSize7').classList.toggle('active', !is5x5);
+                document.getElementById('gridSize7b').classList.toggle('active', !is5x5);
+                
+                // Disable 7x7 buttons if not unlocked
+                const btn7 = document.getElementById('gridSize7');
+                const btn7b = document.getElementById('gridSize7b');
+                if (!is7x7Unlocked) {
+                    btn7.disabled = true;
+                    btn7b.disabled = true;
+                    btn7.style.opacity = '0.4';
+                    btn7b.style.opacity = '0.4';
+                    btn7.style.cursor = 'not-allowed';
+                    btn7b.style.cursor = 'not-allowed';
                 } else {
-                    option7x7.disabled = false;
-                    option7x7.textContent = '7×7';
+                    btn7.disabled = false;
+                    btn7b.disabled = false;
+                    btn7.style.opacity = '1';
+                    btn7b.style.opacity = '1';
+                    btn7.style.cursor = 'pointer';
+                    btn7b.style.cursor = 'pointer';
                 }
             }
 
