@@ -1467,11 +1467,11 @@
                 const playerLength = this.path.length;
                 const percentage = Math.round((playerLength / this.optimalLength) * 100);
                 const attempts = this.getAttempts();
-                const attemptText = attempts === 1 ? '' : ` · Attempt ${attempts}`;
+                const attemptText = attempts === 1 ? '' : `\nAttempt ${attempts}`;
                 
                 if (playerLength === this.optimalLength && !this.gaveUp) {
                     const tieredMsg = this.getTieredResponse(playerLength);
-                    this.messageElement.textContent = `${tieredMsg} ${playerLength}/${this.optimalLength}${attemptText}`;
+                    this.messageElement.innerHTML = `${tieredMsg} ${playerLength}/${this.optimalLength}${attemptText ? '<br><span style="font-size: 0.8em; opacity: 0.7;">Attempt ' + attempts + '</span>' : ''}`;
                     this.messageElement.className = 'message-text success';
                     
                     // Trigger confetti
@@ -1492,13 +1492,13 @@
                     }
                 } else if (percentage >= 90 && !this.gaveUp) {
                     const tieredMsg = this.getTieredResponse(playerLength);
-                    this.messageElement.textContent = `${tieredMsg} ${playerLength}/${this.optimalLength} · ${percentage}%${attemptText}`;
+                    this.messageElement.innerHTML = `${tieredMsg} ${playerLength}/${this.optimalLength} · ${percentage}%${attempts > 1 ? '<br><span style="font-size: 0.8em; opacity: 0.7;">Attempt ' + attempts + '</span>' : ''}`;
                     this.messageElement.className = 'message-text success';
                 } else if (percentage >= 70) {
-                    this.messageElement.textContent = `Good effort! ${playerLength}/${this.optimalLength} · ${percentage}%${attemptText}`;
+                    this.messageElement.innerHTML = `Good effort! ${playerLength}/${this.optimalLength} · ${percentage}%${attempts > 1 ? '<br><span style="font-size: 0.8em; opacity: 0.7;">Attempt ' + attempts + '</span>' : ''}`;
                     this.messageElement.className = 'message-text info';
                 } else {
-                    this.messageElement.textContent = `${playerLength}/${this.optimalLength} · ${percentage}%${attemptText}`;
+                    this.messageElement.innerHTML = `${playerLength}/${this.optimalLength} · ${percentage}%${attempts > 1 ? '<br><span style="font-size: 0.8em; opacity: 0.7;">Attempt ' + attempts + '</span>' : ''}`;
                     this.messageElement.className = 'message-text info';
                 }
             }
