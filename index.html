@@ -1855,6 +1855,8 @@
                     if (this.n === 2) {
                         const key = `path-game-5x5-completed-${this.getDateString()}`;
                         localStorage.setItem(key, 'true');
+                        // Update grid selector to show 7x7 is now unlocked
+                        this.updateGridSizeSelector();
                         setTimeout(() => {
                             this.showUnlockModal();
                         }, 1500);
