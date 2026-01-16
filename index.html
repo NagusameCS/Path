@@ -29,7 +29,7 @@
         body {
             font-family: 'Courier New', monospace;
             background-color: #1a1a1a;
-            color: #e0e0e0;
+            color: #f0f0f0;
             min-height: 100vh;
             min-height: 100dvh;
             display: flex;
@@ -37,6 +37,101 @@
             align-items: center;
             padding: 20px;
             padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.light-mode {
+            background-color: #f5f5f5;
+            color: #2a2a2a;
+        }
+
+        body.light-mode h1 {
+            color: #1a1a1a;
+        }
+
+        body.light-mode .subtitle,
+        body.light-mode .date-display {
+            color: #888;
+        }
+
+        body.light-mode .stat-label {
+            color: #666;
+        }
+
+        body.light-mode .stat-value {
+            color: #1a1a1a;
+        }
+
+        body.light-mode .grid {
+            background: #ddd;
+        }
+
+        body.light-mode .cell {
+            background: #ffffff;
+            color: #888;
+        }
+
+        body.light-mode .cell:hover:not(.visited):not(.locked) {
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        body.light-mode .cell.valid-move:not(.visited) {
+            background: #f8f8f8;
+            color: #555;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1), inset 0 0 0 1px #ccc;
+        }
+
+        body.light-mode .cell.visited {
+            background: #e8e8e8;
+            color: #444;
+        }
+
+        body.light-mode .cell.current {
+            background: #d8d8d8;
+            color: #1a1a1a;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15), inset 0 0 0 2px #999;
+        }
+
+        body.light-mode button,
+        body.light-mode .icon-btn {
+            background: #ffffff;
+            border-color: #ccc;
+            color: #555;
+        }
+
+        body.light-mode button:hover,
+        body.light-mode .icon-btn:hover {
+            background: #f5f5f5;
+            border-color: #999;
+            color: #333;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+        }
+
+        body.light-mode .modal {
+            background: #ffffff;
+            border-color: #ccc;
+        }
+
+        body.light-mode .modal h2 {
+            color: #1a1a1a;
+        }
+
+        body.light-mode .modal-rules li {
+            color: #555;
+            border-bottom-color: #ddd;
+        }
+
+        body.light-mode .rule-num {
+            color: #999;
+        }
+
+        body.light-mode .message-text {
+            color: #666;
+        }
+
+        body.light-mode .message-text.success {
+            color: #4a9;
         }
 
         header {
@@ -90,7 +185,7 @@
 
         .subtitle {
             font-size: 0.8rem;
-            color: #666;
+            color: #999;
             margin-bottom: 5px;
             letter-spacing: 0.2em;
             text-align: center;
@@ -98,7 +193,7 @@
 
         .date-display {
             font-size: 0.7rem;
-            color: #555;
+            color: #888;
             margin-bottom: 25px;
             letter-spacing: 0.15em;
             text-align: center;
@@ -141,7 +236,7 @@
             display: flex;
             gap: 40px;
             font-size: 0.9rem;
-            color: #888;
+            color: #aaa;
         }
 
         .stat {
@@ -164,7 +259,7 @@
         .stat-label {
             font-size: 0.7rem;
             letter-spacing: 0.15em;
-            color: #666;
+            color: #999;
         }
 
         .grid-wrapper {
@@ -189,24 +284,19 @@
             font-size: 1.3rem;
             font-weight: 500;
             background: #252525;
-            color: #666;
+            color: #999;
             cursor: pointer;
             transition: all 0.2s ease;
             position: relative;
             z-index: 1;
             border-radius: 2px;
-<<<<<<< HEAD
-            user-select: none;
-            -webkit-user-select: none;
-=======
             -webkit-user-select: none;
             user-select: none;
->>>>>>> ce3542b (Add favicon and social media banner meta tags)
         }
 
         .cell:hover:not(.visited):not(.locked) {
             background: #353535;
-            color: #888;
+            color: #aaa;
         }
 
         .cell.valid-move:not(.visited) {
@@ -271,7 +361,7 @@
 
         .message-text {
             font-size: 0.95rem;
-            color: #888;
+            color: #aaa;
             letter-spacing: 0.1em;
             transition: all 0.3s ease;
         }
@@ -454,6 +544,73 @@
             }
         }
 
+        /* Confetti */
+        #confettiCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: auto;
+            padding: 30px 20px 10px;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #666;
+            letter-spacing: 0.1em;
+        }
+
+        .footer a {
+            color: #888;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #aaa;
+        }
+
+        body.light-mode .footer {
+            color: #999;
+        }
+
+        body.light-mode .footer a {
+            color: #666;
+        }
+
+        body.light-mode .footer a:hover {
+            color: #444;
+        }
+
+        /* Give Up Button Styles */
+        .give-up-btn {
+            background: #3a2a2a;
+            border-color: #644;
+            color: #c99;
+        }
+
+        .give-up-btn:hover {
+            background: #4a3a3a;
+            border-color: #866;
+            color: #daa;
+        }
+
+        body.light-mode .give-up-btn {
+            background: #ffeef0;
+            border-color: #ffccd0;
+            color: #c66;
+        }
+
+        body.light-mode .give-up-btn:hover {
+            background: #ffdde0;
+            border-color: #ffaab0;
+            color: #a44;
+        }
+
         /* Larger screens */
         @media (min-width: 600px) {
             h1 {
@@ -475,6 +632,7 @@
 </head>
 <body>
     <header>
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" style="position: absolute; left: 20px; top: 20px;">☀</button>
         <h1>PATH</h1>
     </header>
     <p class="subtitle">FIND THE LONGEST WAY</p>
@@ -502,6 +660,7 @@
         <div class="action-buttons">
             <button class="icon-btn" id="undoBtn" disabled aria-label="Undo">↶</button>
             <button class="icon-btn" id="resetBtn" aria-label="Reset">↻</button>
+            <button class="give-up-btn" id="giveUpBtn" aria-label="Give Up" style="padding: 10px 20px; border-radius: 4px;">I GIVE UP</button>
             <button class="icon-btn" id="helpBtn" aria-label="Help">?</button>
         </div>
 
@@ -544,6 +703,31 @@
         </div>
     </div>
 
+    <!-- Give Up Modal -->
+    <div class="modal-overlay" id="giveUpModal">
+        <div class="modal">
+            <h2>GIVE UP?</h2>
+            <ul class="modal-rules">
+                <li style="border-bottom: none;">
+                    <span style="font-size: 2rem; margin-right: 10px;">⚠️</span>
+                    <span>If you give up, the optimal path will be revealed and you won't be able to play this puzzle again today.</span>
+                </li>
+            </ul>
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button class="modal-close" id="cancelGiveUp" style="flex: 1;">CANCEL</button>
+                <button class="give-up-btn" id="confirmGiveUp" style="flex: 1; padding: 12px;">REVEAL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Footer -->
+    <div class="footer">
+        <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+    </div>
+
     <script>
         class SeededRandom {
             constructor(seed) {
@@ -571,6 +755,7 @@
                 this.optimalLength = 0;
                 this.optimalPath = [];
                 this.cellSize = 54;
+                this.gaveUp = false;
                 
                 this.gridElement = document.getElementById('grid');
                 this.canvas = document.getElementById('lineCanvas');
@@ -581,6 +766,10 @@
                 this.undoBtn = document.getElementById('undoBtn');
                 this.dateDisplay = document.getElementById('dateDisplay');
                 this.modalOverlay = document.getElementById('modalOverlay');
+                this.giveUpModal = document.getElementById('giveUpModal');
+                this.giveUpBtn = document.getElementById('giveUpBtn');
+                this.confettiCanvas = document.getElementById('confettiCanvas');
+                this.confettiCtx = this.confettiCanvas.getContext('2d');
                 
                 document.getElementById('resetBtn').addEventListener('click', () => this.resetPuzzle());
                 this.undoBtn.addEventListener('click', () => this.undo());
@@ -591,6 +780,24 @@
                 this.modalOverlay.addEventListener('click', (e) => {
                     if (e.target === this.modalOverlay) this.hideModal();
                 });
+                
+                // Give up modal
+                this.giveUpBtn.addEventListener('click', () => this.showGiveUpModal());
+                document.getElementById('cancelGiveUp').addEventListener('click', () => this.hideGiveUpModal());
+                document.getElementById('confirmGiveUp').addEventListener('click', () => this.confirmGiveUp());
+                this.giveUpModal.addEventListener('click', (e) => {
+                    if (e.target === this.giveUpModal) this.hideGiveUpModal();
+                });
+                
+                // Theme toggle
+                document.getElementById('themeToggle').addEventListener('click', () => this.toggleTheme());
+                
+                // Load saved theme
+                const savedTheme = localStorage.getItem('path-game-theme');
+                if (savedTheme === 'light') {
+                    document.body.classList.add('light-mode');
+                    document.getElementById('themeToggle').textContent = '🌙';
+                }
                 
                 // Responsive cell size
                 this.updateCellSize();
@@ -630,6 +837,107 @@
                 this.modalOverlay.classList.remove('active');
             }
 
+            showGiveUpModal() {
+                if (this.gameOver) return;
+                this.giveUpModal.classList.add('active');
+            }
+
+            hideGiveUpModal() {
+                this.giveUpModal.classList.remove('active');
+            }
+
+            toggleTheme() {
+                document.body.classList.toggle('light-mode');
+                const isLight = document.body.classList.contains('light-mode');
+                document.getElementById('themeToggle').textContent = isLight ? '🌙' : '☀';
+                localStorage.setItem('path-game-theme', isLight ? 'light' : 'dark');
+            }
+
+            confirmGiveUp() {
+                this.hideGiveUpModal();
+                this.gaveUp = true;
+                this.revealOptimalPath();
+            }
+
+            revealOptimalPath() {
+                // Show the optimal path
+                this.path = [...this.optimalPath];
+                this.currentPos = this.path[this.path.length - 1];
+                this.gameOver = true;
+                this.undoBtn.disabled = true;
+                this.giveUpBtn.disabled = true;
+                
+                // Save gave up state
+                const key = this.getStorageKey();
+                const state = {
+                    path: this.path,
+                    gameOver: true,
+                    grid: this.grid,
+                    gaveUp: true
+                };
+                localStorage.setItem(key, JSON.stringify(state));
+                
+                this.messageElement.textContent = `Optimal path revealed: ${this.optimalLength} tiles`;
+                this.messageElement.className = 'message-text info';
+                this.optimalLengthElement.textContent = this.optimalLength;
+                
+                this.render();
+            }
+
+            createConfetti() {
+                const canvas = this.confettiCanvas;
+                const ctx = this.confettiCtx;
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                
+                const particles = [];
+                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f7b731', '#5f27cd', '#00d2d3', '#ff9ff3'];
+                
+                for (let i = 0; i < 150; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height - canvas.height,
+                        r: Math.random() * 6 + 4,
+                        d: Math.random() * 8 + 4,
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        tilt: Math.floor(Math.random() * 10) - 10,
+                        tiltAngleIncremental: Math.random() * 0.07 + 0.05,
+                        tiltAngle: 0
+                    });
+                }
+                
+                let animationFrame;
+                const animate = () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    
+                    particles.forEach((p, i) => {
+                        p.tiltAngle += p.tiltAngleIncremental;
+                        p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
+                        p.x += Math.sin(p.d);
+                        p.tilt = Math.sin(p.tiltAngle - i / 3) * 15;
+                        
+                        ctx.beginPath();
+                        ctx.lineWidth = p.r / 2;
+                        ctx.strokeStyle = p.color;
+                        ctx.moveTo(p.x + p.tilt + p.r / 4, p.y);
+                        ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 4);
+                        ctx.stroke();
+                        
+                        if (p.y > canvas.height) {
+                            particles.splice(i, 1);
+                        }
+                    });
+                    
+                    if (particles.length > 0) {
+                        animationFrame = requestAnimationFrame(animate);
+                    } else {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    }
+                };
+                
+                animate();
+            }
+
             getDateSeed() {
                 const now = new Date();
                 const dateStr = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
@@ -659,7 +967,13 @@
                 const saved = localStorage.getItem(key);
                 if (saved) {
                     try {
-                        return JSON.parse(saved);
+                        const state = JSON.parse(saved);
+                        // Check if user gave up today
+                        if (state.gaveUp) {
+                            this.gaveUp = true;
+                            this.giveUpBtn.disabled = true;
+                        }
+                        return state;
                     } catch (e) {
                         return null;
                     }
@@ -682,10 +996,12 @@
                 this.grid = [];
                 this.path = [];
                 this.gameOver = false;
+                this.gaveUp = false;
                 this.messageElement.textContent = 'Click an adjacent tile to begin your path';
                 this.messageElement.className = 'message-text info';
                 this.optimalLengthElement.textContent = '?';
                 this.undoBtn.disabled = true;
+                this.giveUpBtn.disabled = false;
                 
                 // Generate grid based on date seed
                 const baseSeed = this.getDateSeed();
@@ -721,6 +1037,9 @@
             }
 
             resetPuzzle() {
+                // Don't allow reset if user gave up today
+                if (this.gaveUp) return;
+                
                 // Increment attempts counter
                 this.incrementAttempts();
                 
@@ -733,6 +1052,7 @@
                 this.messageElement.className = 'message-text info';
                 this.optimalLengthElement.textContent = '?';
                 this.undoBtn.disabled = true;
+                this.giveUpBtn.disabled = false;
                 
                 const center = this.n;
                 this.currentPos = { row: center, col: center };
@@ -873,6 +1193,54 @@
                 this.render();
             }
 
+            getTieredResponse(playerLength) {
+                // Tiered responses for 5x5 (optimal can be 13-21)
+                const responses5x5 = {
+                    13: "Novice Navigator!",
+                    14: "Path Finder!",
+                    15: "Route Ranger!",
+                    16: "Trail Blazer!",
+                    17: "Way Maker!",
+                    18: "Journey Master!",
+                    19: "Expedition Expert!",
+                    20: "Odyssey Oracle!",
+                    21: "Path Perfection!"
+                };
+                
+                // Tiered responses for 7x7 (optimal can be 25-45)
+                const responses7x7 = {
+                    25: "Beginner Pathfinder!",
+                    26: "Apprentice Navigator!",
+                    27: "Skilled Tracker!",
+                    28: "Adept Wayfinder!",
+                    29: "Expert Pathmaker!",
+                    30: "Master Trailblazer!",
+                    31: "Grandmaster Navigator!",
+                    32: "Legendary Pathfinder!",
+                    33: "Supreme Wayfarer!",
+                    34: "Ultimate Trail Master!",
+                    35: "Cosmic Navigator!",
+                    36: "Dimensional Pathfinder!",
+                    37: "Transcendent Wayfinder!",
+                    38: "Infinite Path Master!",
+                    39: "Eternal Navigator!",
+                    40: "Omnipotent Pathfinder!",
+                    41: "Godlike Wayfarer!",
+                    42: "Universal Path Keeper!",
+                    43: "Celestial Navigator!",
+                    44: "Divine Pathmaker!",
+                    45: "Absolute Perfection!"
+                };
+                
+                if (this.n === 2) {
+                    return responses5x5[playerLength] || (playerLength > 21 ? "Impossible Achievement!" : "Keep exploring!");
+                } else if (this.n === 3) {
+                    return responses7x7[playerLength] || (playerLength > 45 ? "Beyond Perfect!" : "Keep pushing!");
+                }
+                
+                return "Great effort!";
+            }
+
             showResults() {
                 this.optimalLengthElement.textContent = this.optimalLength;
                 this.optimalLengthElement.classList.add('glow');
@@ -882,14 +1250,31 @@
                 const attempts = this.getAttempts();
                 const attemptText = attempts === 1 ? '' : ` · Attempt ${attempts}`;
                 
-                if (playerLength === this.optimalLength) {
-                    this.messageElement.textContent = `PERFECT! ${playerLength}/${this.optimalLength}${attemptText}`;
+                if (playerLength === this.optimalLength && !this.gaveUp) {
+                    const tieredMsg = this.getTieredResponse(playerLength);
+                    this.messageElement.textContent = `${tieredMsg} ${playerLength}/${this.optimalLength}${attemptText}`;
                     this.messageElement.className = 'message-text success';
-                } else if (percentage >= 90) {
-                    this.messageElement.textContent = `Excellent! ${playerLength}/${this.optimalLength} · ${percentage}%${attemptText}`;
+                    
+                    // Trigger confetti
+                    this.createConfetti();
+                    
+                    // Check if 5x5 completed, unlock 7x7
+                    if (this.n === 2) {
+                        const key = `path-game-5x5-completed-${this.getDateString()}`;
+                        localStorage.setItem(key, 'true');
+                        setTimeout(() => {
+                            if (confirm('🎉 Congratulations! You\'ve mastered the 5×5 grid!\n\nWould you like to try the challenging 7×7 grid?')) {
+                                this.n = 3;
+                                this.newGame();
+                            }
+                        }, 2000);
+                    }
+                } else if (percentage >= 90 && !this.gaveUp) {
+                    const tieredMsg = this.getTieredResponse(playerLength);
+                    this.messageElement.textContent = `${tieredMsg} ${playerLength}/${this.optimalLength} · ${percentage}%${attemptText}`;
                     this.messageElement.className = 'message-text success';
                 } else if (percentage >= 70) {
-                    this.messageElement.textContent = `Good! ${playerLength}/${this.optimalLength} · ${percentage}%${attemptText}`;
+                    this.messageElement.textContent = `Good effort! ${playerLength}/${this.optimalLength} · ${percentage}%${attemptText}`;
                     this.messageElement.className = 'message-text info';
                 } else {
                     this.messageElement.textContent = `${playerLength}/${this.optimalLength} · ${percentage}%${attemptText}`;
@@ -897,9 +1282,15 @@
                 }
             }
 
+            getDateString() {
+                const now = new Date();
+                return `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+            }
+
             finish() {
                 this.gameOver = true;
                 this.undoBtn.disabled = true;
+                this.giveUpBtn.disabled = true;
                 
                 this.saveState();
                 this.showResults();
