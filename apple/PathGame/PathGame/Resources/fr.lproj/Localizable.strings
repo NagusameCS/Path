@@ -1,0 +1,255 @@
+/* 
+  Localizable.strings (French)
+  PathGame
+*/
+
+// MARK: - App
+"app_name" = "Path";
+"app_tagline" = "Un Jeu de Puzzle Quotidien";
+
+// MARK: - Navigation
+"nav_play" = "Jouer";
+"nav_stats" = "Stats";
+"nav_friends" = "Amis";
+"nav_settings" = "Réglages";
+
+// MARK: - Game Screen
+"game_title" = "Path";
+"game_daily_puzzle" = "Puzzle du Jour";
+"game_path_length" = "Chemin";
+"game_optimal" = "Optimal";
+"game_score" = "Score";
+"game_calculating" = "Calcul...";
+"game_valid_moves" = "%d coups valides";
+"game_no_valid_moves" = "Aucun coup - appuyez sur Terminer !";
+
+// MARK: - Game Actions
+"action_undo" = "Annuler";
+"action_restart" = "Recommencer";
+"action_finish" = "Terminer";
+"action_share" = "Partager";
+"action_give_up" = "Abandonner";
+
+// MARK: - Results
+"result_perfect" = "Parfait ! ⭐";
+"result_amazing" = "Incroyable ! 🎯";
+"result_great" = "Super ! ✨";
+"result_good" = "Bien ! 👍";
+"result_complete" = "Terminé ! 🎮";
+"result_your_path" = "Votre Chemin";
+"result_optimal_path" = "Chemin Optimal";
+"result_try_other_size" = "Essayer %@";
+"result_close" = "Fermer";
+
+// MARK: - Results Subtitles
+"result_subtitle_perfect" = "Vous avez trouvé le chemin optimal !";
+"result_subtitle_amazing" = "Si proche de la perfection !";
+"result_subtitle_great" = "Beau travail !";
+"result_subtitle_default" = "Continuez à pratiquer !";
+
+// MARK: - Stats Screen
+"stats_title" = "Statistiques";
+"stats_overview" = "Aperçu";
+"stats_achievements" = "Succès";
+"stats_history" = "Historique";
+"stats_games_played" = "Parties Jouées";
+"stats_perfect_games" = "Parties Parfaites";
+"stats_current_streak" = "Série Actuelle";
+"stats_best_streak" = "Meilleure Série";
+"stats_average_score" = "Score Moyen";
+"stats_perfect_rate" = "Taux de Perfection";
+"stats_no_games" = "Aucune partie jouée";
+"stats_start_playing" = "Commencez à jouer pour voir vos stats !";
+"stats_5x5_stats" = "Stats 5×5";
+"stats_7x7_stats" = "Stats 7×7";
+"stats_games" = "Parties";
+"stats_perfect" = "Parfaits";
+"stats_avg" = "Moy";
+"stats_distribution" = "Distribution des Scores";
+"stats_score_distribution" = "Distribution des Scores";
+"stats_games_distribution" = "Distribution des Parties";
+"stats_achievement_progress" = "Progression des Succès";
+"stats_all" = "Tous";
+"stats_no_history" = "Pas encore d'historique";
+"stats_complete_to_see_history" = "Complétez des puzzles pour voir votre historique";
+"game_size_5x5" = "Grille 5×5";
+"game_size_7x7" = "Grille 7×7";
+
+// MARK: - Friends Screen
+"friends_title" = "Amis";
+"friends_activity" = "Activité";
+"friends_challenges" = "Défis";
+"friends_today_leaderboard" = "Classement du Jour";
+"friends_all_friends" = "Tous les Amis";
+"friends_no_friends" = "Pas encore d'amis";
+"friends_add_friends_desc" = "Ajoutez des amis pour comparer les scores et rivaliser";
+"friends_add_friends" = "Ajouter des Amis";
+"friends_no_recent_games" = "Pas de parties récentes";
+"friends_challenge" = "Défier";
+"friends_remove" = "Supprimer";
+"friends_no_activity" = "Pas d'activité récente";
+"friends_no_challenges" = "Pas de défis en attente";
+"friends_challenge_desc" = "Défiez des amis après avoir terminé un puzzle";
+"friends_challenged_you" = "%@ vous a défié !";
+"friends_their_score" = "Leur score : %d/%d";
+"friends_accept" = "Accepter";
+"friends_decline" = "Refuser";
+"friends_game_center_prompt" = "Connectez-vous à Game Center";
+"friends_game_center_desc" = "Connectez-vous à Game Center pour ajouter des amis";
+"friends_sign_in" = "Se Connecter";
+"friends_open_game_center" = "Ouvrir Game Center";
+"friends_from_game_center" = "Les amis de Game Center apparaîtront automatiquement";
+
+// MARK: - Settings Screen
+"settings_title" = "Réglages";
+"settings_game" = "Jeu";
+"settings_default_grid" = "Taille de Grille";
+"settings_show_optimal" = "Afficher Chemin Optimal";
+"settings_show_optimal_desc" = "Afficher après complétion";
+"settings_feedback" = "Retours";
+"settings_haptic" = "Vibrations";
+"settings_haptic_desc" = "Vibrer lors des interactions";
+"settings_sound" = "Effets Sonores";
+"settings_sound_desc" = "Jouer des sons pendant le jeu";
+"settings_notifications" = "Notifications";
+"settings_daily_reminder" = "Rappel Quotidien";
+"settings_daily_reminder_desc" = "Recevoir un rappel pour jouer";
+"settings_reminder_time" = "Heure du Rappel";
+"settings_appearance" = "Apparence";
+"settings_theme" = "Thème";
+"settings_theme_system" = "Système";
+"settings_theme_light" = "Clair";
+"settings_theme_dark" = "Sombre";
+"settings_high_contrast" = "Contraste Élevé";
+"settings_high_contrast_desc" = "Augmenter le contraste";
+"settings_data" = "Données";
+"settings_sync_now" = "Synchroniser";
+"settings_reset_stats" = "Réinitialiser les Stats";
+"settings_reset_stats_desc" = "Effacer tout l'historique";
+"settings_about" = "À Propos";
+"settings_how_to_play" = "Comment Jouer";
+"settings_about_path" = "À Propos de Path";
+"settings_visit_website" = "Visiter le Site";
+"settings_version" = "Version %@";
+"settings_game_center" = "Game Center";
+"settings_signed_in" = "Connecté en tant que %@";
+"settings_not_signed_in" = "Non connecté";
+"settings_game_center_dashboard" = "Tableau de Bord Game Center";
+
+// MARK: - Reset Alert
+"reset_title" = "Tout Réinitialiser ?";
+"reset_message" = "Cela supprimera définitivement tout votre historique, succès et statistiques. Cette action est irréversible.";
+"reset_cancel" = "Annuler";
+"reset_confirm" = "Réinitialiser";
+
+// MARK: - Tutorial / Help
+"help_title" = "Comment Jouer";
+"help_done" = "Terminé";
+"help_page1_title" = "Trouvez le Chemin";
+"help_page1_desc" = "Votre objectif est de trouver le plus long chemin possible à travers une grille de nombres, en partant de la case centrale.";
+"help_page1_detail1" = "Commencez par la case centrale surlignée";
+"help_page1_detail2" = "Trouvez le plus long chemin possible";
+"help_page1_detail3" = "Un nouveau puzzle vous attend chaque jour";
+"help_page2_title" = "Règles de Déplacement";
+"help_page2_desc" = "Déplacez-vous vers n'importe quelle case adjacente (haut, bas, gauche, droite ou diagonale) ayant une valeur de ±1 par rapport à votre case actuelle.";
+"help_page2_detail1" = "8 directions possibles";
+"help_page2_detail2" = "La valeur cible doit être actuelle ±1";
+"help_page2_detail3" = "Chaque case ne peut être utilisée qu'une fois";
+"help_page3_title" = "Atteignez la Perfection";
+"help_page3_desc" = "Essayez d'égaler ou de battre la longueur optimale calculée pour chaque puzzle.";
+"help_page3_detail1" = "Le chemin optimal est affiché après";
+"help_page3_detail2" = "Obtenez une ⭐ pour le chemin optimal";
+"help_page3_detail3" = "Suivez vos stats et construisez des séries";
+"help_page4_title" = "Rivalisez et Partagez";
+"help_page4_desc" = "Connectez-vous avec des amis et comparez vos scores quotidiens dans le classement.";
+"help_page4_detail1" = "Connectez-vous à Game Center";
+"help_page4_detail2" = "Défiez des amis de battre votre score";
+"help_page4_detail3" = "Partagez vos résultats sur les réseaux";
+"help_ready_title" = "Vous Êtes Prêt !";
+"help_ready_desc" = "Commencez à jouer et voyez jusqu'où vous pouvez aller. Bonne chance !";
+"help_start_playing" = "Commencer à Jouer";
+
+// MARK: - Onboarding
+"onboarding_welcome" = "Bienvenue sur Path";
+"onboarding_welcome_desc" = "Un nouveau puzzle chaque jour";
+"onboarding_find_way" = "Trouvez Votre Chemin";
+"onboarding_find_way_desc" = "Naviguez entre les nombres\navec des règles simples";
+"onboarding_challenge" = "Défiez des Amis";
+"onboarding_challenge_desc" = "Comparez les scores et\ngrimpez dans le classement";
+"onboarding_begin" = "Commençons";
+"onboarding_ready" = "Prêt à trouver votre chemin ?";
+"onboarding_play_now" = "Jouer Maintenant";
+"onboarding_next" = "Suivant";
+"onboarding_skip" = "Passer";
+"onboarding_get_started" = "Commencer";
+
+// MARK: - Leaderboard
+"leaderboard_title" = "Classement";
+"leaderboard_5x5_best" = "Meilleur 5x5";
+"leaderboard_7x7_best" = "Meilleur 7x7";
+"leaderboard_streak" = "Série";
+"leaderboard_perfects" = "Parfaits";
+"leaderboard_today" = "Aujourd'hui";
+"leaderboard_week" = "Semaine";
+"leaderboard_all_time" = "Tout le Temps";
+"leaderboard_your_rank" = "Votre Rang";
+"leaderboard_no_entries" = "Aucune entrée";
+"leaderboard_be_first" = "Soyez le premier à marquer !";
+"leaderboard_sign_in_prompt" = "Voir les classements et rivaliser avec des joueurs du monde entier";
+"leaderboard_you" = "VOUS";
+
+// MARK: - About
+"about_title" = "À Propos";
+"about_created_by" = "Créé par";
+"about_built_with" = "Fait avec";
+"about_website" = "Site Web";
+
+// MARK: - Share
+"share_title" = "Path %@";
+"share_play_at" = "Jouez sur : pathgame.nagusamecs.com";
+
+// MARK: - Tooltips / Walkthrough
+"tooltip_undo" = "Annuler votre dernier coup";
+"tooltip_restart" = "Recommencer depuis le centre";
+"tooltip_finish" = "Soumettre votre chemin";
+"tooltip_share" = "Partager vos résultats";
+"tooltip_grid_toggle" = "Basculer entre grilles 5×5 et 7×7";
+"tooltip_help" = "Apprendre à jouer";
+"tooltip_settings" = "Ajuster les réglages";
+
+// MARK: - Grid Legend
+"legend_current" = "Actuel";
+"legend_valid" = "Coup Valide";
+"legend_visited" = "Visité";
+"legend_start" = "Début";
+// MARK: - Help Example
+"help_example_current" = "Actuel";
+"help_legend_current" = "Actuel (5)";
+"help_legend_valid" = "Valide (4 ou 6)";
+// MARK: - Accessibility
+"a11y_cell_value" = "Valeur de case %d";
+"a11y_cell_current" = "Case actuelle, valeur %d";
+"a11y_cell_valid" = "Coup valide, valeur %d";
+"a11y_cell_visited" = "Case visitée, valeur %d";
+"a11y_undo_button" = "Annuler le dernier coup";
+"a11y_restart_button" = "Recommencer le puzzle";
+"a11y_finish_button" = "Terminer et soumettre le chemin";
+"a11y_share_button" = "Partager les résultats";
+
+// MARK: - Give Up Dialog
+"give_up_title" = "Abandonner ?";
+"give_up_message" = "Le chemin parfait sera révélé et vous ne pourrez pas réessayer ce puzzle aujourd'hui.";
+"give_up_confirm" = "Révéler le Chemin";
+"give_up_cancel" = "Annuler";
+
+// MARK: - Unlock Modal
+"unlock_congrats" = "FÉLICITATIONS !";
+"unlock_mastered_5x5" = "Vous avez maîtrisé la grille 5×5 ! Voulez-vous essayer la grille 7×7 plus difficile ?";
+"unlock_share_results" = "PARTAGER LES RÉSULTATS";
+"unlock_not_now" = "PAS MAINTENANT";
+"unlock_lets_go" = "C'EST PARTI !";
+
+// MARK: - Archive Modal
+"archive_completed_today" = "Vous avez terminé le 7×7 d'aujourd'hui ! Essayez un puzzle des jours précédents :";
+"archive_title" = "📅 ARCHIVE DES PUZZLES";
+"archive_close" = "Fermer";

@@ -1,0 +1,257 @@
+/* 
+  Localizable.strings (Simplified Chinese)
+  PathGame
+*/
+
+// MARK: - App
+"app_name" = "Path";
+"app_tagline" = "每日益智游戏";
+
+// MARK: - Navigation
+"nav_play" = "游戏";
+"nav_stats" = "统计";
+"nav_friends" = "好友";
+"nav_settings" = "设置";
+
+// MARK: - Game Screen
+"game_title" = "Path";
+"game_daily_puzzle" = "每日谜题";
+"game_path_length" = "路径";
+"game_optimal" = "最优";
+"game_score" = "得分";
+"game_calculating" = "计算中...";
+"game_valid_moves" = "%d个有效步";
+"game_no_valid_moves" = "无有效步 - 点击完成！";
+
+// MARK: - Game Actions
+"action_undo" = "撤销";
+"action_restart" = "重新开始";
+"action_finish" = "完成";
+"action_share" = "分享";
+"action_give_up" = "放弃";
+
+// MARK: - Results
+"result_perfect" = "完美！⭐";
+"result_amazing" = "太棒了！🎯";
+"result_great" = "很好！✨";
+"result_good" = "不错！👍";
+"result_complete" = "完成！🎮";
+"result_your_path" = "你的路径";
+"result_optimal_path" = "最优路径";
+"result_try_other_size" = "尝试 %@";
+"result_close" = "关闭";
+
+// MARK: - Results Subtitles
+"result_subtitle_perfect" = "你找到了最优路径！";
+"result_subtitle_amazing" = "距离完美只差一点！";
+"result_subtitle_great" = "干得好！";
+"result_subtitle_default" = "继续练习！";
+
+// MARK: - Stats Screen
+"stats_title" = "统计数据";
+"stats_overview" = "概览";
+"stats_achievements" = "成就";
+"stats_history" = "历史";
+"stats_games_played" = "游戏次数";
+"stats_perfect_games" = "完美次数";
+"stats_current_streak" = "当前连胜";
+"stats_best_streak" = "最佳连胜";
+"stats_average_score" = "平均得分";
+"stats_perfect_rate" = "完美率";
+"stats_no_games" = "还没有游戏记录";
+"stats_start_playing" = "开始游戏查看你的统计！";
+"stats_5x5_stats" = "5×5 统计";
+"stats_7x7_stats" = "7×7 统计";
+"stats_games" = "游戏";
+"stats_perfect" = "完美";
+"stats_avg" = "平均";
+"stats_distribution" = "得分分布";
+"stats_score_distribution" = "得分分布";
+"stats_games_distribution" = "游戏分布";
+"stats_achievement_progress" = "成就进度";
+"stats_all" = "全部";
+"stats_no_history" = "暂无历史";
+"stats_complete_to_see_history" = "完成谜题查看历史";
+"game_size_5x5" = "5×5 网格";
+"game_size_7x7" = "7×7 网格";
+
+// MARK: - Friends Screen
+"friends_title" = "好友";
+"friends_activity" = "动态";
+"friends_challenges" = "挑战";
+"friends_today_leaderboard" = "今日排行榜";
+"friends_all_friends" = "所有好友";
+"friends_no_friends" = "还没有好友";
+"friends_add_friends_desc" = "添加好友来比较分数并竞争";
+"friends_add_friends" = "添加好友";
+"friends_no_recent_games" = "没有最近的游戏";
+"friends_challenge" = "挑战";
+"friends_remove" = "移除";
+"friends_no_activity" = "没有最近动态";
+"friends_no_challenges" = "没有待处理的挑战";
+"friends_challenge_desc" = "完成谜题后挑战好友";
+"friends_challenged_you" = "%@ 向你发起挑战！";
+"friends_their_score" = "他们的得分：%d/%d";
+"friends_accept" = "接受";
+"friends_decline" = "拒绝";
+"friends_game_center_prompt" = "登录 Game Center";
+"friends_game_center_desc" = "连接 Game Center 添加好友并比较分数";
+"friends_sign_in" = "登录";
+"friends_open_game_center" = "打开 Game Center";
+"friends_from_game_center" = "Game Center 好友将自动显示";
+
+// MARK: - Settings Screen
+"settings_title" = "设置";
+"settings_game" = "游戏";
+"settings_default_grid" = "默认网格大小";
+"settings_show_optimal" = "显示最优路径";
+"settings_show_optimal_desc" = "完成后显示";
+"settings_feedback" = "反馈";
+"settings_haptic" = "触觉反馈";
+"settings_haptic_desc" = "交互时振动";
+"settings_sound" = "音效";
+"settings_sound_desc" = "游戏时播放声音";
+"settings_notifications" = "通知";
+"settings_daily_reminder" = "每日提醒";
+"settings_daily_reminder_desc" = "获取游戏提醒";
+"settings_reminder_time" = "提醒时间";
+"settings_appearance" = "外观";
+"settings_theme" = "主题";
+"settings_theme_system" = "跟随系统";
+"settings_theme_light" = "浅色";
+"settings_theme_dark" = "深色";
+"settings_high_contrast" = "高对比度";
+"settings_high_contrast_desc" = "增加颜色对比度";
+"settings_data" = "数据";
+"settings_sync_now" = "立即同步";
+"settings_reset_stats" = "重置所有统计";
+"settings_reset_stats_desc" = "清除所有游戏历史";
+"settings_about" = "关于";
+"settings_how_to_play" = "游戏说明";
+"settings_about_path" = "关于 Path";
+"settings_visit_website" = "访问网站";
+"settings_version" = "版本 %@";
+"settings_game_center" = "Game Center";
+"settings_signed_in" = "已登录：%@";
+"settings_not_signed_in" = "未登录";
+"settings_game_center_dashboard" = "Game Center 仪表板";
+
+// MARK: - Reset Alert
+"reset_title" = "重置所有统计？";
+"reset_message" = "这将永久删除所有游戏历史、成就和统计数据。此操作无法撤销。";
+"reset_cancel" = "取消";
+"reset_confirm" = "重置";
+
+// MARK: - Tutorial / Help
+"help_title" = "游戏说明";
+"help_done" = "完成";
+"help_page1_title" = "找到路径";
+"help_page1_desc" = "你的目标是从中心格子开始，找到穿过数字网格的最长路径。";
+"help_page1_detail1" = "从高亮的中心格子开始";
+"help_page1_detail2" = "找到尽可能长的路径";
+"help_page1_detail3" = "每天都有新谜题等你";
+"help_page2_title" = "移动规则";
+"help_page2_desc" = "移动到任何相邻格子（上、下、左、右或对角线），该格子的值必须在当前格子值的±1范围内。";
+"help_page2_detail1" = "8个可能的移动方向";
+"help_page2_detail2" = "目标值必须是当前值±1";
+"help_page2_detail3" = "每个格子只能使用一次";
+"help_page3_title" = "追求完美";
+"help_page3_desc" = "尝试达到或超过为每个谜题计算的最优路径长度。";
+"help_page3_detail1" = "完成后显示最优路径";
+"help_page3_detail2" = "达到最优长度获得⭐";
+"help_page3_detail3" = "追踪统计并保持连胜";
+"help_page4_title" = "竞争与分享";
+"help_page4_desc" = "与好友联系，在排行榜上比较每日得分。";
+"help_page4_detail1" = "登录 Game Center";
+"help_page4_detail2" = "挑战好友超越你的得分";
+"help_page4_detail3" = "在社交媒体上分享结果";
+"help_ready_title" = "准备就绪！";
+"help_ready_desc" = "开始游戏，看看你能走多远。祝你好运！";
+"help_start_playing" = "开始游戏";
+
+// MARK: - Onboarding
+"onboarding_welcome" = "欢迎来到 Path";
+"onboarding_welcome_desc" = "每天一个新谜题";
+"onboarding_find_way" = "找到你的路";
+"onboarding_find_way_desc" = "用简单的规则\n穿越数字";
+"onboarding_challenge" = "挑战好友";
+"onboarding_challenge_desc" = "比较分数\n攀登排行榜";
+"onboarding_begin" = "开始吧";
+"onboarding_ready" = "准备好找到你的路了吗？";
+"onboarding_play_now" = "立即游戏";
+"onboarding_next" = "下一步";
+"onboarding_skip" = "跳过";
+"onboarding_get_started" = "开始";
+
+// MARK: - Leaderboard
+"leaderboard_title" = "排行榜";
+"leaderboard_5x5_best" = "5x5 最佳";
+"leaderboard_7x7_best" = "7x7 最佳";
+"leaderboard_streak" = "连胜";
+"leaderboard_perfects" = "完美";
+"leaderboard_today" = "今天";
+"leaderboard_week" = "本周";
+"leaderboard_all_time" = "历史最佳";
+"leaderboard_your_rank" = "你的排名";
+"leaderboard_no_entries" = "暂无记录";
+"leaderboard_be_first" = "成为第一个设置分数的人！";
+"leaderboard_sign_in_prompt" = "查看排行榜并与全球玩家竞争";
+"leaderboard_you" = "你";
+
+// MARK: - About
+"about_title" = "关于";
+"about_created_by" = "创建者";
+"about_built_with" = "技术支持";
+"about_website" = "网站";
+
+// MARK: - Share
+"share_title" = "Path %@";
+"share_play_at" = "游戏地址：pathgame.nagusamecs.com";
+
+// MARK: - Tooltips / Walkthrough
+"tooltip_undo" = "撤销上一步";
+"tooltip_restart" = "从中心重新开始";
+"tooltip_finish" = "完成后提交路径";
+"tooltip_share" = "分享你的结果";
+"tooltip_grid_toggle" = "切换 5×5 和 7×7 网格";
+"tooltip_help" = "学习游戏规则";
+"tooltip_settings" = "调整游戏设置";
+
+// MARK: - Grid Legend
+"legend_current" = "当前";
+"legend_valid" = "有效移动";
+"legend_visited" = "已访问";
+"legend_start" = "起点";
+
+// MARK: - Help Example
+"help_example_current" = "当前";
+"help_legend_current" = "当前 (5)";
+"help_legend_valid" = "有效 (4 或 6)";
+
+// MARK: - Accessibility
+"a11y_cell_value" = "格子值 %d";
+"a11y_cell_current" = "当前格子，值 %d";
+"a11y_cell_valid" = "有效移动，值 %d";
+"a11y_cell_visited" = "已访问格子，值 %d";
+"a11y_undo_button" = "撤销上一步";
+"a11y_restart_button" = "重新开始谜题";
+"a11y_finish_button" = "完成并提交路径";
+"a11y_share_button" = "分享结果";
+
+// MARK: - Give Up Dialog
+"give_up_title" = "放弃？";
+"give_up_message" = "将显示最优路径，今天无法再次挑战此谜题。";
+"give_up_confirm" = "显示路径";
+"give_up_cancel" = "取消";
+
+// MARK: - Unlock Modal
+"unlock_congrats" = "恭喜！";
+"unlock_mastered_5x5" = "你已经掌握了5×5网格！想挑战更难的7×7网格吗？";
+"unlock_share_results" = "分享结果";
+"unlock_not_now" = "暂时不要";
+"unlock_lets_go" = "开始挑战！";
+
+// MARK: - Archive Modal
+"archive_completed_today" = "你已完成今天的7×7！试试之前的谜题：";
+"archive_title" = "📅 谜题存档";
+"archive_close" = "关闭";

@@ -1,0 +1,461 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		// App files
+		APP001 /* PathGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC001; };
+		APP002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC002; };
+		APP003 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC003; };
+		APP004 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC004; };
+		APP005 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC005; };
+		APP006 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC006; };
+		APP007 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC007; };
+		APP008 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC008; };
+		APP009 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC009; };
+		APP010 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC010; };
+		APP011 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC011; };
+		APP012 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC012; };
+		APP013 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC013; };
+		
+		// Models
+		MOD001 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL001; };
+		MOD002 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL002; };
+		MOD003 /* GameStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL003; };
+		MOD004 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL004; };
+		MOD005 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL005; };
+		
+		// ViewModels
+		VM001 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = VWM001; };
+		VM002 /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = VWM002; };
+		VM003 /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = VWM003; };
+		
+		// Services
+		SVC001 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SVS001; };
+		SVC002 /* GameCenterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SVS002; };
+		SVC003 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SVS003; };
+		SVC004 /* ShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SVS004; };
+		SVC005 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SVS005; };
+		
+		// Resources
+		RES001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = RSC001; };
+		RES002 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = RSC002; };
+		
+		// Localizations
+		LOC001 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = LCZ001; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		PRD001 /* PathGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PathGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		
+		// Source files
+		SRC001 /* PathGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathGameApp.swift; sourceTree = "<group>"; };
+		SRC002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		SRC003 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		SRC004 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		SRC005 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		SRC006 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		SRC007 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		SRC008 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		SRC009 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		SRC010 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		SRC011 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		SRC012 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		SRC013 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
+		
+		// Models
+		MDL001 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		MDL002 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		MDL003 /* GameStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStats.swift; sourceTree = "<group>"; };
+		MDL004 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
+		MDL005 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		
+		// ViewModels
+		VWM001 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		VWM002 /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
+		VWM003 /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
+		
+		// Services
+		SVS001 /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
+		SVS002 /* GameCenterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterService.swift; sourceTree = "<group>"; };
+		SVS003 /* HapticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsService.swift; sourceTree = "<group>"; };
+		SVS004 /* ShareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareService.swift; sourceTree = "<group>"; };
+		SVS005 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		
+		// Resources
+		RSC001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		RSC002 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		
+		// Entitlements
+		ENT001 /* PathGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PathGame.entitlements; sourceTree = "<group>"; };
+		
+		// Localizations
+		LCZ001 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Resources/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		LCZ002 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Resources/es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		LCZ003 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Resources/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		LCZ004 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Resources/de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		LCZ005 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = Resources/ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		LCZ006 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "Resources/zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		GRP001 = {
+			isa = PBXGroup;
+			children = (
+				GRP002 /* PathGame */,
+				GRP010 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		GRP002 /* PathGame */ = {
+			isa = PBXGroup;
+			children = (
+				SRC001 /* PathGameApp.swift */,
+				SRC002 /* ContentView.swift */,
+				GRP003 /* Views */,
+				GRP004 /* Models */,
+				GRP005 /* ViewModels */,
+				GRP006 /* Services */,
+				GRP007 /* Resources */,
+				ENT001 /* PathGame.entitlements */,
+			);
+			path = PathGame;
+			sourceTree = "<group>";
+		};
+		GRP003 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				SRC003 /* GameView.swift */,
+				SRC004 /* GridView.swift */,
+				SRC005 /* CellView.swift */,
+				SRC006 /* StatsView.swift */,
+				SRC007 /* FriendsView.swift */,
+				SRC008 /* SettingsView.swift */,
+				SRC009 /* HelpView.swift */,
+				SRC010 /* LeaderboardView.swift */,
+				SRC011 /* OnboardingView.swift */,
+				SRC012 /* SplashView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		GRP004 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				MDL001 /* GameState.swift */,
+				MDL002 /* Player.swift */,
+				MDL003 /* GameStats.swift */,
+				MDL004 /* Achievement.swift */,
+				MDL005 /* Friend.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		GRP005 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				VWM001 /* GameViewModel.swift */,
+				VWM002 /* StatsViewModel.swift */,
+				VWM003 /* FriendsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		GRP006 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				SVS001 /* CloudKitService.swift */,
+				SVS002 /* GameCenterService.swift */,
+				SVS003 /* HapticsService.swift */,
+				SVS004 /* ShareService.swift */,
+				SVS005 /* NotificationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		GRP007 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				RSC001 /* Assets.xcassets */,
+				GRP008 /* Preview Content */,
+				SRC013 /* LocalizedStrings.swift */,
+				LCZ001 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		GRP008 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				RSC002 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		GRP010 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				PRD001 /* PathGame.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		TGT001 /* PathGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFG003 /* Build configuration list for PBXNativeTarget "PathGame" */;
+			buildPhases = (
+				PHS001 /* Sources */,
+				PHS002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PathGame;
+			productName = PathGame;
+			productReference = PRD001 /* PathGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		PRJ001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					TGT001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = CFG001 /* Build configuration list for PBXProject "PathGame" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				es,
+				fr,
+				de,
+				ja,
+				"zh-Hans",
+			);
+			mainGroup = GRP001;
+			productRefGroup = GRP010 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				TGT001 /* PathGame */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		PHS001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				APP001,
+				APP002,
+				APP003,
+				APP004,
+				APP005,
+				APP006,
+				APP007,
+				APP008,
+				APP009,
+				APP010,
+				APP011,
+				APP012,
+				APP013,
+				MOD001,
+				MOD002,
+				MOD003,
+				MOD004,
+				MOD005,
+				VM001,
+				VM002,
+				VM003,
+				SVC001,
+				SVC002,
+				SVC003,
+				SVC004,
+				SVC005,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		PHS002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				RES001,
+				RES002,
+				LOC001,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CFG002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CFG004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		CFG005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PathGame/PathGame.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PathGame/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Path;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nagusamecs.PathGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CFG006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PathGame/PathGame.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PathGame/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Path;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nagusamecs.PathGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CFG001 /* Build configuration list for PBXProject "PathGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFG002 /* Debug */,
+				CFG004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFG003 /* Build configuration list for PBXNativeTarget "PathGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFG005 /* Debug */,
+				CFG006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = PRJ001 /* Project object */;
+}

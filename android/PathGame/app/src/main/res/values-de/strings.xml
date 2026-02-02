@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">Path</string>
+    <string name="app_tagline">Ein Tägliches Puzzlespiel</string>
+
+    <!-- Navigation -->
+    <string name="nav_play">Spielen</string>
+    <string name="nav_stats">Statistik</string>
+    <string name="nav_friends">Freunde</string>
+    <string name="nav_settings">Einstellungen</string>
+
+    <!-- Game Screen -->
+    <string name="game_title">Path</string>
+    <string name="game_daily_puzzle">Tägliches Puzzle</string>
+    <string name="game_path_length">Pfad</string>
+    <string name="game_optimal">Optimal</string>
+    <string name="game_score">Punkte</string>
+    <string name="game_calculating">Berechne…</string>
+    <string name="game_valid_moves">%d gültige Züge</string>
+    <string name="game_no_valid_moves">Keine Züge - tippe auf Fertig!</string>
+
+    <!-- Game Actions -->
+    <string name="action_undo">Rückgängig</string>
+    <string name="action_restart">Neustart</string>
+    <string name="action_finish">Fertig</string>
+    <string name="action_share">Teilen</string>
+    <string name="action_give_up">Aufgeben</string>
+
+    <!-- Results -->
+    <string name="result_perfect">Perfekt! ⭐</string>
+    <string name="result_amazing">Erstaunlich! 🎯</string>
+    <string name="result_great">Super! ✨</string>
+    <string name="result_good">Gut! 👍</string>
+    <string name="result_complete">Geschafft! 🎮</string>
+    <string name="result_your_path">Dein Pfad</string>
+    <string name="result_optimal_path">Optimaler Pfad</string>
+    <string name="result_try_other_size">Versuche %s</string>
+    <string name="result_close">Schließen</string>
+
+    <!-- Result Subtitles -->
+    <string name="result_subtitle_perfect">Du hast den optimalen Pfad gefunden!</string>
+    <string name="result_subtitle_amazing">So nah an der Perfektion!</string>
+    <string name="result_subtitle_great">Gute Arbeit!</string>
+    <string name="result_subtitle_default">Weiter üben!</string>
+
+    <!-- Stats Screen -->
+    <string name="stats_title">Statistiken</string>
+    <string name="stats_overview">Übersicht</string>
+    <string name="stats_achievements">Erfolge</string>
+    <string name="stats_history">Verlauf</string>
+    <string name="stats_games_played">Gespielte Spiele</string>
+    <string name="stats_perfect_games">Perfekte Spiele</string>
+    <string name="stats_current_streak">Aktuelle Serie</string>
+    <string name="stats_best_streak">Beste Serie</string>
+    <string name="stats_average_score">Durchschnitt</string>
+    <string name="stats_perfect_rate">Perfektionsrate</string>
+    <string name="stats_no_games">Noch keine Spiele</string>
+    <string name="stats_start_playing">Spiele, um deine Statistik zu sehen!</string>
+    <string name="stats_5x5_stats">5×5 Statistik</string>
+    <string name="stats_7x7_stats">7×7 Statistik</string>
+    <string name="stats_games">Spiele</string>
+    <string name="stats_perfect">Perfekt</string>
+    <string name="stats_avg">Ø</string>
+    <string name="stats_distribution">Punkteverteilung</string>
+    <string name="stats_comparison">5×5 vs 7×7</string>
+    <string name="stats_games_distribution">Spieleverteilung</string>
+    <string name="stats_5x5_games">5×5: %d Spiele</string>
+    <string name="stats_7x7_games">7×7: %d Spiele</string>
+    <string name="stats_play_distribution">Spiele, um die Verteilung zu sehen</string>
+    <string name="game_size_5x5">5×5 Raster</string>
+    <string name="game_size_7x7">7×7 Raster</string>
+
+    <!-- Friends Screen -->
+    <string name="friends_title">Freunde</string>
+    <string name="friends_activity">Aktivität</string>
+    <string name="friends_challenges">Herausforderungen</string>
+    <string name="friends_today_leaderboard">Heutige Bestenliste</string>
+    <string name="friends_all_friends">Alle Freunde</string>
+    <string name="friends_no_friends">Noch keine Freunde</string>
+    <string name="friends_add_friends_desc">Füge Freunde hinzu, um Punkte zu vergleichen</string>
+    <string name="friends_add_friends">Freunde Hinzufügen</string>
+    <string name="friends_no_recent_games">Keine aktuellen Spiele</string>
+    <string name="friends_challenge">Herausfordern</string>
+    <string name="friends_remove">Entfernen</string>
+    <string name="friends_no_activity">Keine aktuelle Aktivität</string>
+    <string name="friends_no_challenges">Keine offenen Herausforderungen</string>
+    <string name="friends_challenge_desc">Fordere Freunde nach einem Puzzle heraus</string>
+    <string name="friends_challenged_you">%s hat dich herausgefordert!</string>
+    <string name="friends_their_score">Ihr Ergebnis: %1$d/%2$d</string>
+    <string name="friends_accept">Annehmen</string>
+    <string name="friends_decline">Ablehnen</string>
+    <string name="friends_sign_in_prompt">Bei Google Play Games anmelden</string>
+    <string name="friends_sign_in_desc">Verbinde dich mit Google Play Games für Freunde</string>
+    <string name="friends_sign_in">Anmelden</string>
+    <string name="friends_open_play_games">Play Games Öffnen</string>
+    <string name="friends_from_play_games">Google Play Games Freunde erscheinen automatisch</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_game">Spiel</string>
+    <string name="settings_default_grid">Standard-Rastergröße</string>
+    <string name="settings_show_optimal">Optimalen Pfad Zeigen</string>
+    <string name="settings_show_optimal_desc">Nach Abschluss anzeigen</string>
+    <string name="settings_feedback">Feedback</string>
+    <string name="settings_haptic">Haptisches Feedback</string>
+    <string name="settings_haptic_desc">Vibration bei Interaktionen</string>
+    <string name="settings_sound">Soundeffekte</string>
+    <string name="settings_sound_desc">Töne während des Spiels</string>
+    <string name="settings_notifications">Benachrichtigungen</string>
+    <string name="settings_daily_reminder">Tägliche Erinnerung</string>
+    <string name="settings_daily_reminder_desc">Erinnerung zum Spielen</string>
+    <string name="settings_reminder_time">Erinnerungszeit</string>
+    <string name="settings_appearance">Aussehen</string>
+    <string name="settings_theme">Design</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Hell</string>
+    <string name="settings_theme_dark">Dunkel</string>
+    <string name="settings_high_contrast">Hoher Kontrast</string>
+    <string name="settings_high_contrast_desc">Farbkontrast erhöhen</string>
+    <string name="settings_data">Daten</string>
+    <string name="settings_sync_now">Jetzt Synchronisieren</string>
+    <string name="settings_reset_stats">Statistik Zurücksetzen</string>
+    <string name="settings_reset_stats_desc">Gesamten Verlauf löschen</string>
+    <string name="settings_about">Über</string>
+    <string name="settings_how_to_play">Spielanleitung</string>
+    <string name="settings_about_path">Über Path</string>
+    <string name="settings_visit_website">Website Besuchen</string>
+    <string name="settings_version">Version %s</string>
+    <string name="settings_play_games">Google Play Games</string>
+    <string name="settings_signed_in">Angemeldet als %s</string>
+    <string name="settings_not_signed_in">Nicht angemeldet</string>
+    <string name="settings_play_games_dashboard">Play Games Dashboard</string>
+
+    <!-- Reset Alert -->
+    <string name="reset_title">Alles Zurücksetzen?</string>
+    <string name="reset_message">Dies löscht dauerhaft deinen gesamten Spielverlauf, Erfolge und Statistiken. Diese Aktion kann nicht rückgängig gemacht werden.</string>
+    <string name="reset_cancel">Abbrechen</string>
+    <string name="reset_confirm">Zurücksetzen</string>
+
+    <!-- Tutorial / Help -->
+    <string name="help_title">Spielanleitung</string>
+    <string name="help_done">Fertig</string>
+    <string name="help_page1_title">Finde den Pfad</string>
+    <string name="help_page1_desc">Dein Ziel ist es, den längsten möglichen Pfad durch ein Zahlenraster zu finden, beginnend von der mittleren Zelle.</string>
+    <string name="help_page1_detail1">Starte von der markierten mittleren Zelle</string>
+    <string name="help_page1_detail2">Finde den längstmöglichen Pfad</string>
+    <string name="help_page1_detail3">Jeden Tag ein neues Puzzle</string>
+    <string name="help_page2_title">Bewegungsregeln</string>
+    <string name="help_page2_desc">Bewege dich zu einer benachbarten Zelle, die einen Wert von ±1 deiner aktuellen Zelle hat.</string>
+    <string name="help_page2_detail1">8 mögliche Richtungen</string>
+    <string name="help_page2_detail2">Zielwert muss aktuell ±1 sein</string>
+    <string name="help_page2_detail3">Jede Zelle kann nur einmal benutzt werden</string>
+    <string name="help_page3_title">Erreiche Perfektion</string>
+    <string name="help_page3_desc">Versuche, die für jedes Puzzle berechnete optimale Pfadlänge zu erreichen oder zu übertreffen.</string>
+    <string name="help_page3_detail1">Optimaler Pfad wird nach Abschluss gezeigt</string>
+    <string name="help_page3_detail2">Erhalte einen ⭐ für den optimalen Pfad</string>
+    <string name="help_page3_detail3">Verfolge deine Statistik und baue Serien</string>
+    <string name="help_page4_title">Wetteifere &amp; Teile</string>
+    <string name="help_page4_desc">Verbinde dich mit Freunden und vergleiche deine täglichen Ergebnisse in der Bestenliste.</string>
+    <string name="help_page4_detail1">Melde dich bei Google Play Games an</string>
+    <string name="help_page4_detail2">Fordere Freunde heraus</string>
+    <string name="help_page4_detail3">Teile deine Ergebnisse in sozialen Medien</string>
+    <string name="help_ready_title">Du Bist Bereit!</string>
+    <string name="help_ready_desc">Beginne zu spielen und sieh, wie weit du kommst. Viel Glück!</string>
+    <string name="help_start_playing">Spielen Starten</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_welcome">Willkommen bei Path</string>
+    <string name="onboarding_welcome_desc">Jeden Tag ein neues Puzzle</string>
+    <string name="onboarding_find_way">Finde Deinen Weg</string>
+    <string name="onboarding_find_way_desc">Navigiere durch Zahlen\nmit einfachen Regeln</string>
+    <string name="onboarding_challenge">Fordere Freunde</string>
+    <string name="onboarding_challenge_desc">Vergleiche Punkte und\nklettere in der Bestenliste</string>
+    <string name="onboarding_begin">Los Geht\'s</string>
+    <string name="onboarding_ready">Bereit, deinen Pfad zu finden?</string>
+    <string name="onboarding_play_now">Jetzt Spielen</string>
+    <string name="onboarding_next">Weiter</string>
+    <string name="onboarding_skip">Überspringen</string>
+    <string name="onboarding_get_started">Loslegen</string>
+
+    <!-- Leaderboard -->
+    <string name="leaderboard_title">Bestenliste</string>
+    <string name="leaderboard_5x5_best">5x5 Beste</string>
+    <string name="leaderboard_7x7_best">7x7 Beste</string>
+    <string name="leaderboard_streak">Serie</string>
+    <string name="leaderboard_perfects">Perfekte</string>
+    <string name="leaderboard_today">Heute</string>
+    <string name="leaderboard_week">Woche</string>
+    <string name="leaderboard_all_time">Alle Zeiten</string>
+    <string name="leaderboard_your_rank">Dein Rang</string>
+    <string name="leaderboard_no_entries">Keine Einträge</string>
+    <string name="leaderboard_be_first">Sei der Erste mit einer Punktzahl!</string>
+    <string name="leaderboard_sign_in_prompt">Bestenlisten sehen und mit Spielern weltweit konkurrieren</string>
+    <string name="leaderboard_you">DU</string>
+
+    <!-- About -->
+    <string name="about_title">Über</string>
+    <string name="about_created_by">Erstellt von</string>
+    <string name="about_built_with">Gebaut mit</string>
+    <string name="about_website">Website</string>
+
+    <!-- Share -->
+    <string name="share_title">Path %s</string>
+    <string name="share_play_at">Spielen auf: pathgame.nagusamecs.com</string>
+
+    <!-- Tooltips / Walkthrough -->
+    <string name="tooltip_undo">Letzten Zug rückgängig machen</string>
+    <string name="tooltip_restart">Von der Mitte neu starten</string>
+    <string name="tooltip_finish">Deinen Pfad einreichen</string>
+    <string name="tooltip_share">Deine Ergebnisse teilen</string>
+    <string name="tooltip_grid_toggle">Zwischen 5×5 und 7×7 Rastern wechseln</string>
+    <string name="tooltip_help">Spielanleitung lernen</string>
+    <string name="tooltip_settings">Spieleinstellungen anpassen</string>
+    <string name="tooltip_give_up">Aufgeben und optimalen Pfad zeigen</string>
+
+    <!-- Give Up Dialog -->
+    <string name="give_up_title">Aufgeben?</string>
+    <string name="give_up_message">Der optimale Pfad wird aufgedeckt und du kannst dieses Puzzle heute nicht erneut versuchen.</string>
+    <string name="give_up_confirm">Pfad Zeigen</string>
+    <string name="give_up_cancel">Abbrechen</string>
+
+    <!-- Grid Legend -->
+    <string name="legend_current">Aktuell</string>
+    <string name="legend_valid">Gültiger Zug</string>
+    <string name="legend_visited">Besucht</string>
+    <string name="legend_start">Start</string>
+
+    <!-- Help Example -->
+    <string name="help_example_current">Aktuell</string>
+    <string name="help_legend_current">Aktuell (5)</string>
+    <string name="help_legend_valid">Gültig (4 oder 6)</string>
+
+    <!-- Accessibility -->
+    <string name="a11y_cell_value">Zellenwert %d</string>
+    <string name="a11y_cell_current">Aktuelle Zelle, Wert %d</string>
+    <string name="a11y_cell_valid">Gültiger Zug, Wert %d</string>
+    <string name="a11y_cell_visited">Besuchte Zelle, Wert %d</string>
+    <string name="a11y_undo_button">Letzten Zug rückgängig</string>
+    <string name="a11y_restart_button">Puzzle neu starten</string>
+    <string name="a11y_finish_button">Pfad beenden und einreichen</string>
+    <string name="a11y_share_button">Ergebnisse teilen</string>
+    <string name="a11y_give_up_button">Aufgeben und optimalen Pfad zeigen</string>
+
+    <!-- Content Descriptions -->
+    <string name="cd_undo">Rückgängig</string>
+    <string name="cd_restart">Neustart</string>
+    <string name="cd_finish">Fertig</string>
+    <string name="cd_share">Teilen</string>
+    <string name="cd_help">Hilfe</string>
+    <string name="cd_settings">Einstellungen</string>
+    <string name="cd_back">Zurück</string>
+    <string name="cd_close">Schließen</string>
+</resources>

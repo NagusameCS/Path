@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">Path</string>
+    <string name="app_tagline">毎日のパズルゲーム</string>
+
+    <!-- Navigation -->
+    <string name="nav_play">プレイ</string>
+    <string name="nav_stats">統計</string>
+    <string name="nav_friends">フレンド</string>
+    <string name="nav_settings">設定</string>
+
+    <!-- Game Screen -->
+    <string name="game_title">Path</string>
+    <string name="game_daily_puzzle">今日のパズル</string>
+    <string name="game_path_length">パス</string>
+    <string name="game_optimal">最適</string>
+    <string name="game_score">スコア</string>
+    <string name="game_calculating">計算中…</string>
+    <string name="game_valid_moves">%d個の有効な手</string>
+    <string name="game_no_valid_moves">有効な手なし - 完了をタップ！</string>
+
+    <!-- Game Actions -->
+    <string name="action_undo">戻す</string>
+    <string name="action_restart">リスタート</string>
+    <string name="action_finish">完了</string>
+    <string name="action_share">共有</string>
+    <string name="action_give_up">ギブアップ</string>
+
+    <!-- Results -->
+    <string name="result_perfect">パーフェクト! ⭐</string>
+    <string name="result_amazing">素晴らしい! 🎯</string>
+    <string name="result_great">グレート! ✨</string>
+    <string name="result_good">グッド! 👍</string>
+    <string name="result_complete">クリア! 🎮</string>
+    <string name="result_your_path">あなたのパス</string>
+    <string name="result_optimal_path">最適パス</string>
+    <string name="result_try_other_size">%sを試す</string>
+    <string name="result_close">閉じる</string>
+
+    <!-- Result Subtitles -->
+    <string name="result_subtitle_perfect">最適なパスを見つけました！</string>
+    <string name="result_subtitle_amazing">完璧まであと一歩！</string>
+    <string name="result_subtitle_great">よくできました！</string>
+    <string name="result_subtitle_default">練習を続けよう！</string>
+
+    <!-- Stats Screen -->
+    <string name="stats_title">統計</string>
+    <string name="stats_overview">概要</string>
+    <string name="stats_achievements">実績</string>
+    <string name="stats_history">履歴</string>
+    <string name="stats_games_played">プレイ回数</string>
+    <string name="stats_perfect_games">パーフェクト回数</string>
+    <string name="stats_current_streak">現在の連続記録</string>
+    <string name="stats_best_streak">最高連続記録</string>
+    <string name="stats_average_score">平均スコア</string>
+    <string name="stats_perfect_rate">パーフェクト率</string>
+    <string name="stats_no_games">まだプレイしていません</string>
+    <string name="stats_start_playing">プレイして統計を見よう！</string>
+    <string name="stats_5x5_stats">5×5 統計</string>
+    <string name="stats_7x7_stats">7×7 統計</string>
+    <string name="stats_games">ゲーム</string>
+    <string name="stats_perfect">完璧</string>
+    <string name="stats_avg">平均</string>
+    <string name="stats_distribution">スコア分布</string>
+    <string name="stats_comparison">5×5 vs 7×7</string>
+    <string name="stats_games_distribution">ゲーム分布</string>
+    <string name="stats_5x5_games">5×5: %d ゲーム</string>
+    <string name="stats_7x7_games">7×7: %d ゲーム</string>
+    <string name="stats_play_distribution">プレイして分布を見よう</string>
+    <string name="game_size_5x5">5×5 グリッド</string>
+    <string name="game_size_7x7">7×7 グリッド</string>
+
+    <!-- Friends Screen -->
+    <string name="friends_title">フレンド</string>
+    <string name="friends_activity">アクティビティ</string>
+    <string name="friends_challenges">チャレンジ</string>
+    <string name="friends_today_leaderboard">今日のランキング</string>
+    <string name="friends_all_friends">すべてのフレンド</string>
+    <string name="friends_no_friends">まだフレンドがいません</string>
+    <string name="friends_add_friends_desc">フレンドを追加してスコアを比較しよう</string>
+    <string name="friends_add_friends">フレンドを追加</string>
+    <string name="friends_no_recent_games">最近のゲームなし</string>
+    <string name="friends_challenge">挑戦</string>
+    <string name="friends_remove">削除</string>
+    <string name="friends_no_activity">最近のアクティビティなし</string>
+    <string name="friends_no_challenges">保留中のチャレンジなし</string>
+    <string name="friends_challenge_desc">パズル完了後にフレンドに挑戦</string>
+    <string name="friends_challenged_you">%sがあなたに挑戦！</string>
+    <string name="friends_their_score">相手のスコア: %1$d/%2$d</string>
+    <string name="friends_accept">承諾</string>
+    <string name="friends_decline">辞退</string>
+    <string name="friends_sign_in_prompt">Google Play Gamesにサインイン</string>
+    <string name="friends_sign_in_desc">Google Play Gamesに接続してフレンドを追加</string>
+    <string name="friends_sign_in">サインイン</string>
+    <string name="friends_open_play_games">Play Gamesを開く</string>
+    <string name="friends_from_play_games">Google Play Gamesのフレンドが自動的に表示されます</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">設定</string>
+    <string name="settings_game">ゲーム</string>
+    <string name="settings_default_grid">デフォルトグリッドサイズ</string>
+    <string name="settings_show_optimal">最適パスを表示</string>
+    <string name="settings_show_optimal_desc">完了後に表示</string>
+    <string name="settings_feedback">フィードバック</string>
+    <string name="settings_haptic">触覚フィードバック</string>
+    <string name="settings_haptic_desc">操作時に振動</string>
+    <string name="settings_sound">サウンドエフェクト</string>
+    <string name="settings_sound_desc">ゲーム中に音を再生</string>
+    <string name="settings_notifications">通知</string>
+    <string name="settings_daily_reminder">毎日のリマインダー</string>
+    <string name="settings_daily_reminder_desc">プレイの通知を受け取る</string>
+    <string name="settings_reminder_time">リマインダー時間</string>
+    <string name="settings_appearance">外観</string>
+    <string name="settings_theme">テーマ</string>
+    <string name="settings_theme_system">システム</string>
+    <string name="settings_theme_light">ライト</string>
+    <string name="settings_theme_dark">ダーク</string>
+    <string name="settings_high_contrast">ハイコントラスト</string>
+    <string name="settings_high_contrast_desc">色のコントラストを上げる</string>
+    <string name="settings_data">データ</string>
+    <string name="settings_sync_now">今すぐ同期</string>
+    <string name="settings_reset_stats">統計をリセット</string>
+    <string name="settings_reset_stats_desc">すべての履歴を消去</string>
+    <string name="settings_about">情報</string>
+    <string name="settings_how_to_play">遊び方</string>
+    <string name="settings_about_path">Pathについて</string>
+    <string name="settings_visit_website">ウェブサイトを見る</string>
+    <string name="settings_version">バージョン %s</string>
+    <string name="settings_play_games">Google Play Games</string>
+    <string name="settings_signed_in">%sとしてサインイン中</string>
+    <string name="settings_not_signed_in">サインインしていません</string>
+    <string name="settings_play_games_dashboard">Play Gamesダッシュボード</string>
+
+    <!-- Reset Alert -->
+    <string name="reset_title">すべてリセット？</string>
+    <string name="reset_message">すべてのゲーム履歴、実績、統計が完全に削除されます。この操作は取り消せません。</string>
+    <string name="reset_cancel">キャンセル</string>
+    <string name="reset_confirm">リセット</string>
+
+    <!-- Tutorial / Help -->
+    <string name="help_title">遊び方</string>
+    <string name="help_done">完了</string>
+    <string name="help_page1_title">パスを見つける</string>
+    <string name="help_page1_desc">中央のセルから始めて、数字のグリッドを通る最長のパスを見つけることが目標です。</string>
+    <string name="help_page1_detail1">ハイライトされた中央のセルから開始</string>
+    <string name="help_page1_detail2">できるだけ長いパスを見つける</string>
+    <string name="help_page1_detail3">毎日新しいパズルが登場</string>
+    <string name="help_page2_title">移動ルール</string>
+    <string name="help_page2_desc">現在のセルの値の±1以内の値を持つ隣接セルに移動できます。</string>
+    <string name="help_page2_detail1">8方向に移動可能</string>
+    <string name="help_page2_detail2">目標値は現在値±1</string>
+    <string name="help_page2_detail3">各セルは一度だけ使用可能</string>
+    <string name="help_page3_title">完璧を目指す</string>
+    <string name="help_page3_desc">各パズルで計算された最適パス長に到達するか、それを超えることを目指してください。</string>
+    <string name="help_page3_detail1">最適パスは完了後に表示</string>
+    <string name="help_page3_detail2">最適パス達成で⭐獲得</string>
+    <string name="help_page3_detail3">統計を追跡して連続記録を作る</string>
+    <string name="help_page4_title">競争と共有</string>
+    <string name="help_page4_desc">フレンドとつながり、リーダーボードで毎日のスコアを比較しましょう。</string>
+    <string name="help_page4_detail1">Google Play Gamesにサインイン</string>
+    <string name="help_page4_detail2">フレンドにスコアを超えるよう挑戦</string>
+    <string name="help_page4_detail3">SNSで結果を共有</string>
+    <string name="help_ready_title">準備完了！</string>
+    <string name="help_ready_desc">プレイを始めて、どこまで行けるか見てみよう。頑張って！</string>
+    <string name="help_start_playing">プレイ開始</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_welcome">Pathへようこそ</string>
+    <string name="onboarding_welcome_desc">毎日新しいパズル</string>
+    <string name="onboarding_find_way">道を見つけよう</string>
+    <string name="onboarding_find_way_desc">シンプルなルールで\n数字を進む</string>
+    <string name="onboarding_challenge">フレンドに挑戦</string>
+    <string name="onboarding_challenge_desc">スコアを比較して\nランキングを上げよう</string>
+    <string name="onboarding_begin">始めよう</string>
+    <string name="onboarding_ready">パスを見つける準備はできた？</string>
+    <string name="onboarding_play_now">今すぐプレイ</string>
+    <string name="onboarding_next">次へ</string>
+    <string name="onboarding_skip">スキップ</string>
+    <string name="onboarding_get_started">スタート</string>
+
+    <!-- Leaderboard -->
+    <string name="leaderboard_title">リーダーボード</string>
+    <string name="leaderboard_5x5_best">5x5 ベスト</string>
+    <string name="leaderboard_7x7_best">7x7 ベスト</string>
+    <string name="leaderboard_streak">連続記録</string>
+    <string name="leaderboard_perfects">完璧</string>
+    <string name="leaderboard_today">今日</string>
+    <string name="leaderboard_week">今週</string>
+    <string name="leaderboard_all_time">全期間</string>
+    <string name="leaderboard_your_rank">あなたの順位</string>
+    <string name="leaderboard_no_entries">エントリーなし</string>
+    <string name="leaderboard_be_first">最初のスコアを設定しよう！</string>
+    <string name="leaderboard_sign_in_prompt">リーダーボードを見て世界中のプレイヤーと競争</string>
+    <string name="leaderboard_you">あなた</string>
+
+    <!-- About -->
+    <string name="about_title">情報</string>
+    <string name="about_created_by">制作</string>
+    <string name="about_built_with">技術</string>
+    <string name="about_website">ウェブサイト</string>
+
+    <!-- Share -->
+    <string name="share_title">Path %s</string>
+    <string name="share_play_at">プレイ: pathgame.nagusamecs.com</string>
+
+    <!-- Tooltips / Walkthrough -->
+    <string name="tooltip_undo">最後の手を戻す</string>
+    <string name="tooltip_restart">中央から再スタート</string>
+    <string name="tooltip_finish">パスを提出</string>
+    <string name="tooltip_share">結果を共有</string>
+    <string name="tooltip_grid_toggle">5×5と7×7グリッドを切り替え</string>
+    <string name="tooltip_help">遊び方を学ぶ</string>
+    <string name="tooltip_settings">ゲーム設定を調整</string>
+    <string name="tooltip_give_up">諦めて最適パスを表示</string>
+
+    <!-- Give Up Dialog -->
+    <string name="give_up_title">諦めますか？</string>
+    <string name="give_up_message">最適なパスが表示され、今日このパズルを再挑戦することはできません。</string>
+    <string name="give_up_confirm">パスを表示</string>
+    <string name="give_up_cancel">キャンセル</string>
+
+    <!-- Grid Legend -->
+    <string name="legend_current">現在</string>
+    <string name="legend_valid">有効な手</string>
+    <string name="legend_visited">訪問済み</string>
+    <string name="legend_start">スタート</string>
+    <!-- Help Example -->
+    <string name="help_example_current">現在</string>
+    <string name="help_legend_current">現在 (5)</string>
+    <string name="help_legend_valid">有効 (4 または 6)</string>
+    <!-- Accessibility -->
+    <string name="a11y_cell_value">セル値 %d</string>
+    <string name="a11y_cell_current">現在のセル、値 %d</string>
+    <string name="a11y_cell_valid">有効な手、値 %d</string>
+    <string name="a11y_cell_visited">訪問済みセル、値 %d</string>
+    <string name="a11y_undo_button">最後の手を戻す</string>
+    <string name="a11y_restart_button">パズルを再スタート</string>
+    <string name="a11y_finish_button">パスを完了して提出</string>
+    <string name="a11y_share_button">結果を共有</string>
+    <string name="a11y_give_up_button">諦めて最適パスを表示</string>
+
+    <!-- Content Descriptions -->
+    <string name="cd_undo">戻す</string>
+    <string name="cd_restart">リスタート</string>
+    <string name="cd_finish">完了</string>
+    <string name="cd_share">共有</string>
+    <string name="cd_help">ヘルプ</string>
+    <string name="cd_settings">設定</string>
+    <string name="cd_back">戻る</string>
+    <string name="cd_close">閉じる</string>
+</resources>

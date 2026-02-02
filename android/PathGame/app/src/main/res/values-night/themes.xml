@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.PathGame" parent="android:Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+    
+    <!-- Splash Screen Theme for Android 12+ (Dark Mode) -->
+    <style name="Theme.PathGame.Splash" parent="Theme.PathGame">
+        <item name="android:windowSplashScreenBackground">#1A1A1A</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">#1A1A1A</item>
+    </style>
+</resources>

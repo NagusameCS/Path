@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">Path</string>
+    <string name="app_tagline">每日益智游戏</string>
+
+    <!-- Navigation -->
+    <string name="nav_play">游戏</string>
+    <string name="nav_stats">统计</string>
+    <string name="nav_friends">好友</string>
+    <string name="nav_settings">设置</string>
+
+    <!-- Game Screen -->
+    <string name="game_title">Path</string>
+    <string name="game_daily_puzzle">每日谜题</string>
+    <string name="game_path_length">路径</string>
+    <string name="game_optimal">最优</string>
+    <string name="game_score">得分</string>
+    <string name="game_calculating">计算中…</string>
+    <string name="game_valid_moves">%d个有效步</string>
+    <string name="game_no_valid_moves">无有效步 - 点击完成！</string>
+
+    <!-- Game Actions -->
+    <string name="action_undo">撤销</string>
+    <string name="action_restart">重新开始</string>
+    <string name="action_finish">完成</string>
+    <string name="action_share">分享</string>
+    <string name="action_give_up">放弃</string>
+
+    <!-- Results -->
+    <string name="result_perfect">完美！⭐</string>
+    <string name="result_amazing">太棒了！🎯</string>
+    <string name="result_great">很好！✨</string>
+    <string name="result_good">不错！👍</string>
+    <string name="result_complete">完成！🎮</string>
+    <string name="result_your_path">你的路径</string>
+    <string name="result_optimal_path">最优路径</string>
+    <string name="result_try_other_size">尝试 %s</string>
+    <string name="result_close">关闭</string>
+
+    <!-- Result Subtitles -->
+    <string name="result_subtitle_perfect">你找到了最优路径！</string>
+    <string name="result_subtitle_amazing">距离完美只差一点！</string>
+    <string name="result_subtitle_great">干得好！</string>
+    <string name="result_subtitle_default">继续练习！</string>
+
+    <!-- Stats Screen -->
+    <string name="stats_title">统计数据</string>
+    <string name="stats_overview">概览</string>
+    <string name="stats_achievements">成就</string>
+    <string name="stats_history">历史</string>
+    <string name="stats_games_played">游戏次数</string>
+    <string name="stats_perfect_games">完美次数</string>
+    <string name="stats_current_streak">当前连胜</string>
+    <string name="stats_best_streak">最佳连胜</string>
+    <string name="stats_average_score">平均得分</string>
+    <string name="stats_perfect_rate">完美率</string>
+    <string name="stats_no_games">还没有游戏记录</string>
+    <string name="stats_start_playing">开始游戏查看你的统计！</string>
+    <string name="stats_5x5_stats">5×5 统计</string>
+    <string name="stats_7x7_stats">7×7 统计</string>
+    <string name="stats_games">游戏</string>
+    <string name="stats_perfect">完美</string>
+    <string name="stats_avg">平均</string>
+    <string name="stats_distribution">得分分布</string>
+    <string name="stats_comparison">5×5 vs 7×7</string>
+    <string name="stats_games_distribution">游戏分布</string>
+    <string name="stats_5x5_games">5×5：%d 局游戏</string>
+    <string name="stats_7x7_games">7×7：%d 局游戏</string>
+    <string name="stats_play_distribution">开始游戏查看分布</string>
+    <string name="game_size_5x5">5×5 网格</string>
+    <string name="game_size_7x7">7×7 网格</string>
+
+    <!-- Friends Screen -->
+    <string name="friends_title">好友</string>
+    <string name="friends_activity">动态</string>
+    <string name="friends_challenges">挑战</string>
+    <string name="friends_today_leaderboard">今日排行榜</string>
+    <string name="friends_all_friends">所有好友</string>
+    <string name="friends_no_friends">还没有好友</string>
+    <string name="friends_add_friends_desc">添加好友来比较分数并竞争</string>
+    <string name="friends_add_friends">添加好友</string>
+    <string name="friends_no_recent_games">没有最近的游戏</string>
+    <string name="friends_challenge">挑战</string>
+    <string name="friends_remove">移除</string>
+    <string name="friends_no_activity">没有最近动态</string>
+    <string name="friends_no_challenges">没有待处理的挑战</string>
+    <string name="friends_challenge_desc">完成谜题后挑战好友</string>
+    <string name="friends_challenged_you">%s 向你发起挑战！</string>
+    <string name="friends_their_score">他们的得分：%1$d/%2$d</string>
+    <string name="friends_accept">接受</string>
+    <string name="friends_decline">拒绝</string>
+    <string name="friends_sign_in_prompt">登录 Google Play Games</string>
+    <string name="friends_sign_in_desc">连接 Google Play Games 添加好友并比较分数</string>
+    <string name="friends_sign_in">登录</string>
+    <string name="friends_open_play_games">打开 Play Games</string>
+    <string name="friends_from_play_games">Google Play Games 好友将自动显示</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">设置</string>
+    <string name="settings_game">游戏</string>
+    <string name="settings_default_grid">默认网格大小</string>
+    <string name="settings_show_optimal">显示最优路径</string>
+    <string name="settings_show_optimal_desc">完成后显示</string>
+    <string name="settings_feedback">反馈</string>
+    <string name="settings_haptic">触觉反馈</string>
+    <string name="settings_haptic_desc">交互时振动</string>
+    <string name="settings_sound">音效</string>
+    <string name="settings_sound_desc">游戏时播放声音</string>
+    <string name="settings_notifications">通知</string>
+    <string name="settings_daily_reminder">每日提醒</string>
+    <string name="settings_daily_reminder_desc">获取游戏提醒</string>
+    <string name="settings_reminder_time">提醒时间</string>
+    <string name="settings_appearance">外观</string>
+    <string name="settings_theme">主题</string>
+    <string name="settings_theme_system">跟随系统</string>
+    <string name="settings_theme_light">浅色</string>
+    <string name="settings_theme_dark">深色</string>
+    <string name="settings_high_contrast">高对比度</string>
+    <string name="settings_high_contrast_desc">增加颜色对比度</string>
+    <string name="settings_data">数据</string>
+    <string name="settings_sync_now">立即同步</string>
+    <string name="settings_reset_stats">重置所有统计</string>
+    <string name="settings_reset_stats_desc">清除所有游戏历史</string>
+    <string name="settings_about">关于</string>
+    <string name="settings_how_to_play">游戏说明</string>
+    <string name="settings_about_path">关于 Path</string>
+    <string name="settings_visit_website">访问网站</string>
+    <string name="settings_version">版本 %s</string>
+    <string name="settings_play_games">Google Play Games</string>
+    <string name="settings_signed_in">已登录：%s</string>
+    <string name="settings_not_signed_in">未登录</string>
+    <string name="settings_play_games_dashboard">Play Games 仪表板</string>
+
+    <!-- Reset Alert -->
+    <string name="reset_title">重置所有统计？</string>
+    <string name="reset_message">这将永久删除所有游戏历史、成就和统计数据。此操作无法撤销。</string>
+    <string name="reset_cancel">取消</string>
+    <string name="reset_confirm">重置</string>
+
+    <!-- Tutorial / Help -->
+    <string name="help_title">游戏说明</string>
+    <string name="help_done">完成</string>
+    <string name="help_page1_title">找到路径</string>
+    <string name="help_page1_desc">你的目标是从中心格子开始，找到穿过数字网格的最长路径。</string>
+    <string name="help_page1_detail1">从高亮的中心格子开始</string>
+    <string name="help_page1_detail2">找到尽可能长的路径</string>
+    <string name="help_page1_detail3">每天都有新谜题等你</string>
+    <string name="help_page2_title">移动规则</string>
+    <string name="help_page2_desc">移动到任何相邻格子，该格子的值必须在当前格子值的±1范围内。</string>
+    <string name="help_page2_detail1">8个可能的移动方向</string>
+    <string name="help_page2_detail2">目标值必须是当前值±1</string>
+    <string name="help_page2_detail3">每个格子只能使用一次</string>
+    <string name="help_page3_title">追求完美</string>
+    <string name="help_page3_desc">尝试达到或超过为每个谜题计算的最优路径长度。</string>
+    <string name="help_page3_detail1">完成后显示最优路径</string>
+    <string name="help_page3_detail2">达到最优长度获得⭐</string>
+    <string name="help_page3_detail3">追踪统计并保持连胜</string>
+    <string name="help_page4_title">竞争与分享</string>
+    <string name="help_page4_desc">与好友联系，在排行榜上比较每日得分。</string>
+    <string name="help_page4_detail1">登录 Google Play Games</string>
+    <string name="help_page4_detail2">挑战好友超越你的得分</string>
+    <string name="help_page4_detail3">在社交媒体上分享结果</string>
+    <string name="help_ready_title">准备就绪！</string>
+    <string name="help_ready_desc">开始游戏，看看你能走多远。祝你好运！</string>
+    <string name="help_start_playing">开始游戏</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_welcome">欢迎来到 Path</string>
+    <string name="onboarding_welcome_desc">每天一个新谜题</string>
+    <string name="onboarding_find_way">找到你的路</string>
+    <string name="onboarding_find_way_desc">用简单的规则\n穿越数字</string>
+    <string name="onboarding_challenge">挑战好友</string>
+    <string name="onboarding_challenge_desc">比较分数\n攀登排行榜</string>
+    <string name="onboarding_begin">开始吧</string>
+    <string name="onboarding_ready">准备好找到你的路了吗？</string>
+    <string name="onboarding_play_now">立即游戏</string>
+    <string name="onboarding_next">下一步</string>
+    <string name="onboarding_skip">跳过</string>
+    <string name="onboarding_get_started">开始</string>
+
+    <!-- Leaderboard -->
+    <string name="leaderboard_title">排行榜</string>
+    <string name="leaderboard_5x5_best">5x5 最佳</string>
+    <string name="leaderboard_7x7_best">7x7 最佳</string>
+    <string name="leaderboard_streak">连胜</string>
+    <string name="leaderboard_perfects">完美</string>
+    <string name="leaderboard_today">今天</string>
+    <string name="leaderboard_week">本周</string>
+    <string name="leaderboard_all_time">历史最佳</string>
+    <string name="leaderboard_your_rank">你的排名</string>
+    <string name="leaderboard_no_entries">暂无记录</string>
+    <string name="leaderboard_be_first">成为第一个设置分数的人！</string>
+    <string name="leaderboard_sign_in_prompt">查看排行榜并与全球玩家竞争</string>
+    <string name="leaderboard_you">你</string>
+
+    <!-- About -->
+    <string name="about_title">关于</string>
+    <string name="about_created_by">创建者</string>
+    <string name="about_built_with">技术支持</string>
+    <string name="about_website">网站</string>
+
+    <!-- Share -->
+    <string name="share_title">Path %s</string>
+    <string name="share_play_at">游戏地址：pathgame.nagusamecs.com</string>
+
+    <!-- Tooltips / Walkthrough -->
+    <string name="tooltip_undo">撤销上一步</string>
+    <string name="tooltip_restart">从中心重新开始</string>
+    <string name="tooltip_finish">完成后提交路径</string>
+    <string name="tooltip_share">分享你的结果</string>
+    <string name="tooltip_grid_toggle">切换 5×5 和 7×7 网格</string>
+    <string name="tooltip_help">学习游戏规则</string>
+    <string name="tooltip_settings">调整游戏设置</string>
+    <string name="tooltip_give_up">放弃并显示最优路径</string>
+
+    <!-- Give Up Dialog -->
+    <string name="give_up_title">放弃？</string>
+    <string name="give_up_message">将显示最优路径，今天无法再次挑战此谜题。</string>
+    <string name="give_up_confirm">显示路径</string>
+    <string name="give_up_cancel">取消</string>
+
+    <!-- Grid Legend -->
+    <string name="legend_current">当前</string>
+    <string name="legend_valid">有效移动</string>
+    <string name="legend_visited">已访问</string>
+    <string name="legend_start">起点</string>
+
+    <!-- Help Example -->
+    <string name="help_example_current">当前</string>
+    <string name="help_legend_current">当前 (5)</string>
+    <string name="help_legend_valid">有效 (4 或 6)</string>
+
+    <!-- Accessibility -->
+    <string name="a11y_cell_value">格子值 %d</string>
+    <string name="a11y_cell_current">当前格子，值 %d</string>
+    <string name="a11y_cell_valid">有效移动，值 %d</string>
+    <string name="a11y_cell_visited">已访问格子，值 %d</string>
+    <string name="a11y_undo_button">撤销上一步</string>
+    <string name="a11y_restart_button">重新开始谜题</string>
+    <string name="a11y_finish_button">完成并提交路径</string>
+    <string name="a11y_share_button">分享结果</string>
+    <string name="a11y_give_up_button">放弃并显示最优路径</string>
+
+    <!-- Content Descriptions -->
+    <string name="cd_undo">撤销</string>
+    <string name="cd_restart">重新开始</string>
+    <string name="cd_finish">完成</string>
+    <string name="cd_share">分享</string>
+    <string name="cd_help">帮助</string>
+    <string name="cd_settings">设置</string>
+    <string name="cd_back">返回</string>
+    <string name="cd_close">关闭</string>
+</resources>

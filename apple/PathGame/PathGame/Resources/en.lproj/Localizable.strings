@@ -1,0 +1,257 @@
+/* 
+  Localizable.strings (English)
+  PathGame
+*/
+
+// MARK: - App
+"app_name" = "Path";
+"app_tagline" = "A Daily Puzzle Game";
+
+// MARK: - Navigation
+"nav_play" = "Play";
+"nav_stats" = "Stats";
+"nav_friends" = "Friends";
+"nav_settings" = "Settings";
+
+// MARK: - Game Screen
+"game_title" = "Path";
+"game_daily_puzzle" = "Daily Puzzle";
+"game_path_length" = "Path";
+"game_optimal" = "Optimal";
+"game_score" = "Score";
+"game_calculating" = "Calculating...";
+"game_valid_moves" = "%d valid moves";
+"game_no_valid_moves" = "No valid moves - tap Finish!";
+
+// MARK: - Game Actions
+"action_undo" = "Undo";
+"action_restart" = "Restart";
+"action_finish" = "Finish";
+"action_share" = "Share";
+"action_give_up" = "Give Up";
+
+// MARK: - Results
+"result_perfect" = "Perfect! ⭐";
+"result_amazing" = "Amazing! 🎯";
+"result_great" = "Great! ✨";
+"result_good" = "Good! 👍";
+"result_complete" = "Complete! 🎮";
+"result_your_path" = "Your Path";
+"result_optimal_path" = "Optimal Path";
+"result_try_other_size" = "Try %@";
+"result_close" = "Close";
+
+// MARK: - Results Subtitles
+"result_subtitle_perfect" = "You found the optimal path!";
+"result_subtitle_amazing" = "So close to perfect!";
+"result_subtitle_great" = "Nice job!";
+"result_subtitle_default" = "Keep practicing!";
+
+// MARK: - Stats Screen
+"stats_title" = "Statistics";
+"stats_overview" = "Overview";
+"stats_achievements" = "Achievements";
+"stats_history" = "History";
+"stats_games_played" = "Games Played";
+"stats_perfect_games" = "Perfect Games";
+"stats_current_streak" = "Current Streak";
+"stats_best_streak" = "Best Streak";
+"stats_average_score" = "Average Score";
+"stats_perfect_rate" = "Perfect Rate";
+"stats_no_games" = "No games played yet";
+"stats_start_playing" = "Start playing to see your stats!";
+"stats_5x5_stats" = "5×5 Stats";
+"stats_7x7_stats" = "7×7 Stats";
+"stats_games" = "Games";
+"stats_perfect" = "Perfect";
+"stats_avg" = "Avg";
+"stats_distribution" = "Score Distribution";
+"stats_score_distribution" = "Score Distribution";
+"stats_games_distribution" = "Games Distribution";
+"stats_achievement_progress" = "Achievement Progress";
+"stats_all" = "All";
+"stats_no_history" = "No history yet";
+"stats_complete_to_see_history" = "Complete puzzles to see your history";
+"game_size_5x5" = "5×5 Grid";
+"game_size_7x7" = "7×7 Grid";
+
+// MARK: - Friends Screen
+"friends_title" = "Friends";
+"friends_activity" = "Activity";
+"friends_challenges" = "Challenges";
+"friends_today_leaderboard" = "Today's Leaderboard";
+"friends_all_friends" = "All Friends";
+"friends_no_friends" = "No friends yet";
+"friends_add_friends_desc" = "Add friends to compare scores and compete on the leaderboard";
+"friends_add_friends" = "Add Friends";
+"friends_no_recent_games" = "No recent games";
+"friends_challenge" = "Challenge";
+"friends_remove" = "Remove";
+"friends_no_activity" = "No recent activity";
+"friends_no_challenges" = "No pending challenges";
+"friends_challenge_desc" = "Challenge friends after completing a puzzle";
+"friends_challenged_you" = "%@ challenged you!";
+"friends_their_score" = "Their score: %d/%d";
+"friends_accept" = "Accept";
+"friends_decline" = "Decline";
+"friends_game_center_prompt" = "Sign in to Game Center";
+"friends_game_center_desc" = "Connect with Game Center to add friends and compare scores";
+"friends_sign_in" = "Sign In";
+"friends_open_game_center" = "Open Game Center";
+"friends_from_game_center" = "Friends from Game Center will appear automatically";
+
+// MARK: - Settings Screen
+"settings_title" = "Settings";
+"settings_game" = "Game";
+"settings_default_grid" = "Default Grid Size";
+"settings_show_optimal" = "Show Optimal Path";
+"settings_show_optimal_desc" = "Display optimal after completing";
+"settings_feedback" = "Feedback";
+"settings_haptic" = "Haptic Feedback";
+"settings_haptic_desc" = "Vibrate on interactions";
+"settings_sound" = "Sound Effects";
+"settings_sound_desc" = "Play sounds during game";
+"settings_notifications" = "Notifications";
+"settings_daily_reminder" = "Daily Reminder";
+"settings_daily_reminder_desc" = "Get reminded to play";
+"settings_reminder_time" = "Reminder Time";
+"settings_appearance" = "Appearance";
+"settings_theme" = "Theme";
+"settings_theme_system" = "System";
+"settings_theme_light" = "Light";
+"settings_theme_dark" = "Dark";
+"settings_high_contrast" = "High Contrast";
+"settings_high_contrast_desc" = "Increase color contrast";
+"settings_data" = "Data";
+"settings_sync_now" = "Sync Now";
+"settings_reset_stats" = "Reset All Stats";
+"settings_reset_stats_desc" = "Clear all game history";
+"settings_about" = "About";
+"settings_how_to_play" = "How to Play";
+"settings_about_path" = "About Path";
+"settings_visit_website" = "Visit Website";
+"settings_version" = "Version %@";
+"settings_game_center" = "Game Center";
+"settings_signed_in" = "Signed in as %@";
+"settings_not_signed_in" = "Not signed in";
+"settings_game_center_dashboard" = "Game Center Dashboard";
+
+// MARK: - Reset Alert
+"reset_title" = "Reset All Stats?";
+"reset_message" = "This will permanently delete all your game history, achievements, and statistics. This action cannot be undone.";
+"reset_cancel" = "Cancel";
+"reset_confirm" = "Reset";
+
+// MARK: - Tutorial / Help
+"help_title" = "How to Play";
+"help_done" = "Done";
+"help_page1_title" = "Find the Path";
+"help_page1_desc" = "Your goal is to find the longest possible path through a grid of numbers, starting from the center cell.";
+"help_page1_detail1" = "Start from the highlighted center cell";
+"help_page1_detail2" = "Find the longest path you can";
+"help_page1_detail3" = "A new puzzle awaits you each day";
+"help_page2_title" = "Movement Rules";
+"help_page2_desc" = "Move to any adjacent cell (up, down, left, right, or diagonal) that has a value within ±1 of your current cell.";
+"help_page2_detail1" = "8 possible directions to move";
+"help_page2_detail2" = "Target value must be current ±1";
+"help_page2_detail3" = "Each cell can only be used once";
+"help_page3_title" = "Achieve Perfection";
+"help_page3_desc" = "Try to match or beat the optimal path length calculated for each puzzle.";
+"help_page3_detail1" = "Optimal path is shown after you finish";
+"help_page3_detail2" = "Get a ⭐ for reaching the optimal length";
+"help_page3_detail3" = "Track your stats and build streaks";
+"help_page4_title" = "Compete & Share";
+"help_page4_desc" = "Connect with friends and compare your daily scores on the leaderboard.";
+"help_page4_detail1" = "Sign in to Game Center";
+"help_page4_detail2" = "Challenge friends to beat your score";
+"help_page4_detail3" = "Share your results on social media";
+"help_ready_title" = "You're Ready!";
+"help_ready_desc" = "Start playing and see how far you can go. Good luck!";
+"help_start_playing" = "Start Playing";
+
+// MARK: - Onboarding
+"onboarding_welcome" = "Welcome to Path";
+"onboarding_welcome_desc" = "A new puzzle every day";
+"onboarding_find_way" = "Find Your Way";
+"onboarding_find_way_desc" = "Navigate through numbers\nusing simple rules";
+"onboarding_challenge" = "Challenge Friends";
+"onboarding_challenge_desc" = "Compare scores and\nclimb the leaderboard";
+"onboarding_begin" = "Let's Begin";
+"onboarding_ready" = "Ready to find your path?";
+"onboarding_play_now" = "Play Now";
+"onboarding_next" = "Next";
+"onboarding_skip" = "Skip";
+"onboarding_get_started" = "Get Started";
+
+// MARK: - Leaderboard
+"leaderboard_title" = "Leaderboard";
+"leaderboard_5x5_best" = "5x5 Best";
+"leaderboard_7x7_best" = "7x7 Best";
+"leaderboard_streak" = "Streak";
+"leaderboard_perfects" = "Perfects";
+"leaderboard_today" = "Today";
+"leaderboard_week" = "Week";
+"leaderboard_all_time" = "All Time";
+"leaderboard_your_rank" = "Your Rank";
+"leaderboard_no_entries" = "No entries yet";
+"leaderboard_be_first" = "Be the first to set a score!";
+"leaderboard_sign_in_prompt" = "View leaderboards and compete with players worldwide";
+"leaderboard_you" = "YOU";
+
+// MARK: - About
+"about_title" = "About";
+"about_created_by" = "Created by";
+"about_built_with" = "Built with";
+"about_website" = "Website";
+
+// MARK: - Share
+"share_title" = "Path %@";
+"share_play_at" = "Play at: pathgame.nagusamecs.com";
+
+// MARK: - Tooltips / Walkthrough
+"tooltip_undo" = "Undo your last move";
+"tooltip_restart" = "Start over from the center";
+"tooltip_finish" = "Submit your path when done";
+"tooltip_share" = "Share your results";
+"tooltip_grid_toggle" = "Switch between 5×5 and 7×7 grids";
+"tooltip_help" = "Learn how to play";
+"tooltip_settings" = "Adjust game settings";
+
+// MARK: - Grid Legend
+"legend_current" = "Current";
+"legend_valid" = "Valid Move";
+"legend_visited" = "Visited";
+"legend_start" = "Start";
+
+// MARK: - Help Example
+"help_example_current" = "Current";
+"help_legend_current" = "Current (5)";
+"help_legend_valid" = "Valid (4 or 6)";
+
+// MARK: - Accessibility
+"a11y_cell_value" = "Cell value %d";
+"a11y_cell_current" = "Current cell, value %d";
+"a11y_cell_valid" = "Valid move, value %d";
+"a11y_cell_visited" = "Visited cell, value %d";
+"a11y_undo_button" = "Undo last move";
+"a11y_restart_button" = "Restart puzzle";
+"a11y_finish_button" = "Finish and submit path";
+"a11y_share_button" = "Share results";
+
+// MARK: - Give Up Dialog
+"give_up_title" = "Give Up?";
+"give_up_message" = "The perfect path will be revealed and you won't be able to retry this puzzle today.";
+"give_up_confirm" = "Reveal Path";
+"give_up_cancel" = "Cancel";
+
+// MARK: - Unlock Modal
+"unlock_congrats" = "CONGRATULATIONS!";
+"unlock_mastered_5x5" = "You've mastered the 5×5 grid! Would you like to try the challenging 7×7 grid?";
+"unlock_share_results" = "SHARE RESULTS";
+"unlock_not_now" = "NOT NOW";
+"unlock_lets_go" = "LET'S GO!";
+
+// MARK: - Archive Modal
+"archive_completed_today" = "You've completed today's 7×7! Try a previous day's puzzle:";
+"archive_title" = "📅 PUZZLE ARCHIVE";
+"archive_close" = "Close";

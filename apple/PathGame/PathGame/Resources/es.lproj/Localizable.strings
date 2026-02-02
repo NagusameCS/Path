@@ -1,0 +1,257 @@
+/* 
+  Localizable.strings (Spanish)
+  PathGame
+*/
+
+// MARK: - App
+"app_name" = "Path";
+"app_tagline" = "Un Juego de Puzzle Diario";
+
+// MARK: - Navigation
+"nav_play" = "Jugar";
+"nav_stats" = "Stats";
+"nav_friends" = "Amigos";
+"nav_settings" = "Ajustes";
+
+// MARK: - Game Screen
+"game_title" = "Path";
+"game_daily_puzzle" = "Puzzle Diario";
+"game_path_length" = "Camino";
+"game_optimal" = "Óptimo";
+"game_score" = "Puntuación";
+"game_calculating" = "Calculando...";
+"game_valid_moves" = "%d movimientos válidos";
+"game_no_valid_moves" = "Sin movimientos - ¡toca Terminar!";
+
+// MARK: - Game Actions
+"action_undo" = "Deshacer";
+"action_restart" = "Reiniciar";
+"action_finish" = "Terminar";
+"action_share" = "Compartir";
+"action_give_up" = "Rendirse";
+
+// MARK: - Results
+"result_perfect" = "¡Perfecto! ⭐";
+"result_amazing" = "¡Increíble! 🎯";
+"result_great" = "¡Genial! ✨";
+"result_good" = "¡Bien! 👍";
+"result_complete" = "¡Completo! 🎮";
+"result_your_path" = "Tu Camino";
+"result_optimal_path" = "Camino Óptimo";
+"result_try_other_size" = "Prueba %@";
+"result_close" = "Cerrar";
+
+// MARK: - Results Subtitles
+"result_subtitle_perfect" = "¡Encontraste el camino óptimo!";
+"result_subtitle_amazing" = "¡Muy cerca de la perfección!";
+"result_subtitle_great" = "¡Buen trabajo!";
+"result_subtitle_default" = "¡Sigue practicando!";
+
+// MARK: - Stats Screen
+"stats_title" = "Estadísticas";
+"stats_overview" = "Resumen";
+"stats_achievements" = "Logros";
+"stats_history" = "Historial";
+"stats_games_played" = "Partidas Jugadas";
+"stats_perfect_games" = "Partidas Perfectas";
+"stats_current_streak" = "Racha Actual";
+"stats_best_streak" = "Mejor Racha";
+"stats_average_score" = "Puntuación Media";
+"stats_perfect_rate" = "Tasa de Perfección";
+"stats_no_games" = "Sin partidas aún";
+"stats_start_playing" = "¡Empieza a jugar para ver tus estadísticas!";
+"stats_5x5_stats" = "Stats 5×5";
+"stats_7x7_stats" = "Stats 7×7";
+"stats_games" = "Partidas";
+"stats_perfect" = "Perfectas";
+"stats_avg" = "Media";
+"stats_distribution" = "Distribución de Puntuaciones";
+"stats_score_distribution" = "Distribución de Puntuaciones";
+"stats_games_distribution" = "Distribución de Partidas";
+"stats_achievement_progress" = "Progreso de Logros";
+"stats_all" = "Todos";
+"stats_no_history" = "Sin historial";
+"stats_complete_to_see_history" = "Completa puzzles para ver tu historial";
+"game_size_5x5" = "Cuadrícula 5×5";
+"game_size_7x7" = "Cuadrícula 7×7";
+
+// MARK: - Friends Screen
+"friends_title" = "Amigos";
+"friends_activity" = "Actividad";
+"friends_challenges" = "Desafíos";
+"friends_today_leaderboard" = "Clasificación de Hoy";
+"friends_all_friends" = "Todos los Amigos";
+"friends_no_friends" = "Sin amigos aún";
+"friends_add_friends_desc" = "Añade amigos para comparar puntuaciones y competir";
+"friends_add_friends" = "Añadir Amigos";
+"friends_no_recent_games" = "Sin partidas recientes";
+"friends_challenge" = "Desafiar";
+"friends_remove" = "Eliminar";
+"friends_no_activity" = "Sin actividad reciente";
+"friends_no_challenges" = "Sin desafíos pendientes";
+"friends_challenge_desc" = "Desafía a tus amigos después de completar un puzzle";
+"friends_challenged_you" = "¡%@ te desafió!";
+"friends_their_score" = "Su puntuación: %d/%d";
+"friends_accept" = "Aceptar";
+"friends_decline" = "Rechazar";
+"friends_game_center_prompt" = "Inicia sesión en Game Center";
+"friends_game_center_desc" = "Conéctate a Game Center para añadir amigos y comparar puntuaciones";
+"friends_sign_in" = "Iniciar Sesión";
+"friends_open_game_center" = "Abrir Game Center";
+"friends_from_game_center" = "Los amigos de Game Center aparecerán automáticamente";
+
+// MARK: - Settings Screen
+"settings_title" = "Ajustes";
+"settings_game" = "Juego";
+"settings_default_grid" = "Tamaño de Cuadrícula";
+"settings_show_optimal" = "Mostrar Camino Óptimo";
+"settings_show_optimal_desc" = "Mostrar óptimo al completar";
+"settings_feedback" = "Retroalimentación";
+"settings_haptic" = "Vibración";
+"settings_haptic_desc" = "Vibrar en interacciones";
+"settings_sound" = "Efectos de Sonido";
+"settings_sound_desc" = "Reproducir sonidos durante el juego";
+"settings_notifications" = "Notificaciones";
+"settings_daily_reminder" = "Recordatorio Diario";
+"settings_daily_reminder_desc" = "Recibe un recordatorio para jugar";
+"settings_reminder_time" = "Hora del Recordatorio";
+"settings_appearance" = "Apariencia";
+"settings_theme" = "Tema";
+"settings_theme_system" = "Sistema";
+"settings_theme_light" = "Claro";
+"settings_theme_dark" = "Oscuro";
+"settings_high_contrast" = "Alto Contraste";
+"settings_high_contrast_desc" = "Aumentar contraste de colores";
+"settings_data" = "Datos";
+"settings_sync_now" = "Sincronizar Ahora";
+"settings_reset_stats" = "Restablecer Estadísticas";
+"settings_reset_stats_desc" = "Borrar todo el historial";
+"settings_about" = "Acerca de";
+"settings_how_to_play" = "Cómo Jugar";
+"settings_about_path" = "Sobre Path";
+"settings_visit_website" = "Visitar Sitio Web";
+"settings_version" = "Versión %@";
+"settings_game_center" = "Game Center";
+"settings_signed_in" = "Sesión iniciada como %@";
+"settings_not_signed_in" = "Sin sesión iniciada";
+"settings_game_center_dashboard" = "Panel de Game Center";
+
+// MARK: - Reset Alert
+"reset_title" = "¿Restablecer Todo?";
+"reset_message" = "Esto eliminará permanentemente todo tu historial, logros y estadísticas. Esta acción no se puede deshacer.";
+"reset_cancel" = "Cancelar";
+"reset_confirm" = "Restablecer";
+
+// MARK: - Tutorial / Help
+"help_title" = "Cómo Jugar";
+"help_done" = "Listo";
+"help_page1_title" = "Encuentra el Camino";
+"help_page1_desc" = "Tu objetivo es encontrar el camino más largo posible a través de una cuadrícula de números, empezando desde la celda central.";
+"help_page1_detail1" = "Empieza desde la celda central resaltada";
+"help_page1_detail2" = "Encuentra el camino más largo que puedas";
+"help_page1_detail3" = "Un nuevo puzzle te espera cada día";
+"help_page2_title" = "Reglas de Movimiento";
+"help_page2_desc" = "Muévete a cualquier celda adyacente (arriba, abajo, izquierda, derecha o diagonal) que tenga un valor dentro de ±1 de tu celda actual.";
+"help_page2_detail1" = "8 direcciones posibles para moverte";
+"help_page2_detail2" = "El valor debe ser actual ±1";
+"help_page2_detail3" = "Cada celda solo puede usarse una vez";
+"help_page3_title" = "Logra la Perfección";
+"help_page3_desc" = "Intenta igualar o superar la longitud del camino óptimo calculado para cada puzzle.";
+"help_page3_detail1" = "El camino óptimo se muestra al terminar";
+"help_page3_detail2" = "Obtén una ⭐ por alcanzar el óptimo";
+"help_page3_detail3" = "Sigue tus estadísticas y construye rachas";
+"help_page4_title" = "Compite y Comparte";
+"help_page4_desc" = "Conéctate con amigos y compara tus puntuaciones diarias en la clasificación.";
+"help_page4_detail1" = "Inicia sesión en Game Center";
+"help_page4_detail2" = "Desafía a amigos a superar tu puntuación";
+"help_page4_detail3" = "Comparte tus resultados en redes sociales";
+"help_ready_title" = "¡Listo!";
+"help_ready_desc" = "Empieza a jugar y mira hasta dónde puedes llegar. ¡Buena suerte!";
+"help_start_playing" = "Empezar a Jugar";
+
+// MARK: - Onboarding
+"onboarding_welcome" = "Bienvenido a Path";
+"onboarding_welcome_desc" = "Un nuevo puzzle cada día";
+"onboarding_find_way" = "Encuentra Tu Camino";
+"onboarding_find_way_desc" = "Navega entre números\ncon reglas simples";
+"onboarding_challenge" = "Desafía a Amigos";
+"onboarding_challenge_desc" = "Compara puntuaciones y\nescala en la clasificación";
+"onboarding_begin" = "Comencemos";
+"onboarding_ready" = "¿Listo para encontrar tu camino?";
+"onboarding_play_now" = "Jugar Ahora";
+"onboarding_next" = "Siguiente";
+"onboarding_skip" = "Saltar";
+"onboarding_get_started" = "Comenzar";
+
+// MARK: - Leaderboard
+"leaderboard_title" = "Clasificación";
+"leaderboard_5x5_best" = "Mejor 5x5";
+"leaderboard_7x7_best" = "Mejor 7x7";
+"leaderboard_streak" = "Racha";
+"leaderboard_perfects" = "Perfectas";
+"leaderboard_today" = "Hoy";
+"leaderboard_week" = "Semana";
+"leaderboard_all_time" = "Siempre";
+"leaderboard_your_rank" = "Tu Posición";
+"leaderboard_no_entries" = "Sin entradas aún";
+"leaderboard_be_first" = "¡Sé el primero en establecer una puntuación!";
+"leaderboard_sign_in_prompt" = "Ve clasificaciones y compite con jugadores de todo el mundo";
+"leaderboard_you" = "TÚ";
+
+// MARK: - About
+"about_title" = "Acerca de";
+"about_created_by" = "Creado por";
+"about_built_with" = "Hecho con";
+"about_website" = "Sitio Web";
+
+// MARK: - Share
+"share_title" = "Path %@";
+"share_play_at" = "Juega en: pathgame.nagusamecs.com";
+
+// MARK: - Tooltips / Walkthrough
+"tooltip_undo" = "Deshacer tu último movimiento";
+"tooltip_restart" = "Empezar de nuevo desde el centro";
+"tooltip_finish" = "Enviar tu camino cuando termines";
+"tooltip_share" = "Compartir tus resultados";
+"tooltip_grid_toggle" = "Cambiar entre cuadrículas 5×5 y 7×7";
+"tooltip_help" = "Aprende cómo jugar";
+"tooltip_settings" = "Ajustar configuración del juego";
+
+// MARK: - Grid Legend
+"legend_current" = "Actual";
+"legend_valid" = "Mov. Válido";
+"legend_visited" = "Visitado";
+"legend_start" = "Inicio";
+
+// MARK: - Help Example
+"help_example_current" = "Actual";
+"help_legend_current" = "Actual (5)";
+"help_legend_valid" = "Válido (4 o 6)";
+
+// MARK: - Accessibility
+"a11y_cell_value" = "Valor de celda %d";
+"a11y_cell_current" = "Celda actual, valor %d";
+"a11y_cell_valid" = "Movimiento válido, valor %d";
+"a11y_cell_visited" = "Celda visitada, valor %d";
+"a11y_undo_button" = "Deshacer último movimiento";
+"a11y_restart_button" = "Reiniciar puzzle";
+"a11y_finish_button" = "Terminar y enviar camino";
+"a11y_share_button" = "Compartir resultados";
+
+// MARK: - Give Up Dialog
+"give_up_title" = "¿Rendirse?";
+"give_up_message" = "El camino perfecto será revelado y no podrás reintentar este puzzle hoy.";
+"give_up_confirm" = "Mostrar Camino";
+"give_up_cancel" = "Cancelar";
+
+// MARK: - Unlock Modal
+"unlock_congrats" = "¡FELICIDADES!";
+"unlock_mastered_5x5" = "¡Has dominado la cuadrícula 5×5! ¿Te gustaría probar la desafiante cuadrícula 7×7?";
+"unlock_share_results" = "COMPARTIR RESULTADOS";
+"unlock_not_now" = "AHORA NO";
+"unlock_lets_go" = "¡VAMOS!";
+
+// MARK: - Archive Modal
+"archive_completed_today" = "¡Has completado el 7×7 de hoy! Prueba un puzzle de un día anterior:";
+"archive_title" = "📅 ARCHIVO DE PUZZLES";
+"archive_close" = "Cerrar";

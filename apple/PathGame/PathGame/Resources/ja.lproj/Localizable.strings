@@ -1,0 +1,255 @@
+/* 
+  Localizable.strings (Japanese)
+  PathGame
+*/
+
+// MARK: - App
+"app_name" = "Path";
+"app_tagline" = "毎日のパズルゲーム";
+
+// MARK: - Navigation
+"nav_play" = "プレイ";
+"nav_stats" = "統計";
+"nav_friends" = "フレンド";
+"nav_settings" = "設定";
+
+// MARK: - Game Screen
+"game_title" = "Path";
+"game_daily_puzzle" = "今日のパズル";
+"game_path_length" = "パス";
+"game_optimal" = "最適";
+"game_score" = "スコア";
+"game_calculating" = "計算中...";
+"game_valid_moves" = "%d個の有効な手";
+"game_no_valid_moves" = "有効な手なし - 完了をタップ！";
+
+// MARK: - Game Actions
+"action_undo" = "戻す";
+"action_restart" = "リスタート";
+"action_finish" = "完了";
+"action_share" = "共有";
+"action_give_up" = "ギブアップ";
+
+// MARK: - Results
+"result_perfect" = "パーフェクト! ⭐";
+"result_amazing" = "素晴らしい! 🎯";
+"result_great" = "グレート! ✨";
+"result_good" = "グッド! 👍";
+"result_complete" = "クリア! 🎮";
+"result_your_path" = "あなたのパス";
+"result_optimal_path" = "最適パス";
+"result_try_other_size" = "%@を試す";
+"result_close" = "閉じる";
+
+// MARK: - Results Subtitles
+"result_subtitle_perfect" = "最適なパスを見つけました！";
+"result_subtitle_amazing" = "完璧まであと一歩！";
+"result_subtitle_great" = "よくできました！";
+"result_subtitle_default" = "練習を続けよう！";
+
+// MARK: - Stats Screen
+"stats_title" = "統計";
+"stats_overview" = "概要";
+"stats_achievements" = "実績";
+"stats_history" = "履歴";
+"stats_games_played" = "プレイ回数";
+"stats_perfect_games" = "パーフェクト回数";
+"stats_current_streak" = "現在の連続記録";
+"stats_best_streak" = "最高連続記録";
+"stats_average_score" = "平均スコア";
+"stats_perfect_rate" = "パーフェクト率";
+"stats_no_games" = "まだプレイしていません";
+"stats_start_playing" = "プレイして統計を見よう！";
+"stats_5x5_stats" = "5×5 統計";
+"stats_7x7_stats" = "7×7 統計";
+"stats_games" = "ゲーム";
+"stats_perfect" = "完璧";
+"stats_avg" = "平均";
+"stats_distribution" = "スコア分布";
+"stats_score_distribution" = "スコア分布";
+"stats_games_distribution" = "ゲーム分布";
+"stats_achievement_progress" = "実績の進捗";
+"stats_all" = "すべて";
+"stats_no_history" = "履歴がありません";
+"stats_complete_to_see_history" = "パズルをクリアして履歴を見よう";
+"game_size_5x5" = "5×5 グリッド";
+"game_size_7x7" = "7×7 グリッド";
+
+// MARK: - Friends Screen
+"friends_title" = "フレンド";
+"friends_activity" = "アクティビティ";
+"friends_challenges" = "チャレンジ";
+"friends_today_leaderboard" = "今日のランキング";
+"friends_all_friends" = "すべてのフレンド";
+"friends_no_friends" = "まだフレンドがいません";
+"friends_add_friends_desc" = "フレンドを追加してスコアを比較しよう";
+"friends_add_friends" = "フレンドを追加";
+"friends_no_recent_games" = "最近のゲームなし";
+"friends_challenge" = "挑戦";
+"friends_remove" = "削除";
+"friends_no_activity" = "最近のアクティビティなし";
+"friends_no_challenges" = "保留中のチャレンジなし";
+"friends_challenge_desc" = "パズル完了後にフレンドに挑戦";
+"friends_challenged_you" = "%@があなたに挑戦！";
+"friends_their_score" = "相手のスコア: %d/%d";
+"friends_accept" = "承諾";
+"friends_decline" = "辞退";
+"friends_game_center_prompt" = "Game Centerにサインイン";
+"friends_game_center_desc" = "Game Centerに接続してフレンドを追加";
+"friends_sign_in" = "サインイン";
+"friends_open_game_center" = "Game Centerを開く";
+"friends_from_game_center" = "Game Centerのフレンドが自動的に表示されます";
+
+// MARK: - Settings Screen
+"settings_title" = "設定";
+"settings_game" = "ゲーム";
+"settings_default_grid" = "デフォルトグリッドサイズ";
+"settings_show_optimal" = "最適パスを表示";
+"settings_show_optimal_desc" = "完了後に表示";
+"settings_feedback" = "フィードバック";
+"settings_haptic" = "触覚フィードバック";
+"settings_haptic_desc" = "操作時に振動";
+"settings_sound" = "サウンドエフェクト";
+"settings_sound_desc" = "ゲーム中に音を再生";
+"settings_notifications" = "通知";
+"settings_daily_reminder" = "毎日のリマインダー";
+"settings_daily_reminder_desc" = "プレイの通知を受け取る";
+"settings_reminder_time" = "リマインダー時間";
+"settings_appearance" = "外観";
+"settings_theme" = "テーマ";
+"settings_theme_system" = "システム";
+"settings_theme_light" = "ライト";
+"settings_theme_dark" = "ダーク";
+"settings_high_contrast" = "ハイコントラスト";
+"settings_high_contrast_desc" = "色のコントラストを上げる";
+"settings_data" = "データ";
+"settings_sync_now" = "今すぐ同期";
+"settings_reset_stats" = "統計をリセット";
+"settings_reset_stats_desc" = "すべての履歴を消去";
+"settings_about" = "情報";
+"settings_how_to_play" = "遊び方";
+"settings_about_path" = "Pathについて";
+"settings_visit_website" = "ウェブサイトを見る";
+"settings_version" = "バージョン %@";
+"settings_game_center" = "Game Center";
+"settings_signed_in" = "%@としてサインイン中";
+"settings_not_signed_in" = "サインインしていません";
+"settings_game_center_dashboard" = "Game Centerダッシュボード";
+
+// MARK: - Reset Alert
+"reset_title" = "すべてリセット？";
+"reset_message" = "すべてのゲーム履歴、実績、統計が完全に削除されます。この操作は取り消せません。";
+"reset_cancel" = "キャンセル";
+"reset_confirm" = "リセット";
+
+// MARK: - Tutorial / Help
+"help_title" = "遊び方";
+"help_done" = "完了";
+"help_page1_title" = "パスを見つける";
+"help_page1_desc" = "中央のセルから始めて、数字のグリッドを通る最長のパスを見つけることが目標です。";
+"help_page1_detail1" = "ハイライトされた中央のセルから開始";
+"help_page1_detail2" = "できるだけ長いパスを見つける";
+"help_page1_detail3" = "毎日新しいパズルが登場";
+"help_page2_title" = "移動ルール";
+"help_page2_desc" = "現在のセルの値の±1以内の値を持つ隣接セル（上下左右または斜め）に移動できます。";
+"help_page2_detail1" = "8方向に移動可能";
+"help_page2_detail2" = "目標値は現在値±1";
+"help_page2_detail3" = "各セルは一度だけ使用可能";
+"help_page3_title" = "完璧を目指す";
+"help_page3_desc" = "各パズルで計算された最適パス長に到達するか、それを超えることを目指してください。";
+"help_page3_detail1" = "最適パスは完了後に表示";
+"help_page3_detail2" = "最適パス達成で⭐獲得";
+"help_page3_detail3" = "統計を追跡して連続記録を作る";
+"help_page4_title" = "競争と共有";
+"help_page4_desc" = "フレンドとつながり、リーダーボードで毎日のスコアを比較しましょう。";
+"help_page4_detail1" = "Game Centerにサインイン";
+"help_page4_detail2" = "フレンドにスコアを超えるよう挑戦";
+"help_page4_detail3" = "SNSで結果を共有";
+"help_ready_title" = "準備完了！";
+"help_ready_desc" = "プレイを始めて、どこまで行けるか見てみよう。頑張って！";
+"help_start_playing" = "プレイ開始";
+
+// MARK: - Onboarding
+"onboarding_welcome" = "Pathへようこそ";
+"onboarding_welcome_desc" = "毎日新しいパズル";
+"onboarding_find_way" = "道を見つけよう";
+"onboarding_find_way_desc" = "シンプルなルールで\n数字を進む";
+"onboarding_challenge" = "フレンドに挑戦";
+"onboarding_challenge_desc" = "スコアを比較して\nランキングを上げよう";
+"onboarding_begin" = "始めよう";
+"onboarding_ready" = "パスを見つける準備はできた？";
+"onboarding_play_now" = "今すぐプレイ";
+"onboarding_next" = "次へ";
+"onboarding_skip" = "スキップ";
+"onboarding_get_started" = "スタート";
+
+// MARK: - Leaderboard
+"leaderboard_title" = "リーダーボード";
+"leaderboard_5x5_best" = "5x5 ベスト";
+"leaderboard_7x7_best" = "7x7 ベスト";
+"leaderboard_streak" = "連続記録";
+"leaderboard_perfects" = "完璧";
+"leaderboard_today" = "今日";
+"leaderboard_week" = "今週";
+"leaderboard_all_time" = "全期間";
+"leaderboard_your_rank" = "あなたの順位";
+"leaderboard_no_entries" = "エントリーなし";
+"leaderboard_be_first" = "最初のスコアを設定しよう！";
+"leaderboard_sign_in_prompt" = "リーダーボードを見て世界中のプレイヤーと競争";
+"leaderboard_you" = "あなた";
+
+// MARK: - About
+"about_title" = "情報";
+"about_created_by" = "制作";
+"about_built_with" = "技術";
+"about_website" = "ウェブサイト";
+
+// MARK: - Share
+"share_title" = "Path %@";
+"share_play_at" = "プレイ: pathgame.nagusamecs.com";
+
+// MARK: - Tooltips / Walkthrough
+"tooltip_undo" = "最後の手を戻す";
+"tooltip_restart" = "中央から再スタート";
+"tooltip_finish" = "パスを提出";
+"tooltip_share" = "結果を共有";
+"tooltip_grid_toggle" = "5×5と7×7グリッドを切り替え";
+"tooltip_help" = "遊び方を学ぶ";
+"tooltip_settings" = "ゲーム設定を調整";
+
+// MARK: - Grid Legend
+"legend_current" = "現在";
+"legend_valid" = "有効な手";
+"legend_visited" = "訪問済み";
+"legend_start" = "スタート";
+// MARK: - Help Example
+"help_example_current" = "現在";
+"help_legend_current" = "現在 (5)";
+"help_legend_valid" = "有効 (4 または 6)";
+// MARK: - Accessibility
+"a11y_cell_value" = "セル値 %d";
+"a11y_cell_current" = "現在のセル、値 %d";
+"a11y_cell_valid" = "有効な手、値 %d";
+"a11y_cell_visited" = "訪問済みセル、値 %d";
+"a11y_undo_button" = "最後の手を戻す";
+"a11y_restart_button" = "パズルを再スタート";
+"a11y_finish_button" = "パスを完了して提出";
+"a11y_share_button" = "結果を共有";
+
+// MARK: - Give Up Dialog
+"give_up_title" = "諦めますか？";
+"give_up_message" = "最適なパスが表示され、今日このパズルを再挑戦することはできません。";
+"give_up_confirm" = "パスを表示";
+"give_up_cancel" = "キャンセル";
+
+// MARK: - Unlock Modal
+"unlock_congrats" = "おめでとうございます！";
+"unlock_mastered_5x5" = "5×5グリッドをマスターしました！難しい7×7グリッドに挑戦しますか？";
+"unlock_share_results" = "結果を共有";
+"unlock_not_now" = "今はしない";
+"unlock_lets_go" = "やってみる！";
+
+// MARK: - Archive Modal
+"archive_completed_today" = "今日の7×7を完了しました！過去のパズルを試してみてください：";
+"archive_title" = "📅 パズルアーカイブ";
+"archive_close" = "閉じる";

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">Path</string>
+    <string name="app_tagline">Un Juego de Puzzle Diario</string>
+
+    <!-- Navigation -->
+    <string name="nav_play">Jugar</string>
+    <string name="nav_stats">Stats</string>
+    <string name="nav_friends">Amigos</string>
+    <string name="nav_settings">Ajustes</string>
+
+    <!-- Game Screen -->
+    <string name="game_title">Path</string>
+    <string name="game_daily_puzzle">Puzzle Diario</string>
+    <string name="game_path_length">Camino</string>
+    <string name="game_optimal">Óptimo</string>
+    <string name="game_score">Puntuación</string>
+    <string name="game_calculating">Calculando…</string>
+    <string name="game_valid_moves">%d movimientos válidos</string>
+    <string name="game_no_valid_moves">Sin movimientos - ¡toca Terminar!</string>
+
+    <!-- Game Actions -->
+    <string name="action_undo">Deshacer</string>
+    <string name="action_restart">Reiniciar</string>
+    <string name="action_finish">Terminar</string>
+    <string name="action_share">Compartir</string>
+    <string name="action_give_up">Rendirse</string>
+
+    <!-- Results -->
+    <string name="result_perfect">¡Perfecto! ⭐</string>
+    <string name="result_amazing">¡Increíble! 🎯</string>
+    <string name="result_great">¡Genial! ✨</string>
+    <string name="result_good">¡Bien! 👍</string>
+    <string name="result_complete">¡Completo! 🎮</string>
+    <string name="result_your_path">Tu Camino</string>
+    <string name="result_optimal_path">Camino Óptimo</string>
+    <string name="result_try_other_size">Prueba %s</string>
+    <string name="result_close">Cerrar</string>
+
+    <!-- Result Subtitles -->
+    <string name="result_subtitle_perfect">¡Encontraste el camino óptimo!</string>
+    <string name="result_subtitle_amazing">¡Muy cerca de la perfección!</string>
+    <string name="result_subtitle_great">¡Buen trabajo!</string>
+    <string name="result_subtitle_default">¡Sigue practicando!</string>
+
+    <!-- Stats Screen -->
+    <string name="stats_title">Estadísticas</string>
+    <string name="stats_overview">Resumen</string>
+    <string name="stats_achievements">Logros</string>
+    <string name="stats_history">Historial</string>
+    <string name="stats_games_played">Partidas Jugadas</string>
+    <string name="stats_perfect_games">Partidas Perfectas</string>
+    <string name="stats_current_streak">Racha Actual</string>
+    <string name="stats_best_streak">Mejor Racha</string>
+    <string name="stats_average_score">Puntuación Media</string>
+    <string name="stats_perfect_rate">Tasa de Perfección</string>
+    <string name="stats_no_games">Sin partidas aún</string>
+    <string name="stats_start_playing">¡Empieza a jugar para ver tus estadísticas!</string>
+    <string name="stats_5x5_stats">Stats 5×5</string>
+    <string name="stats_7x7_stats">Stats 7×7</string>
+    <string name="stats_games">Partidas</string>
+    <string name="stats_perfect">Perfectas</string>
+    <string name="stats_avg">Media</string>
+    <string name="stats_distribution">Distribución de Puntuaciones</string>
+    <string name="stats_comparison">5×5 vs 7×7</string>
+    <string name="stats_games_distribution">Distribución de Partidas</string>
+    <string name="stats_5x5_games">5×5: %d partidas</string>
+    <string name="stats_7x7_games">7×7: %d partidas</string>
+    <string name="stats_play_distribution">Juega para ver la distribución</string>
+    <string name="game_size_5x5">Cuadrícula 5×5</string>
+    <string name="game_size_7x7">Cuadrícula 7×7</string>
+
+    <!-- Friends Screen -->
+    <string name="friends_title">Amigos</string>
+    <string name="friends_activity">Actividad</string>
+    <string name="friends_challenges">Desafíos</string>
+    <string name="friends_today_leaderboard">Clasificación de Hoy</string>
+    <string name="friends_all_friends">Todos los Amigos</string>
+    <string name="friends_no_friends">Sin amigos aún</string>
+    <string name="friends_add_friends_desc">Añade amigos para comparar puntuaciones y competir</string>
+    <string name="friends_add_friends">Añadir Amigos</string>
+    <string name="friends_no_recent_games">Sin partidas recientes</string>
+    <string name="friends_challenge">Desafiar</string>
+    <string name="friends_remove">Eliminar</string>
+    <string name="friends_no_activity">Sin actividad reciente</string>
+    <string name="friends_no_challenges">Sin desafíos pendientes</string>
+    <string name="friends_challenge_desc">Desafía a tus amigos después de completar un puzzle</string>
+    <string name="friends_challenged_you">¡%s te desafió!</string>
+    <string name="friends_their_score">Su puntuación: %1$d/%2$d</string>
+    <string name="friends_accept">Aceptar</string>
+    <string name="friends_decline">Rechazar</string>
+    <string name="friends_sign_in_prompt">Inicia sesión en Google Play Games</string>
+    <string name="friends_sign_in_desc">Conéctate a Google Play Games para añadir amigos</string>
+    <string name="friends_sign_in">Iniciar Sesión</string>
+    <string name="friends_open_play_games">Abrir Play Games</string>
+    <string name="friends_from_play_games">Los amigos de Google Play Games aparecerán automáticamente</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_game">Juego</string>
+    <string name="settings_default_grid">Tamaño de Cuadrícula</string>
+    <string name="settings_show_optimal">Mostrar Camino Óptimo</string>
+    <string name="settings_show_optimal_desc">Mostrar óptimo al completar</string>
+    <string name="settings_feedback">Retroalimentación</string>
+    <string name="settings_haptic">Vibración</string>
+    <string name="settings_haptic_desc">Vibrar en interacciones</string>
+    <string name="settings_sound">Efectos de Sonido</string>
+    <string name="settings_sound_desc">Reproducir sonidos durante el juego</string>
+    <string name="settings_notifications">Notificaciones</string>
+    <string name="settings_daily_reminder">Recordatorio Diario</string>
+    <string name="settings_daily_reminder_desc">Recibe un recordatorio para jugar</string>
+    <string name="settings_reminder_time">Hora del Recordatorio</string>
+    <string name="settings_appearance">Apariencia</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_system">Sistema</string>
+    <string name="settings_theme_light">Claro</string>
+    <string name="settings_theme_dark">Oscuro</string>
+    <string name="settings_high_contrast">Alto Contraste</string>
+    <string name="settings_high_contrast_desc">Aumentar contraste de colores</string>
+    <string name="settings_data">Datos</string>
+    <string name="settings_sync_now">Sincronizar Ahora</string>
+    <string name="settings_reset_stats">Restablecer Estadísticas</string>
+    <string name="settings_reset_stats_desc">Borrar todo el historial</string>
+    <string name="settings_about">Acerca de</string>
+    <string name="settings_how_to_play">Cómo Jugar</string>
+    <string name="settings_about_path">Sobre Path</string>
+    <string name="settings_visit_website">Visitar Sitio Web</string>
+    <string name="settings_version">Versión %s</string>
+    <string name="settings_play_games">Google Play Games</string>
+    <string name="settings_signed_in">Sesión iniciada como %s</string>
+    <string name="settings_not_signed_in">Sin sesión iniciada</string>
+    <string name="settings_play_games_dashboard">Panel de Play Games</string>
+
+    <!-- Reset Alert -->
+    <string name="reset_title">¿Restablecer Todo?</string>
+    <string name="reset_message">Esto eliminará permanentemente todo tu historial, logros y estadísticas. Esta acción no se puede deshacer.</string>
+    <string name="reset_cancel">Cancelar</string>
+    <string name="reset_confirm">Restablecer</string>
+
+    <!-- Tutorial / Help -->
+    <string name="help_title">Cómo Jugar</string>
+    <string name="help_done">Listo</string>
+    <string name="help_page1_title">Encuentra el Camino</string>
+    <string name="help_page1_desc">Tu objetivo es encontrar el camino más largo posible a través de una cuadrícula de números, empezando desde la celda central.</string>
+    <string name="help_page1_detail1">Empieza desde la celda central resaltada</string>
+    <string name="help_page1_detail2">Encuentra el camino más largo que puedas</string>
+    <string name="help_page1_detail3">Un nuevo puzzle te espera cada día</string>
+    <string name="help_page2_title">Reglas de Movimiento</string>
+    <string name="help_page2_desc">Muévete a cualquier celda adyacente (arriba, abajo, izquierda, derecha o diagonal) que tenga un valor dentro de ±1 de tu celda actual.</string>
+    <string name="help_page2_detail1">8 direcciones posibles para moverte</string>
+    <string name="help_page2_detail2">El valor debe ser actual ±1</string>
+    <string name="help_page2_detail3">Cada celda solo puede usarse una vez</string>
+    <string name="help_page3_title">Logra la Perfección</string>
+    <string name="help_page3_desc">Intenta igualar o superar la longitud del camino óptimo calculado para cada puzzle.</string>
+    <string name="help_page3_detail1">El camino óptimo se muestra al terminar</string>
+    <string name="help_page3_detail2">Obtén una ⭐ por alcanzar el óptimo</string>
+    <string name="help_page3_detail3">Sigue tus estadísticas y construye rachas</string>
+    <string name="help_page4_title">Compite y Comparte</string>
+    <string name="help_page4_desc">Conéctate con amigos y compara tus puntuaciones diarias en la clasificación.</string>
+    <string name="help_page4_detail1">Inicia sesión en Google Play Games</string>
+    <string name="help_page4_detail2">Desafía a amigos a superar tu puntuación</string>
+    <string name="help_page4_detail3">Comparte tus resultados en redes sociales</string>
+    <string name="help_ready_title">¡Listo!</string>
+    <string name="help_ready_desc">Empieza a jugar y mira hasta dónde puedes llegar. ¡Buena suerte!</string>
+    <string name="help_start_playing">Empezar a Jugar</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_welcome">Bienvenido a Path</string>
+    <string name="onboarding_welcome_desc">Un nuevo puzzle cada día</string>
+    <string name="onboarding_find_way">Encuentra Tu Camino</string>
+    <string name="onboarding_find_way_desc">Navega entre números\ncon reglas simples</string>
+    <string name="onboarding_challenge">Desafía a Amigos</string>
+    <string name="onboarding_challenge_desc">Compara puntuaciones y\nescala en la clasificación</string>
+    <string name="onboarding_begin">Comencemos</string>
+    <string name="onboarding_ready">¿Listo para encontrar tu camino?</string>
+    <string name="onboarding_play_now">Jugar Ahora</string>
+    <string name="onboarding_next">Siguiente</string>
+    <string name="onboarding_skip">Saltar</string>
+    <string name="onboarding_get_started">Comenzar</string>
+
+    <!-- Leaderboard -->
+    <string name="leaderboard_title">Clasificación</string>
+    <string name="leaderboard_5x5_best">Mejor 5x5</string>
+    <string name="leaderboard_7x7_best">Mejor 7x7</string>
+    <string name="leaderboard_streak">Racha</string>
+    <string name="leaderboard_perfects">Perfectas</string>
+    <string name="leaderboard_today">Hoy</string>
+    <string name="leaderboard_week">Semana</string>
+    <string name="leaderboard_all_time">Siempre</string>
+    <string name="leaderboard_your_rank">Tu Posición</string>
+    <string name="leaderboard_no_entries">Sin entradas aún</string>
+    <string name="leaderboard_be_first">¡Sé el primero en establecer una puntuación!</string>
+    <string name="leaderboard_sign_in_prompt">Ve clasificaciones y compite con jugadores de todo el mundo</string>
+    <string name="leaderboard_you">TÚ</string>
+
+    <!-- About -->
+    <string name="about_title">Acerca de</string>
+    <string name="about_created_by">Creado por</string>
+    <string name="about_built_with">Hecho con</string>
+    <string name="about_website">Sitio Web</string>
+
+    <!-- Share -->
+    <string name="share_title">Path %s</string>
+    <string name="share_play_at">Juega en: pathgame.nagusamecs.com</string>
+
+    <!-- Tooltips / Walkthrough -->
+    <string name="tooltip_undo">Deshacer tu último movimiento</string>
+    <string name="tooltip_restart">Empezar de nuevo desde el centro</string>
+    <string name="tooltip_finish">Enviar tu camino cuando termines</string>
+    <string name="tooltip_share">Compartir tus resultados</string>
+    <string name="tooltip_grid_toggle">Cambiar entre cuadrículas 5×5 y 7×7</string>
+    <string name="tooltip_help">Aprende cómo jugar</string>
+    <string name="tooltip_settings">Ajustar configuración del juego</string>
+    <string name="tooltip_give_up">Rendirse y revelar el camino óptimo</string>
+
+    <!-- Give Up Dialog -->
+    <string name="give_up_title">¿Rendirse?</string>
+    <string name="give_up_message">Se revelará el camino óptimo y no podrás reintentar este puzzle hoy.</string>
+    <string name="give_up_confirm">Revelar Camino</string>
+    <string name="give_up_cancel">Cancelar</string>
+
+    <!-- Grid Legend -->
+    <string name="legend_current">Actual</string>
+    <string name="legend_valid">Mov. Válido</string>
+    <string name="legend_visited">Visitado</string>
+    <string name="legend_start">Inicio</string>
+
+    <!-- Help Example -->
+    <string name="help_example_current">Actual</string>
+    <string name="help_legend_current">Actual (5)</string>
+    <string name="help_legend_valid">Válido (4 o 6)</string>
+
+    <!-- Accessibility -->
+    <string name="a11y_cell_value">Valor de celda %d</string>
+    <string name="a11y_cell_current">Celda actual, valor %d</string>
+    <string name="a11y_cell_valid">Movimiento válido, valor %d</string>
+    <string name="a11y_cell_visited">Celda visitada, valor %d</string>
+    <string name="a11y_undo_button">Deshacer último movimiento</string>
+    <string name="a11y_restart_button">Reiniciar puzzle</string>
+    <string name="a11y_finish_button">Terminar y enviar camino</string>
+    <string name="a11y_share_button">Compartir resultados</string>
+    <string name="a11y_give_up_button">Rendirse y revelar camino óptimo</string>
+
+    <!-- Content Descriptions -->
+    <string name="cd_undo">Deshacer</string>
+    <string name="cd_restart">Reiniciar</string>
+    <string name="cd_finish">Terminar</string>
+    <string name="cd_share">Compartir</string>
+    <string name="cd_help">Ayuda</string>
+    <string name="cd_settings">Ajustes</string>
+    <string name="cd_back">Volver</string>
+    <string name="cd_close">Cerrar</string>
+</resources>
