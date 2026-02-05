@@ -10,7 +10,7 @@ import GameKit
 import SwiftUI
 
 @MainActor
-class GameCenterService: ObservableObject {
+class GameCenterService: NSObject, ObservableObject {
     static let shared = GameCenterService()
     
     // MARK: - Published Properties

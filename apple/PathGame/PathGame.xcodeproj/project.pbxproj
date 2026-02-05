@@ -20,13 +20,13 @@
 		APP011 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC011 /* OnboardingView.swift */; };
 		APP012 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC012 /* SplashView.swift */; };
 		APP013 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC013 /* LocalizedStrings.swift */; };
+		CE3723452F34FC080061AF2D /* Assets 2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3723442F34FC080061AF2D /* Assets 2.xcassets */; };
 		LOC001 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = LCZ001 /* Localizable.strings */; };
 		MOD001 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL001 /* GameState.swift */; };
 		MOD002 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL002 /* Player.swift */; };
 		MOD003 /* GameStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL003 /* GameStats.swift */; };
 		MOD004 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL004 /* Achievement.swift */; };
 		MOD005 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL005 /* Friend.swift */; };
-		RES001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = RSC001 /* Assets.xcassets */; };
 		RES002 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = RSC002 /* Preview Assets.xcassets */; };
 		SVC001 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SVS001 /* CloudKitService.swift */; };
 		SVC002 /* GameCenterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SVS002 /* GameCenterService.swift */; };
@@ -39,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE3723442F34FC080061AF2D /* Assets 2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets 2.xcassets"; sourceTree = "<group>"; };
 		ENT001 /* PathGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PathGame.entitlements; sourceTree = "<group>"; };
 		LCZ001 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		MDL001 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
@@ -47,7 +48,6 @@
 		MDL004 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
 		MDL005 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		PRD001 /* PathGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PathGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		RSC001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		RSC002 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		SRC001 /* PathGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathGameApp.swift; sourceTree = "<group>"; };
 		SRC002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +92,7 @@
 				GRP006 /* Services */,
 				GRP007 /* Resources */,
 				ENT001 /* PathGame.entitlements */,
+				CE3723442F34FC080061AF2D /* Assets 2.xcassets */,
 			);
 			path = PathGame;
 			sourceTree = "<group>";
@@ -150,7 +151,6 @@
 		GRP007 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				RSC001 /* Assets.xcassets */,
 				GRP008 /* Preview Content */,
 				SRC013 /* LocalizedStrings.swift */,
 				LCZ001 /* Localizable.strings */,
@@ -236,8 +236,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				RES001 /* Assets.xcassets in Resources */,
 				RES002 /* Preview Assets.xcassets in Resources */,
+				CE3723452F34FC080061AF2D /* Assets 2.xcassets in Resources */,
 				LOC001 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
