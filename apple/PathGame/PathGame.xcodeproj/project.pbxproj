@@ -7,52 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		// App files
-		APP001 /* PathGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC001; };
-		APP002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC002; };
-		APP003 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC003; };
-		APP004 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC004; };
-		APP005 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC005; };
-		APP006 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC006; };
-		APP007 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC007; };
-		APP008 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC008; };
-		APP009 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC009; };
-		APP010 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC010; };
-		APP011 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC011; };
-		APP012 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC012; };
-		APP013 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC013; };
-		
-		// Models
-		MOD001 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL001; };
-		MOD002 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL002; };
-		MOD003 /* GameStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL003; };
-		MOD004 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL004; };
-		MOD005 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL005; };
-		
-		// ViewModels
-		VM001 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = VWM001; };
-		VM002 /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = VWM002; };
-		VM003 /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = VWM003; };
-		
-		// Services
-		SVC001 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SVS001; };
-		SVC002 /* GameCenterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SVS002; };
-		SVC003 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SVS003; };
-		SVC004 /* ShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SVS004; };
-		SVC005 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SVS005; };
-		
-		// Resources
-		RES001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = RSC001; };
-		RES002 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = RSC002; };
-		
-		// Localizations
-		LOC001 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = LCZ001; };
+		APP001 /* PathGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC001 /* PathGameApp.swift */; };
+		APP002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC002 /* ContentView.swift */; };
+		APP003 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC003 /* GameView.swift */; };
+		APP004 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC004 /* GridView.swift */; };
+		APP005 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC005 /* CellView.swift */; };
+		APP006 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC006 /* StatsView.swift */; };
+		APP007 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC007 /* FriendsView.swift */; };
+		APP008 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC008 /* SettingsView.swift */; };
+		APP009 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC009 /* HelpView.swift */; };
+		APP010 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC010 /* LeaderboardView.swift */; };
+		APP011 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC011 /* OnboardingView.swift */; };
+		APP012 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC012 /* SplashView.swift */; };
+		APP013 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = SRC013 /* LocalizedStrings.swift */; };
+		LOC001 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = LCZ001 /* Localizable.strings */; };
+		MOD001 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL001 /* GameState.swift */; };
+		MOD002 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL002 /* Player.swift */; };
+		MOD003 /* GameStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL003 /* GameStats.swift */; };
+		MOD004 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL004 /* Achievement.swift */; };
+		MOD005 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = MDL005 /* Friend.swift */; };
+		RES001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = RSC001 /* Assets.xcassets */; };
+		RES002 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = RSC002 /* Preview Assets.xcassets */; };
+		SVC001 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SVS001 /* CloudKitService.swift */; };
+		SVC002 /* GameCenterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SVS002 /* GameCenterService.swift */; };
+		SVC003 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SVS003 /* HapticsService.swift */; };
+		SVC004 /* ShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SVS004 /* ShareService.swift */; };
+		SVC005 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = SVS005 /* NotificationService.swift */; };
+		VM001 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = VWM001 /* GameViewModel.swift */; };
+		VM002 /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = VWM002 /* StatsViewModel.swift */; };
+		VM003 /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = VWM003 /* FriendsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ENT001 /* PathGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PathGame.entitlements; sourceTree = "<group>"; };
+		LCZ001 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		MDL001 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		MDL002 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		MDL003 /* GameStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStats.swift; sourceTree = "<group>"; };
+		MDL004 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
+		MDL005 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		PRD001 /* PathGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PathGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		
-		// Source files
+		RSC001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		RSC002 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		SRC001 /* PathGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathGameApp.swift; sourceTree = "<group>"; };
 		SRC002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		SRC003 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -66,40 +62,14 @@
 		SRC011 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		SRC012 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		SRC013 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
-		
-		// Models
-		MDL001 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
-		MDL002 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		MDL003 /* GameStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStats.swift; sourceTree = "<group>"; };
-		MDL004 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
-		MDL005 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
-		
-		// ViewModels
-		VWM001 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
-		VWM002 /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
-		VWM003 /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
-		
-		// Services
 		SVS001 /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
 		SVS002 /* GameCenterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterService.swift; sourceTree = "<group>"; };
 		SVS003 /* HapticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsService.swift; sourceTree = "<group>"; };
 		SVS004 /* ShareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareService.swift; sourceTree = "<group>"; };
 		SVS005 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
-		
-		// Resources
-		RSC001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		RSC002 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		
-		// Entitlements
-		ENT001 /* PathGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PathGame.entitlements; sourceTree = "<group>"; };
-		
-		// Localizations
-		LCZ001 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Resources/en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		LCZ002 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Resources/es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		LCZ003 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Resources/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		LCZ004 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Resources/de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		LCZ005 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = Resources/ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		LCZ006 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "Resources/zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		VWM001 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		VWM002 /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
+		VWM003 /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -261,54 +231,54 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXSourcesBuildPhase section */
-		PHS001 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				APP001,
-				APP002,
-				APP003,
-				APP004,
-				APP005,
-				APP006,
-				APP007,
-				APP008,
-				APP009,
-				APP010,
-				APP011,
-				APP012,
-				APP013,
-				MOD001,
-				MOD002,
-				MOD003,
-				MOD004,
-				MOD005,
-				VM001,
-				VM002,
-				VM003,
-				SVC001,
-				SVC002,
-				SVC003,
-				SVC004,
-				SVC005,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
 /* Begin PBXResourcesBuildPhase section */
 		PHS002 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				RES001,
-				RES002,
-				LOC001,
+				RES001 /* Assets.xcassets in Resources */,
+				RES002 /* Preview Assets.xcassets in Resources */,
+				LOC001 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		PHS001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				APP001 /* PathGameApp.swift in Sources */,
+				APP002 /* ContentView.swift in Sources */,
+				APP003 /* GameView.swift in Sources */,
+				APP004 /* GridView.swift in Sources */,
+				APP005 /* CellView.swift in Sources */,
+				APP006 /* StatsView.swift in Sources */,
+				APP007 /* FriendsView.swift in Sources */,
+				APP008 /* SettingsView.swift in Sources */,
+				APP009 /* HelpView.swift in Sources */,
+				APP010 /* LeaderboardView.swift in Sources */,
+				APP011 /* OnboardingView.swift in Sources */,
+				APP012 /* SplashView.swift in Sources */,
+				APP013 /* LocalizedStrings.swift in Sources */,
+				MOD001 /* GameState.swift in Sources */,
+				MOD002 /* Player.swift in Sources */,
+				MOD003 /* GameStats.swift in Sources */,
+				MOD004 /* Achievement.swift in Sources */,
+				MOD005 /* Friend.swift in Sources */,
+				VM001 /* GameViewModel.swift in Sources */,
+				VM002 /* StatsViewModel.swift in Sources */,
+				VM003 /* FriendsViewModel.swift in Sources */,
+				SVC001 /* CloudKitService.swift in Sources */,
+				SVC002 /* GameCenterService.swift in Sources */,
+				SVC003 /* HapticsService.swift in Sources */,
+				SVC004 /* ShareService.swift in Sources */,
+				SVC005 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		CFG002 /* Debug */ = {
@@ -371,7 +341,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PathGame/Resources/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VTR7P9V4K2;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -383,7 +353,6 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -409,7 +378,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PathGame/Resources/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VTR7P9V4K2;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -421,7 +390,6 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
