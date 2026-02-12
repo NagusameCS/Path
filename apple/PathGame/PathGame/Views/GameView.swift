@@ -104,22 +104,75 @@ struct GameView: View {
             .sheet(isPresented: $gameViewModel.showingArchiveModal) {
                 ArchiveModalView()
             }
+            .onAppear {
+                // Pre-warm haptics for first move responsiveness
+                HapticsService.shared.prepare()
+            }
+            #if os(macOS)
+            .keyboardShortcut("z", modifiers: .command)
+            #endif
         }
+        #if os(macOS)
+        // macOS Keyboard Shortcuts
+        .background(
+            Group {
+                // Undo: Cmd+Z
+                Button("") { gameViewModel.undo() }
+                    .keyboardShortcut("z", modifiers: .command)
+                    .opacity(0)
+                
+                // Reset: Cmd+R
+                Button("") { gameViewModel.reset() }
+                    .keyboardShortcut("r", modifiers: .command)
+                    .opacity(0)
+                
+                // Toggle Grid Size: Cmd+G
+                Button("") { gameViewModel.toggleGridSize() }
+                    .keyboardShortcut("g", modifiers: .command)
+                    .opacity(0)
+                
+                // Toggle Theme: Cmd+T
+                Button("") { isDarkMode.toggle() }
+                    .keyboardShortcut("t", modifiers: .command)
+                    .opacity(0)
+                
+                // Show Help: Cmd+?
+                Button("") { showingHelp = true }
+                    .keyboardShortcut("/", modifiers: [.command, .shift])
+                    .opacity(0)
+            }
+        )
+        #endif
     }
 }
 
 // MARK: - Stats Bar
 struct StatsBar: View {
     @EnvironmentObject var gameViewModel: GameViewModel
+    @EnvironmentObject var statsViewModel: StatsViewModel
     
     var body: some View {
-        HStack(spacing: 50) {
+        HStack(spacing: 30) {
+            // Current Streak (if > 0)
+            if statsViewModel.currentStreak > 0 {
+                HStack(spacing: 4) {
+                    Image(systemName: "flame.fill")
+                        .foregroundColor(.orange)
+                        .font(.system(size: 16))
+                    Text("\(statsViewModel.currentStreak)")
+                        .font(.system(size: 18, weight: .medium, design: .monospaced))
+                        .foregroundColor(.orange)
+                }
+                .transition(.scale.combined(with: .opacity))
+            }
+            
             StatItem(value: "\(gameViewModel.pathLength)", label: L10n.gamePathLength.uppercased())
             StatItem(
                 value: gameViewModel.isGameOver ? "\(gameViewModel.optimalLength)" : "?",
                 label: L10n.gameOptimal.uppercased()
             )
         }
+        .animation(.spring(duration: 0.4), value: statsViewModel.currentStreak)
     }
 }
 
@@ -293,12 +346,20 @@ struct MessageView: View {
     @EnvironmentObject var gameViewModel: GameViewModel
     
     var body: some View {
-        Text(gameViewModel.statusMessage)
-            .font(.system(size: 14, design: .monospaced))
-            .foregroundColor(messageColor)
-            .multilineTextAlignment(.center)
-            .padding(.horizontal)
-            .animation(.easeInOut, value: gameViewModel.statusMessage)
+        VStack(spacing: 8) {
+            Text(gameViewModel.statusMessage)
+                .font(.system(size: 14, design: .monospaced))
+                .foregroundColor(messageColor)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
+                .animation(.easeInOut, value: gameViewModel.statusMessage)
+            
+            // Show countdown to next puzzle when game is complete
+            if gameViewModel.isGameOver && gameViewModel.archiveDate == nil {
+                NextPuzzleCountdown()
+                    .padding(.top, 4)
+            }
+        }
     }
     
     var messageColor: Color {
@@ -309,6 +370,51 @@ struct MessageView: View {
             return gameViewModel.percentage >= 90 ? Color(red: 0.6, green: 0.67, blue: 0.6) : Color(red: 0.53, green: 0.53, blue: 0.53)
         }
         return Color(red: 0.53, green: 0.53, blue: 0.53)
+    }
+}
+
+// MARK: - Next Puzzle Countdown
+struct NextPuzzleCountdown: View {
+    @State private var timeRemaining: String = ""
+    @State private var timer: Timer?
+    
+    var body: some View {
+        HStack(spacing: 6) {
+            Image(systemName: "clock")
+                .font(.system(size: 11))
+            Text("Next puzzle in \(timeRemaining)")
+                .font(.system(size: 11, design: .monospaced))
+        }
+        .foregroundColor(Color(red: 0.45, green: 0.45, blue: 0.45))
+        .onAppear {
+            updateTimeRemaining()
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+                updateTimeRemaining()
+            }
+        }
+        .onDisappear {
+            timer?.invalidate()
+            timer = nil
+        }
+    }
+    
+    private func updateTimeRemaining() {
+        let calendar = Calendar.current
+        let now = Date()
+        
+        // Calculate time until midnight
+        guard let tomorrow = calendar.date(byAdding: .day, value: 1, to: now),
+              let midnight = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: tomorrow) else {
+            timeRemaining = "--:--:--"
+            return
+        }
+        
+        let diff = calendar.dateComponents([.hour, .minute, .second], from: now, to: midnight)
+        let hours = diff.hour ?? 0
+        let minutes = diff.minute ?? 0
+        let seconds = diff.second ?? 0
+        
+        timeRemaining = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
 }
 

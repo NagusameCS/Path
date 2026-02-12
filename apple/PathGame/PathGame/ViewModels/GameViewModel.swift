@@ -450,13 +450,47 @@ class GameViewModel: ObservableObject {
         if attempts == 1 {
             lines.append("🎯 First try!")
         } else {
-            lines.append("🎯 Attempts: \(attempts)")
+            lines.append("🔄 Attempts: \(attempts)")
         }
+        
+        // Add emoji grid visualization
+        lines.append("")
+        lines.append(generateEmojiGrid())
         
         lines.append("")
         lines.append("https://nagusamecs.github.io/Path/")
         
         return lines.joined(separator: "\n")
+    }
+    
+    /// Generates an emoji grid showing the path
+    private func generateEmojiGrid() -> String {
+        let size = gameState.size
+        var gridLines: [String] = []
+        
+        for row in 0..<size {
+            var rowEmojis: [String] = []
+            for col in 0..<size {
+                let pos = Position(row: row, col: col)
+                
+                if path.contains(pos) {
+                    // Part of the path
+                    if pos == path.first {
+                        rowEmojis.append("🟢")  // Start
+                    } else if pos == path.last {
+                        rowEmojis.append("🏁")  // End
+                    } else {
+                        rowEmojis.append("🟦")  // Path
+                    }
+                } else {
+                    // Not visited
+                    rowEmojis.append("⬜")
+                }
+            }
+            gridLines.append(rowEmojis.joined())
+        }
+        
+        return gridLines.joined(separator: "\n")
     }
     
     func showToast(_ message: String) {

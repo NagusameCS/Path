@@ -13,6 +13,11 @@ struct ContentView: View {
     @EnvironmentObject var friendsViewModel: FriendsViewModel
     @State private var selectedTab = 0
     
+    // Track if user has played today
+    private var hasPlayedToday: Bool {
+        gameViewModel.isGameOver || gameViewModel.pathLength > 1
+    }
+    
     var body: some View {
         TabView(selection: $selectedTab) {
             GameView()
@@ -20,6 +25,7 @@ struct ContentView: View {
                     Label(L10n.navPlay, systemImage: "gamecontroller.fill")
                 }
                 .tag(0)
+                .badge(hasPlayedToday ? 0 : 1)  // Show badge if not played today
             
             StatsView()
                 .tabItem {

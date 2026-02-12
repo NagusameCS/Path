@@ -13,7 +13,13 @@
 	</array>
 	<key>com.apple.developer.ubiquity-kvstore-identifier</key>
 	<string>$(TeamIdentifierPrefix)com.nagusamecs.PathGame</string>
-	<key>com.apple.developer.game-center</key>
+	<key>com.apple.security.app-sandbox</key>
+	<true/>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.com.nagusamecs.pathgame</string>
+	</array>
+	<key>com.apple.security.network.client</key>
 	<true/>
 </dict>
 </plist>
